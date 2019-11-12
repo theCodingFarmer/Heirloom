@@ -1,13 +1,15 @@
 .App {
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20em;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #98d5d0;
+  padding: 3em;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,6 +19,7 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+
+.App a {
+  color: white;
 }
