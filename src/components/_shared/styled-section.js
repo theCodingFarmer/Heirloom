@@ -12,6 +12,12 @@ export const StyledSection = styled.section`
   margin-bottom: 60px;
 `;
 
+export const StyledSectionHero = styled.section`
+  margin: 0 auto;
+  max-width: 1000px;
+`;
+
+
 export const StyledFullHeightSection = styled(StyledSection)`
   min-height: calc(100vh - var(--header-height));
   justify-content: start;

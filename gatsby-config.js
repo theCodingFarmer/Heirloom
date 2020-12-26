@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: '/gatsby-starter-level-2',
   siteMetadata: {
     title: 'Heirloom Farm',
-    titleTemplate: '%s · Level 2',
+    titleTemplate: 'Heirloom Farm | Fresh Local Food Direct to the Consumer',
     image: '/images/logo.png',
     author: 'Heirloom Farm',
     description: 'Gatsby starter to quickly setup your portfolio and boost it to the next level.',

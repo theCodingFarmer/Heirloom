@@ -4,15 +4,33 @@ import React from 'react';
 import ButtonLink from './links/button-link';
 import ScrollIndicator from './scroll-indicator';
 import { mq } from './_shared/media';
-import { StyledSection } from './_shared/styled-section';
+import { StyledSectionHero } from './_shared/styled-section';
+import backgroundImg from '../images/backgroundVeggies.jpg';
 
-const StyledHeroSection = styled(StyledSection)`
-  min-height: calc(100vh - 2 * var(--header-height));
+
+const StyledHeroSection = styled(StyledSectionHero)`
+  min-height: calc(100vh + 8rem - 2 * var(--header-height));
   position: relative;
+  background-image: url(${backgroundImg});
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
 
   ${mq.gt.sm} {
     min-height: calc(100vh - var(--header-height));
   }
+`;
+const StyledBodyWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 95%;
+  padding: 30px 0;
+  max-width: 1000px;
+  margin-bottom: 60px;
 `;
 const StyledIntroduction = styled.div`
   color: var(--primary-color);
@@ -52,12 +70,14 @@ const Hero = ({ data }) => {
 
   return (
     <StyledHeroSection>
-      <StyledIntroduction>{introduction}</StyledIntroduction>
-      <StyledAuthor>{author}</StyledAuthor>
-      <StyledTagline>{tagline}</StyledTagline>
-      <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
-      <ButtonLink label={ctaLabel} link={ctaLink} />
-      <ScrollIndicator />
+        <StyledBodyWrapper>
+        <StyledIntroduction>{introduction}</StyledIntroduction>
+        <StyledAuthor>{author}</StyledAuthor>
+        <StyledTagline>{tagline}</StyledTagline>
+        <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
+        <ButtonLink label={ctaLabel} link={ctaLink} />
+        <ScrollIndicator />
+        </StyledBodyWrapper>
     </StyledHeroSection>
   );
 };

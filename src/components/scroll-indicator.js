@@ -6,7 +6,7 @@ import { flexCenter } from './_shared/styled-mixins';
 
 const StyledContainer = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 10rem;
   left: 0;
   right: 0;
   width: 100%;
