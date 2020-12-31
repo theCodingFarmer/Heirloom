@@ -9,7 +9,7 @@ import backgroundImg from '../images/backgroundVeggies.jpg';
 
 
 const StyledHeroSection = styled(StyledSectionHero)`
-  min-height: calc(100vh + 8rem - 2 * var(--header-height));
+  min-height: calc(100vh + var(--header-height));
   position: relative;
   background-image: url(${backgroundImg});
   background-size: auto 100%;
@@ -18,7 +18,7 @@ const StyledHeroSection = styled(StyledSectionHero)`
   z-index: -2;
 
   ${mq.gt.sm} {
-    min-height: calc(100vh - var(--header-height));
+   min-height: calc(100vh + 2.2 * var(--header-height));
   }
 `;
 const StyledBodyWrapper = styled.div`
