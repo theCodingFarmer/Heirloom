@@ -15,14 +15,14 @@ const StyledFactNumber = styled.section`
   flex-direction: column;
   padding: 1rem;
 
-  & > .number {
+  & > .bulletPoint {
     margin-left: 2rem;
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 1.25rem;
     font-weight: bold;
   }
 
-  & > .fact {
+  & > .details {
     position: relative;
     text-transform: uppercase;
     font-size: 0.8rem;
@@ -45,19 +45,19 @@ const StyledFactNumber = styled.section`
 const Facts = () => {
   return (
     <StyledSkewedSection angle={10}>
-      <StyledH1>Some Interesting Facts</StyledH1>
+      <StyledH1>How a Membership Works</StyledH1>
       <StyledLogoSection>
         <StyledFactNumber>
-          <span className="number">127</span>
-          <span className="fact">Finished Projects</span>
+          <span className="bulletPoint">Decide How Much & When</span>
+          <span className="details">Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</span>
         </StyledFactNumber>
         <StyledFactNumber>
-          <span className="number">321</span>
-          <span className="fact">Happy Customers</span>
+          <span className="bulletPoint">Get Recipes From Farmers & Other Members</span>
+          <span className="details">Get weekly emails and get access our private Facebook group</span>
         </StyledFactNumber>
         <StyledFactNumber>
-          <span className="number">863</span>
-          <span className="fact">Freelancing Hours</span>
+          <span className="bulletPoint">Feel Better</span>
+          <span className="details">About your health and the source of your food</span>
         </StyledFactNumber>
       </StyledLogoSection>
     </StyledSkewedSection>
