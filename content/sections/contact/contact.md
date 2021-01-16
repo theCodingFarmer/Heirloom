@@ -1,9 +1,7 @@
 ---
-phone: '+49 1234 5678910'
-email: 'maxmustermann@gmail.com'
-address: 'Friesenstr. 123, Berlin, Germany'
+phone: '515-339-5662'
+email: 'farmer@hlfarm.com'
+address: '33737 H Ave. Earlham, Iowa 50072'
 ---
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-sed diam nonumy [Link to issues](https://github.com/Knochenmark/gatsby-starter-level-2/issues) tempor invidunt ut labore
-et dolore magna aliquyam erat, sed diam voluptua.
+The best part about what we do is that we get to regularly talk with the people who eat what we produce. We’d love to talk to you! Come out and visit the farm or give a call. You can also stay in touch with life on the farm by subscribing to our mailing list. 
