@@ -6,7 +6,7 @@ import CardGrid from '../components/card-grid';
 import Contact from '../components/contact';
 import FeaturedProjects from '../components/featured-projects';
 import Hero from '../components/hero';
-import Facts from '../components/facts';
+import HowMembershipWorks from '../components/HowMembershipWorks';
 import Layout from '../components/layout';
 import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
@@ -26,7 +26,7 @@ const Index = ({ data }) => {
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
       <Hero data={heroData} />
-      <Facts/>
+      <HowMembershipWorks/>
       <About data={data.about} />
       <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Features" id="features" />
       <FeaturedProjects featured={data.featuredProjects.nodes} />
