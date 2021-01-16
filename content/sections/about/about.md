@@ -1,11 +1,9 @@
 ---
-title: 'The Gatsby starter that makes developer dreams come true!'
+title: 'Let us come alongside you!'
 about_image: './ourFarm.png'
-techs: ['Gatsby', 'Javascript', 'React', 'GraphQL', 'Emotion', 'Stylus']
+techs: ['Healthy', 'Fresh', 'Local', 'Clean', 'Organic']
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sit amet arcu tincidunt fermentum. Mauris ac nisl nibh. Etiam nunc eros, blandit vel eros laoreet, accumsan lacinia turpis.
+A farm membership can help you take positive steps toward accomplishing your healthy eating goals just like it did for us. We used to eat a lot of processed food, but we’ve really transformed our diet and love to help others who want to do the same. I felt guilty for not feeding my family more vegetables, but I couldn’t tell a zucchini from a cucumber. I certainly didn’t know where to start to form new, healthy habits. Then some friends came alongside me. They cooked with fresh vegetables and herbs, and I learned that it wasn’t so hard and it tasted so much better!
 
-Phasellus ut sagittis eros. Curabitur quis libero consequat, iaculis dolor sollicitudin, ultricies ligula. Donec sodales sed ex a fermentum. Quisque vitae efficitur odio, non aliquam sapien.
-
-Proin egestas luctus ornare. Donec maximus est lobortis, pharetra dolor in, convallis lorem. Duis ut erat in lectus faucibus iaculis. In tincidunt laoreet ante, vel pellentesque risus lacinia eu.
+But that kind of diet grew into a habit only after we became members at a farm that supplied us with a weekly basket of produce. Week after week, we got to try new things. Week after week, we fell in love with the flavor of farm fresh produce. So much that we now grow it for over 80 families at our own farm!
