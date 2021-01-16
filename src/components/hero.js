@@ -11,6 +11,7 @@ import backgroundImg from '../images/backgroundVeggies.jpg';
 const StyledHeroSection = styled(StyledSectionHero)`
   min-height: calc(100vh - 2 * var(--header-height));
   position: relative;
+  max-width: 100%;
   background-image: url(${backgroundImg});
   background-size: cover;
   background-position: center;
@@ -31,7 +32,6 @@ const StyledBodyWrapper = styled.div`
   width: 95%;
   padding: 30px 0;
   max-width: 1000px;
-  margin-bottom: 60px;
 `;
 const StyledIntroduction = styled.div`
   color: var(--primary-color);
