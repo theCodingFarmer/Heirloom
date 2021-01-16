@@ -5,21 +5,18 @@ import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 
 const StyledContainer = styled.div`
-    position: absolute;
-    bottom: calc(34vh);
-    left: 0;
-    right: 0;
-    width: 100%;
-    ${flexCenter};
-    flex-direction: column;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  ${flexCenter};
+  flex-direction: column;
+
+  display: none;
+
+  ${mq.gt.xs} {
     display: flex;
-  
-  ${mq.lt.lg} {
-    bottom: calc(32vh);
-    display: flex;
-  }  
-  ${mq.lt.md} {
-    display: none;
   }
 `;
 const StyledMouse = styled.div`
