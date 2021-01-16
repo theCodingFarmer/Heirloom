@@ -9,16 +9,18 @@ import backgroundImg from '../images/backgroundVeggies.jpg';
 
 
 const StyledHeroSection = styled(StyledSectionHero)`
-  min-height: calc(100vh + var(--header-height));
+  min-height: calc(100vh - 2 * var(--header-height));
   position: relative;
+  max-width: 100%;
   background-image: url(${backgroundImg});
-  background-size: auto 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -2;
+  background-attachment: fixed;
+  z-index: 0;
 
   ${mq.gt.sm} {
-   min-height: calc(100vh + 2.2 * var(--header-height));
+   min-height: calc(100vh - var(--header-height));
   }
 `;
 const StyledBodyWrapper = styled.div`
@@ -30,7 +32,6 @@ const StyledBodyWrapper = styled.div`
   width: 95%;
   padding: 30px 0;
   max-width: 1000px;
-  margin-bottom: 60px;
 `;
 const StyledIntroduction = styled.div`
   color: var(--primary-color);

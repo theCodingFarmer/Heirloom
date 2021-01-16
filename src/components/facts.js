@@ -44,23 +44,25 @@ const StyledFactNumber = styled.section`
 
 const Facts = () => {
   return (
-    <StyledSkewedSection angle={10}>
-      <StyledH1>How a Membership Works</StyledH1>
-      <StyledLogoSection>
-        <StyledFactNumber>
-          <span className="bulletPoint">Decide How Much & When</span>
-          <span className="details">Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</span>
-        </StyledFactNumber>
-        <StyledFactNumber>
-          <span className="bulletPoint">Get Recipes From Farmers & Other Members</span>
-          <span className="details">Get weekly emails and get access our private Facebook group</span>
-        </StyledFactNumber>
-        <StyledFactNumber>
-          <span className="bulletPoint">Feel Better</span>
-          <span className="details">About your health and the source of your food</span>
-        </StyledFactNumber>
-      </StyledLogoSection>
-    </StyledSkewedSection>
+    <StyledSectionContainer>
+      <StyledContentWrapper>
+        <StyledH1>How a Membership Works</StyledH1>
+        <StyledLogoSection>
+          <StyledFactNumber>
+            <span className="bulletPoint">Decide How Much & When</span>
+            <span className="details">Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</span>
+          </StyledFactNumber>
+          <StyledFactNumber>
+            <span className="bulletPoint">Get Recipes From Farmers & Other Members</span>
+            <span className="details">Get weekly emails and get access our private Facebook group</span>
+          </StyledFactNumber>
+          <StyledFactNumber>
+            <span className="bulletPoint">Feel Better</span>
+            <span className="details">About your health and the source of your food</span>
+          </StyledFactNumber>
+        </StyledLogoSection>
+      </StyledContentWrapper>
+    </StyledSectionContainer>
   );
 };
 
