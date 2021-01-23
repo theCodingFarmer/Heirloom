@@ -1,21 +1,11 @@
-[![Build Status](https://travis-ci.com/Knochenmark/gatsby-starter-level-2.svg?branch=master)](https://travis-ci.com/Knochenmark/gatsby-starter-level-2)
-[![GitHub issues](https://img.shields.io/github/issues/knochenmark/gatsby-starter-level-2.svg)](https://github.com/Knochenmark/gatsby-starter-level-2/issues)
-[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/knochenmark/gatsby-starter-level-2.svg)](https://github.com/Knochenmark/gatsby-starter-level-2/pulls)
-![GitHub contributors](https://img.shields.io/github/contributors/knochenmark/gatsby-starter-level-2.svg)
-![GitHub top language](https://img.shields.io/github/languages/top/knochenmark/gatsby-starter-level-2.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aa9c2904-d115-4d9c-9ca1-f426d5697811/deploy-status)](https://app.netlify.com/sites/heirloomfarm/deploys)
 
-<p align="center">
-  <img alt="Level 2" src="./src/assets/logo.svg" width="140" />
-</p>
+
 <h1 align="center">
-  Gatsby Starter Portfolio: Level 2
+  Heirloom Farm 👨🏻‍🌾
 </h1>
 
-<h4>
-  A minimalistic, responsive and easily configurable <a href="https://github.com/gatsbyjs/gatsby" target="_blank">Gatsby</a> starter that will help to bring your portfolio to the next level.
-</h4>
-
-That's why we like to call our starter **Level 2** or short **LvL2**. The starter comes with several prepared info sections for your portfolio that can be easily configured with the main Gatsby configuration files. For content creation we are using **Markdown** files with Frontmatter attributes that can be easily edited or created.
+For content creation we are using **Markdown** files with Frontmatter attributes that can be easily edited or created.
 
 # Table of Contents
 
