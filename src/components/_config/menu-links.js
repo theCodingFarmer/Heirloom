@@ -1,13 +1,13 @@
 export const indexMenuLinks = [
   {
-    name: 'About',
+    name: 'Our Farm',
     link: '/#about',
     icon: 'user-tie',
   },
   {
-    name: 'Projects',
+    name: 'What We Grow',
     link: '/#projects',
-    icon: 'terminal',
+    icon: 'seedling',
   },
   {
     name: 'Blog',
