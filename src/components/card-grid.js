@@ -40,7 +40,8 @@ const StyledFeatureCard = styled.article`
   }
 `;
 const StyledCardLabel = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-align: center;
   margin: 1rem 0;
   color: var(--body-color);
 `;
@@ -60,7 +61,7 @@ const CardGrid = ({ cards, description, title, id = null }) => {
       <StyledFeatureCard key={index}>
         <Icon icon={icon} prefix={prefix} />
         <StyledCardLabel>{label}</StyledCardLabel>
-        <StyledDivider></StyledDivider>
+        <StyledDivider/>
         <StyledFeatureDescription>{description}</StyledFeatureDescription>
       </StyledFeatureCard>
     );
