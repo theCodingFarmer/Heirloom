@@ -79,8 +79,7 @@ export const query = graphql`
       frontmatter {
         cards {
           label
-          icon
-          prefix
+          image
           description
         }
       }
