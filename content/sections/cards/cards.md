@@ -4,13 +4,13 @@ cards:
     image: card-only-heirloom.png
     description: Our seeds have a history, chosen for generations for their beauty, flavor, and natural pest and disease resistance.
   - label: No Soy, No GMO Feed
-    image: 
+    image: card-no-soy-no-gmo.png
     description: Our chickens love their high-quality feed! It includes flax, whole grains and seeds, but no soy and no GMO grains.
   - label: Animals Raised Outdoors
-    image: 
+    image: card-animal-outdoor.png
     description: Fresh air and sunshine for everyone at our farm!
   - label: No Antibiotics or Hormones
-    image: 
+    image: card-no-antibiotics-no-hormones.png
     description: Clean meat and eggs, just like the old days.
   - label: Building Soil Health
     image: card-soil-health.png
@@ -19,10 +19,10 @@ cards:
     image: card-row-cover.png
     description: Covering crops at critical times helps keep pests away without using chemicals.
   - label: Beneficial Insects
-    image: 
+    image: card-beneficial-insects.png
     description: We create and maintain habitat for predatory insect helpers.
   - label: Chemical-Free
-    image: 
+    image: card-chemical-free.png
     description: No conventional pesticides or chemical fertilizers.
 ---
 
