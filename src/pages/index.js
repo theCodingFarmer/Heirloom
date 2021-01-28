@@ -28,7 +28,7 @@ const Index = ({ data }) => {
       <Hero data={heroData} />
       <HowMembershipWorks/>
       <About data={data.about} />
-      <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Features" id="features" />
+      <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Farm is For You" id="features" />
       <FeaturedProjects featured={data.featuredProjects.nodes} />
       <RecentPosts data={data.blog.edges} />
       <Contact data={data.contact} />
@@ -79,8 +79,7 @@ export const query = graphql`
       frontmatter {
         cards {
           label
-          icon
-          prefix
+          image
           description
         }
       }
