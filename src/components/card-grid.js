@@ -31,6 +31,8 @@ const StyledFeatureCard = styled.article`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-color: var(--card-tint-color);
+    background-blend-mode: multiply;
     
     display: flex;
     align-items: center;
@@ -46,10 +48,10 @@ const StyledFeatureCard = styled.article`
 `;
 
 const StyledCardLabel = styled.h2`
-  font-size: 1.2rem;
-  text-align: center;
-  margin: 1rem 0;
-  color: var(--body-color);
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--card-font-color);
 `;
 
 const StyledDivider = styled.div`
@@ -60,7 +62,8 @@ const StyledDivider = styled.div`
 `;
 
 const StyledFeatureDescription = styled.p`
-  font-size: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--card-font-color);
 `;
 
 const CardGrid = ({cards, description, title, id = null}) => {
