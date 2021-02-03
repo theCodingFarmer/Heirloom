@@ -8,54 +8,54 @@ import { flexCenter } from './_shared/styled-mixins';
 import {StyledSpan} from './_shared/styled-headings';
 
 const StyledNav = styled.nav`
-    background-color: var(--bg-content-color);
-    border-top: 1px solid var(--border-color);
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: var(--header-height);
+  background-color: var(--bg-content-color);
+  border-top: 1px solid var(--border-color);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
 
-    ${mq.gt.sm} {
-        display: none;
-    }
+  ${mq.gt.sm} {
+    display: none;
+  }
 `;
-
 const StyledNavLink = styled(Link)`
-    ${flexCenter};
-        flex-direction: column;
-        flex-shrink: 1;
-        text-decoration: none;
-        color: var(--title-color) !important;
-        font-size: 0.8rem;
-        line-height: 1;
-        position: relative;
-        height: var(--header-height);
-    
-    > svg {
-        margin-bottom: 0.4rem;
-        fill: var(--title-color);
+  ${flexCenter};
+  flex-direction: column;
+  flex-shrink: 1;
+  text-decoration: none;
+  color: var(--title-color) !important;
+  font-size: 0.8rem;
+  line-height: 1;
+  position: relative;
+  height: var(--header-height);
+
+  > svg {
+    margin-bottom: 0.4rem;
+    fill: var(--title-color);
+  }
+
+  &.active {
+    font-weight: 700;
+    border-bottom: none !important;
+    border-top: 2px solid var(--primary-color);
+
+    & > svg {
+      fill: var(--primary-color);
     }
- 
-    &.active {
-        font-weight: 700;
-        border-bottom: none !important;
-        border-top: 2px solid var(--primary-color);
-        & > svg {
-            fill: var(--primary-color);
-        }
+  }
+  &:hover {
+    color: var(--primary-color) !important;
+
+    & > svg {
+      fill: var(--primary-color);
     }
-    
-    &:hover {
-        color: var(--primary-color) !important;
-        & > svg {
-          fill: var(--primary-color);
-        }
-    }
+  }
 `;
 
 // Note: The NavigationBar component should only be used for up to 5 menu links
