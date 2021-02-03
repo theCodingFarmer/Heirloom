@@ -11,7 +11,7 @@ import { StyledSeparator } from '../components/_shared/styled-separator';
 const StyledProjectsH1 = styled(StyledH1)`
   margin-top: 3rem;
 `;
-const Projects = ({
+const AllThatWeGrow = ({
   data: {
     allMarkdownRemark: { nodes },
   },
@@ -19,9 +19,9 @@ const Projects = ({
   console.log(nodes);
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title="Projects" />
+      <SEO title="All That We Grow" />
       <StyledFullHeightSection>
-        <StyledProjectsH1>Projects</StyledProjectsH1>
+        <StyledProjectsH1>All That We Grow</StyledProjectsH1>
         <StyledSeparator />
         <ProjectList projects={nodes} />
       </StyledFullHeightSection>
@@ -29,7 +29,7 @@ const Projects = ({
   );
 };
 
-export default Projects;
+export default AllThatWeGrow;
 
 export const pageQuery = graphql`
   query {

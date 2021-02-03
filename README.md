@@ -20,7 +20,7 @@ For content creation we are using **Markdown** files with Frontmatter attributes
 - [Content Creation](#content-creation)
   - [Creating Blog Posts](#creating-blog-posts)
     - [Frontmatter for blog posts](#frontmatter-for-blog-posts)
-  - [Creating Projects](#creating-projects)
+  - [Creating AllThatWeGrow](#creating-projects)
     - [Frontmatter for projects](#frontmatter-for-projects)
 
 # Quick start
@@ -58,11 +58,11 @@ For content creation we are using **Markdown** files with Frontmatter attributes
 - Configurable Sections via Markdown
   - Hero
   - About
-  - Featured Projects
+  - Featured AllThatWeGrow
   - Contact
 - Social Links
 - Styled Components with Emotion
-- Organized Projects by techs and Blog Posts by tags
+- Organized AllThatWeGrow by techs and Blog Posts by tags
 - Posts in Markdown
   - Syntax highlighting in code blocks
 - Pagination support
@@ -159,7 +159,7 @@ The frontmatter information for each blog post is structured as following:
 
 Followed by the actual Blog content written in Markdown.
 
-## Creating Projects
+## Creating AllThatWeGrow Products
 
 In order to create a project you create a markdown file under `content/projects` and move images that are used for your project into `content/projects/images`.
 
