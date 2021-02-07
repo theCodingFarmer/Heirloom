@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import Layout from '../components/layout';
-import ProjectList from '../components/project-list';
 import SEO from '../components/seo';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
+import ProductList from '../components/product-list';
 
 const StyledProjectsH1 = styled(StyledH1)`
   margin-top: 3rem;
@@ -16,14 +16,13 @@ const AllThatWeGrow = ({
     allMarkdownRemark: { nodes },
   },
 }) => {
-  console.log(nodes);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="All That We Grow" />
       <StyledFullHeightSection>
         <StyledProjectsH1>All That We Grow</StyledProjectsH1>
         <StyledSeparator />
-        <ProjectList projects={nodes} />
+        <ProductList products={nodes} />
       </StyledFullHeightSection>
     </Layout>
   );
@@ -39,11 +38,16 @@ export const pageQuery = graphql`
     ) {
       nodes {
         frontmatter {
+          cover_image {
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           date(formatString: "D MMMM, YYYY")
           title
-          repo_link
-          demo_link
-          techs
+          highlights
         }
         html
       }

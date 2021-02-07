@@ -63,7 +63,7 @@ export const query = graphql`
     about: markdownRemark(fileAbsolutePath: { regex: "/content/sections/about/" }) {
       frontmatter {
         title
-        techs
+        highlights
         about_image {
           childImageSharp {
             fluid(maxWidth: 800) {
@@ -95,9 +95,7 @@ export const query = graphql`
         frontmatter {
           date(formatString: "D MMMM, YYYY")
           title
-          repo_link
-          demo_link
-          techs
+          highlights
           cover_image {
             childImageSharp {
               fluid(maxWidth: 800) {

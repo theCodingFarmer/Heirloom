@@ -1,10 +1,9 @@
 ---
 featured: true
-date: '2019-12-15'
-title: 'Pomodoro'
-cover_image: './images/ocean.jpg'
-demo_link: 'https://knochenmark.github.io/pomodoro/'
-techs: ['Javascript', 'Html5', 'Css3', 'React']
+date: '2021-02-07'
+title: 'Chicken'
+cover_image: './images/chicken.png'
+highlights: ['Unmedicated', 'Free Range', 'Non-GMO', 'Delicious Flavor']
 ---
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+We raise our meat chickens on pasture, regularly moving them to fresh grass in mobile chicken coops. The coops have no floor, so the birds have constant access to the grass and insects they love to eat. The coops provide protection from predators while allowing access to fresh air. Our supplemental feed is unmedicated, soy-free and non-GMO, but not certified organic.

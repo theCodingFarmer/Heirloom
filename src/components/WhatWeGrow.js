@@ -3,7 +3,7 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextLink from './links/text-link';
-import TechList from './tech-list';
+import HighlightList from './HighlightList';
 import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
 import { StyledImageContainer } from './_shared/styled-image-container';
@@ -66,7 +66,7 @@ const WhatWeGrow = ({featured}) => {
                 <StyledProductInfoContainer>
                     <StyledH2>{title}</StyledH2>
                     <StyledDescription dangerouslySetInnerHTML={{__html: project.html}} />
-                    <TechList techs={project.frontmatter.techs} />
+                    <HighlightList highlights={project.frontmatter.highlights} />
                 </StyledProductInfoContainer>
             </StyledFeaturedProduct>
         );
@@ -77,7 +77,7 @@ const WhatWeGrow = ({featured}) => {
             <StyledH1>What We Grow</StyledH1>
             {featuredProducts}
             <StyledArchiveContainer>
-                <TextLink label="View More Of What We Grow" link="/AllThatWeGrow" />
+                <TextLink label="See All That We Grow" link="/AllThatWeGrow" />
             </StyledArchiveContainer>
         </StyledSection>
     );

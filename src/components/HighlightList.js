@@ -24,21 +24,21 @@ const StyledTag = styled.span`
   }
 `;
 
-const TechList = ({ techs }) => {
+const HighlightList = ({ highlights }) => {
   return (
     <StyledTechContainer>
-      {techs.map((tech) => (
-        <StyledTag key={tech}>
+      {highlights.map((highlight) => (
+        <StyledTag key={highlight}>
           <Icon icon="caret-right" />
-          {tech}
+          {highlight}
         </StyledTag>
       ))}
     </StyledTechContainer>
   );
 };
 
-TechList.propTypes = {
-  techs: PropTypes.array.isRequired,
+HighlightList.propTypes = {
+  highlights: PropTypes.array.isRequired,
 };
 
-export default TechList;
+export default HighlightList;

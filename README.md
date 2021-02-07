@@ -171,7 +171,7 @@ The frontmatter information for each blog post is structured as following:
 | ----------- | -------- | ----------------------- | ----------------------------------- |
 | date        | Date     | Publishing Date         | 2020-05-31                          |
 | title       | String   | Project Title           | 'Gatsby Portfolio'                  |
-| techs       | String[] | List of Tags            | ['React', 'Gatsby']                 |
+| highlights  | String[] | List of Tags            | ['React', 'Gatsby']                 |
 | featured    | Boolean  | Is Featured Flag        | true                                |
 | cover_image | String?  | Path of the Cover Image | ./images/my-image.jpg               |
 | repo_link   | String?  | URL to the repository   | 'https://github.com/facebook/react' |

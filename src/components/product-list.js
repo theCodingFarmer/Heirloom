@@ -1,52 +1,78 @@
 import styled from '@emotion/styled';
+import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { mq } from './_shared/media';
 import { StyledH2 } from './_shared/styled-headings';
-import { flexEnd } from './_shared/styled-mixins';
-import { StyledTextSection } from './_shared/styled-text-section';
+import { StyledImageContainer } from './_shared/styled-image-container';
+import { contentBox } from './_shared/styled-mixins';
+import { StyledSection } from './_shared/styled-section';
 
-const StyledProject = styled.article`
-  display: flex;
-  flex-direction: column;
-  padding-top: 2.5rem;
+const StyledFeaturedProduct = styled.article`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2.5rem;
+  padding: 2.5rem 0;
+
+  ${mq.gt.sm} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &:nth-of-type(even) {
+    direction: rtl;
+  }
+  &:nth-of-type(even) * {
+    direction: ltr;
+  }
 `;
-const StyledHeader = styled.header`
-  display: flex;
-  justify-content: space-between;
-`;
-const StyledInfoContainer = styled.section`
+const StyledProductInfoContainer = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
 `;
-const StyledProjectText = styled(StyledTextSection)`
+const StyledDescription = styled.section`
+  ${contentBox}
+  max-height: 180px;
+  position: relative;
+  padding: 10px;
+
   > p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    height: 100%;
+    margin: 0;
+    font-size: 0.8rem;
     overflow: hidden;
   }
 `;
 
-const ProjectList = ({ projects }) => {
-  return projects.map((project) => {
-    const title = project.frontmatter.title;
+
+const ProductList = ({products}) => {
+    const MappedProducts = products.map((project, index) => {
+        const coverImage = project.frontmatter.cover_image ? project.frontmatter.cover_image.childImageSharp.fluid : null;
+        const title = project.frontmatter.title;
+
+        return (
+            <StyledFeaturedProduct key={title + index}>
+                {coverImage && (
+                    <StyledImageContainer hasHover>
+                        <Img fluid={coverImage} />
+                    </StyledImageContainer>
+                )}
+                <StyledProductInfoContainer>
+                    <StyledH2>{title}</StyledH2>
+                    <StyledDescription dangerouslySetInnerHTML={{__html: project.html}} />
+                </StyledProductInfoContainer>
+            </StyledFeaturedProduct>
+        );
+    });
 
     return (
-      <StyledProject key={title}>
-        <StyledHeader>
-            <StyledH2>{title}</StyledH2>
-        </StyledHeader>
-        <StyledInfoContainer>
-          <StyledProjectText dangerouslySetInnerHTML={{ __html: project.html }} />
-        </StyledInfoContainer>
-      </StyledProject>
+        <StyledSection id="projects">
+            {MappedProducts}
+        </StyledSection>
     );
-  });
 };
 
-ProjectList.propTypes = {
-  projects: PropTypes.array.isRequired,
+ProductList.propTypes = {
+    products: PropTypes.array.isRequired,
 };
 
-export default ProjectList;
+export default ProductList;
