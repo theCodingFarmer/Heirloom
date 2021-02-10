@@ -4,7 +4,7 @@ import React from 'react';
 import About from '../components/about';
 import CardGrid from '../components/card-grid';
 import Contact from '../components/contact';
-import FeaturedProjects from '../components/featured-projects';
+import WhatWeGrow from '../components/WhatWeGrow';
 import Hero from '../components/hero';
 import HowMembershipWorks from '../components/HowMembershipWorks';
 import Layout from '../components/layout';
@@ -29,7 +29,7 @@ const Index = ({ data }) => {
       <HowMembershipWorks/>
       <About data={data.about} />
       <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Farm is For You" id="features" />
-      <FeaturedProjects featured={data.featuredProjects.nodes} />
+      <WhatWeGrow featured={data.featuredProjects.nodes} />
       <RecentPosts data={data.blog.edges} />
       <Contact data={data.contact} />
     </Layout>
@@ -63,7 +63,7 @@ export const query = graphql`
     about: markdownRemark(fileAbsolutePath: { regex: "/content/sections/about/" }) {
       frontmatter {
         title
-        techs
+        highlights
         about_image {
           childImageSharp {
             fluid(maxWidth: 800) {
@@ -95,9 +95,7 @@ export const query = graphql`
         frontmatter {
           date(formatString: "D MMMM, YYYY")
           title
-          repo_link
-          demo_link
-          techs
+          highlights
           cover_image {
             childImageSharp {
               fluid(maxWidth: 800) {

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Img from 'gatsby-image';
 import React from 'react';
-import TechList from './tech-list';
+import HighlightList from './HighlightList';
 import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
 import { StyledStaticImageContainer } from './_shared/styled-image-container';
@@ -23,7 +23,7 @@ const StyledTextSection = styled.section`
 
 const About = ({ data }) => {
   const {
-    frontmatter: { title, techs, about_image },
+    frontmatter: { title, highlights, about_image },
     html,
   } = data;
 
@@ -41,7 +41,7 @@ const About = ({ data }) => {
         <div>
           <StyledH2>{title}</StyledH2>
           <StyledTextSection dangerouslySetInnerHTML={{ __html: html }} />
-          <TechList techs={techs} />
+          <HighlightList highlights={highlights} />
         </div>
       </StyledAboutContainer>
     </StyledSection>

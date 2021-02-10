@@ -10,7 +10,7 @@ export const indexMenuLinks = [
     icon: 'seedling',
   },
   {
-    name: 'Blog',
+    name: "Farmer's Blog",
     link: '/#blog',
     icon: 'feather-alt',
   },
@@ -23,18 +23,18 @@ export const indexMenuLinks = [
 
 export const blogMenuLinks = [
   {
-    name: 'Portfolio',
+    name: 'Home',
     link: '/',
     icon: 'code',
   },
   {
-    name: 'Blog',
+    name: "Farmer's Blog",
     link: '/blog',
     icon: 'feather-alt',
   },
   {
-    name: 'Tags',
+    name: "Join Today",
     link: '/tags',
-    icon: 'tags',
-  },
+    icon: 'carrot',
+  }
 ];
