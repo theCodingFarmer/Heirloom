@@ -33,7 +33,7 @@ export default AllThatWeGrow;
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(
-      sort: { order: DESC, fields: frontmatter___date }
+      sort: { order: ASC, fields: frontmatter___title }
       filter: { fileAbsolutePath: { regex: "/content/projects/" }, frontmatter: { featured: { eq: false } } }
     ) {
       nodes {

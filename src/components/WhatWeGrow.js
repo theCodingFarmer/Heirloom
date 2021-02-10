@@ -77,7 +77,7 @@ const WhatWeGrow = ({featured}) => {
             <StyledH1>What We Grow</StyledH1>
             {featuredProducts}
             <StyledArchiveContainer>
-                <TextLink label="See All That We Grow" link="/AllThatWeGrow" />
+                <TextLink label="See Everything We Grow" link="/AllThatWeGrow" />
             </StyledArchiveContainer>
         </StyledSection>
     );

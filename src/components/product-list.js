@@ -31,7 +31,6 @@ const StyledProductInfoContainer = styled.section`
 `;
 const StyledDescription = styled.section`
   ${contentBox}
-  max-height: 180px;
   position: relative;
   padding: 10px;
 

@@ -31,5 +31,10 @@ export const blogMenuLinks = [
     name: "Farmer's Blog",
     link: '/blog',
     icon: 'feather-alt',
+  },
+  {
+    name: "Join Today",
+    link: '/tags',
+    icon: 'carrot',
   }
 ];
