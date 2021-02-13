@@ -5,7 +5,7 @@ import { StyledH1 } from './_shared/styled-headings';
 const StyledSectionContainer = styled.section`
   margin: 0 0 6rem 0;
   position: relative;
-  padding: calc(100% * 0.09719) 0;
+  padding: 3rem 0;
 
   & > .content {
     max-width: 1000px;
@@ -25,7 +25,8 @@ const StyledSectionContainer = styled.section`
     transform-origin: 50% 0;
     outline: 1px solid transparent;
     backface-visibility: hidden;
-    background-color: var(--bg-content-color);
+    background-color: var(--overlay-bg-content-color);
+    background-image: var(--overlay-bg-image-pattern);
   }
 `;
 
