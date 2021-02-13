@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { StyledH1 } from './_shared/styled-headings';
 
 const StyledSectionContainer = styled.section`
   margin: 0 0 6rem 0;
@@ -31,42 +30,67 @@ const StyledSectionContainer = styled.section`
   }
 `;
 
+const StyledH1 = styled.h1`
+    color: var(--title-color-light);
+    width: 100%;
+    position: relative;
+    font-weight: 800;
+    margin: 20px 0;
+
+    &:first-letter {
+        color: var(--primary-color);
+    }
+
+    &:after {
+        background-color: var(--primary-color);
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 0;
+        width: 30px;
+        height: 2px;
+    }
+`;
+
 const StyledContentWrapper = styled.section`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   margin: 0 auto;
   width: 95%;
 `;
 
-const StyledLogoSection = styled.section`
-  width: 100%;
+const StyledBulletPoints = styled.section`
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
 `;
 
 const StyledFactNumber = styled.section`
+  color: var(--title-color-light);
   display: flex;
   flex-direction: column;
   padding: 1rem;
 
   & > .bulletPoint {
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: bold;
   }
 
   & > .details {
+    color: var(--title-color-dark);
     position: relative;
     text-transform: uppercase;
     font-size: 0.8rem;
     padding: 0.5rem 1rem;
-    background-color: var(--bg-color);
-    margin-left: 2rem;
-
+    background-color: var(--primary-color);
+    margin-left: 1rem;
+    border-radius: 1rem;
+    
     &:before {
       content: '';
       position: absolute;
@@ -83,21 +107,21 @@ const HowMembershipWorks = () => {
   return (
     <StyledSectionContainer>
       <StyledContentWrapper>
-        <StyledH1>How a Membership Works</StyledH1>
-        <StyledLogoSection>
+        <StyledH1>How Our CSA Works</StyledH1>
+        <StyledBulletPoints>
           <StyledFactNumber>
             <span className="bulletPoint">Decide How Much & When</span>
             <span className="details">Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</span>
           </StyledFactNumber>
           <StyledFactNumber>
             <span className="bulletPoint">Get Recipes From Farmers & Other Members</span>
-            <span className="details">Get weekly emails and get access our private Facebook group</span>
+            <span className="details">Get weekly emails and get access our private Facebook community</span>
           </StyledFactNumber>
           <StyledFactNumber>
             <span className="bulletPoint">Feel Better</span>
             <span className="details">About your health and the source of your food</span>
           </StyledFactNumber>
-        </StyledLogoSection>
+        </StyledBulletPoints>
       </StyledContentWrapper>
     </StyledSectionContainer>
   );
