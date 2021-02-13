@@ -7,7 +7,6 @@ import { mq } from './_shared/media';
 import { StyledSectionHero } from './_shared/styled-section';
 import backgroundImg from '../images/backgroundVeggies.jpg';
 
-
 const StyledHeroSection = styled(StyledSectionHero)`
   min-height: calc(100vh - 2 * var(--header-height));
   position: relative;
@@ -16,7 +15,7 @@ const StyledHeroSection = styled(StyledSectionHero)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 0;
 
   ${mq.gt.sm} {
