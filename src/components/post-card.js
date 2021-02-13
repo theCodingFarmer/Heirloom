@@ -40,7 +40,7 @@ const StyledCoverImageContainer = styled.div`
 `;
 const StyledPublishingDate = styled.div`
   margin-bottom: 1rem;
-  color: var(--title-color-light);
+  color: var(--paragraph-text-accent);
   font-size: 0.8rem;
   font-weight: 500;
 `;
@@ -52,7 +52,7 @@ const StyledTitle = styled.h2`
   margin: 1rem 0;
 `;
 const StyledDescription = styled.p`
-  color: var(--title-color-light);
+  color: var(--paragraph-text-dark);
 `;
 const StyledPostCard = styled.article`
   ${contentBox}

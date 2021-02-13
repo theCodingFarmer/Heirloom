@@ -18,6 +18,7 @@ const StyledAboutContainer = styled.article`
   }
 `;
 const StyledTextSection = styled.section`
+  color: var(--paragraph-text-dark);
   white-space: pre-line;
 `;
 

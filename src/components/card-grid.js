@@ -6,6 +6,7 @@ import {StyledH1} from './_shared/styled-headings';
 import {StyledSection} from './_shared/styled-section';
 
 const StyledTextSection = styled.section`
+    color: var(--paragraph-text-dark);
     white-space: pre-line;
 `;
 
