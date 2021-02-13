@@ -6,6 +6,7 @@ import {StyledH1} from './_shared/styled-headings';
 import {StyledSection} from './_shared/styled-section';
 
 const StyledTextSection = styled.section`
+    color: var(--paragraph-text-dark);
     white-space: pre-line;
 `;
 
@@ -25,7 +26,7 @@ const StyledFeatureGridContainer = styled.section`
 `;
 
 const StyledFeatureCard = styled.article`
-    border: 1px solid var(--body-color);
+    border: 1px solid var(--bg-content-color);
     border-radius: var(--radius);
     
     background-repeat: no-repeat;

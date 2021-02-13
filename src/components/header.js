@@ -29,7 +29,7 @@ const StyledHomeLink = styled(Link)`
 const StyledLogo = styled(Logo)`
   width: var(--header-height);
   height: var(--header-height);
-  fill: var(--title-color);
+  fill: var(--title-color-light);
 
   &:hover path.level-2 {
     fill: var(--primary-color);
@@ -47,7 +47,7 @@ const StyledNav = styled.nav`
   }
 
   & > a {
-    color: var(--title-color);
+    color: var(--title-color-light);
     &:hover {
       color: var(--primary-color);
     }

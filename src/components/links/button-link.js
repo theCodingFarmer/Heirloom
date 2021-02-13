@@ -7,7 +7,7 @@ export const StyledButtonLink = styled.a`
   ${flexCenter};
   text-decoration: none;
   color: var(--bg-content-color) !important;
-  background-color: var(--title-color);
+  background-color: var(--title-color-light);
   font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
@@ -22,7 +22,7 @@ export const StyledButtonLink = styled.a`
   &:after {
     content: '';
     z-index: -1;
-    border: 1px solid var(--title-color);
+    border: 1px solid var(--title-color-light);
     position: absolute;
     bottom: -3px;
     right: -3px;

@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
   ${flexCenter};
   padding: 0.5rem;
   cursor: pointer;
-  color: var(--title-color);
+  color: var(--title-color-light);
 
   &:hover {
     color: var(--primary-color);

@@ -7,7 +7,6 @@ import { mq } from './_shared/media';
 import { StyledSectionHero } from './_shared/styled-section';
 import backgroundImg from '../images/backgroundVeggies.jpg';
 
-
 const StyledHeroSection = styled(StyledSectionHero)`
   min-height: calc(100vh - 2 * var(--header-height));
   position: relative;
@@ -16,7 +15,7 @@ const StyledHeroSection = styled(StyledSectionHero)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 0;
 
   ${mq.gt.sm} {
@@ -37,7 +36,8 @@ const StyledIntroduction = styled.div`
   color: var(--primary-color);
   font-weight: normal;
 `;
-const StyledAuthor = styled.h1`
+const StyledCompanyName = styled.h1`
+  color: var(--title-color-light);
   margin-left: -4px !important;
   font-size: 40px;
   line-height: 1.1;
@@ -61,6 +61,7 @@ const StyledTagline = styled.h2`
   }
 `;
 const StyledDescription = styled.div`
+  color: var(--paragraph-text-light);
   margin-top: 0.5rem;
   width: 100%;
   max-width: 500px;
@@ -73,7 +74,7 @@ const Hero = ({ data }) => {
     <StyledHeroSection>
         <StyledBodyWrapper>
         <StyledIntroduction>{introduction}</StyledIntroduction>
-        <StyledAuthor>{author}</StyledAuthor>
+        <StyledCompanyName>{author}</StyledCompanyName>
         <StyledTagline>{tagline}</StyledTagline>
         <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
         <ButtonLink label={ctaLabel} link={ctaLink} />

@@ -6,6 +6,7 @@ import { StyledH1 } from './_shared/styled-headings';
 import { StyledSection } from './_shared/styled-section';
 
 const StyledContactSection = styled(StyledSection)`
+  color: var(--paragraph-text-accent);
   margin-bottom: 70px;
 `;
 const StyledContainer = styled.section`
@@ -29,6 +30,7 @@ const StyledForm = styled.div`
   font-weight: normal;
 `;
 const StyledTextSection = styled.section`
+  color: var(--paragraph-text-dark);
   white-space: pre-line;
   width: 100%;
   max-width: 500px;

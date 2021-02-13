@@ -43,7 +43,7 @@ const StyledDateOverlay = styled.div`
   justify-content: space-evenly;
   height: 3rem;
   width: 3rem;
-  color: var(--title-color);
+  color: var(--title-color-light);
   background: var(--bg-code);
   align-items: center;
   border-radius: var(--radius);
@@ -105,7 +105,7 @@ const RecentPosts = ({ data }) => {
 
   return (
     <StyledSection id="blog">
-      <StyledH1>Latest Blog Posts</StyledH1>
+      <StyledH1>Farmer's Blog Posts</StyledH1>
       <StyledPostsContainer>{recentPosts}</StyledPostsContainer>
       <StyledBlogLinkContainer>
         <TextLink label="View All Posts" link="/blog" />
