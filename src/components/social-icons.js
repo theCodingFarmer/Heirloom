@@ -19,7 +19,7 @@ const StyledSocialIcons = styled.div`
 
     & > svg {
       margin: 0.5rem;
-      color: var(--title-color);
+      color: var(--title-color-light);
     }
 
     &:hover > svg {

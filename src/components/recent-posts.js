@@ -43,7 +43,7 @@ const StyledDateOverlay = styled.div`
   justify-content: space-evenly;
   height: 3rem;
   width: 3rem;
-  color: var(--title-color);
+  color: var(--title-color-light);
   background: var(--bg-code);
   align-items: center;
   border-radius: var(--radius);

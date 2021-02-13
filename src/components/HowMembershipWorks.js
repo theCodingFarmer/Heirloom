@@ -27,6 +27,7 @@ const StyledSectionContainer = styled.section`
     backface-visibility: hidden;
     background-color: var(--overlay-bg-content-color);
     background-image: var(--overlay-bg-image-pattern);
+    box-shadow: inset 0 -15px 0 -10px rgba(27,27,27,0.1), inset 0 15px 0 -10px rgba(27,27,27,0.1);
   }
 `;
 

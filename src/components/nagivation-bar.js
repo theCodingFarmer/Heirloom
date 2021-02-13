@@ -29,7 +29,7 @@ const StyledNavLink = styled(Link)`
   flex-direction: column;
   flex-shrink: 1;
   text-decoration: none;
-  color: var(--title-color) !important;
+  color: var(--title-color-light) !important;
   font-size: 0.8rem;
   line-height: 1;
   position: relative;
@@ -37,7 +37,7 @@ const StyledNavLink = styled(Link)`
 
   > svg {
     margin-bottom: 0.4rem;
-    fill: var(--title-color);
+    fill: var(--title-color-light);
   }
 
   &.active {

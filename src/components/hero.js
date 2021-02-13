@@ -37,7 +37,8 @@ const StyledIntroduction = styled.div`
   color: var(--primary-color);
   font-weight: normal;
 `;
-const StyledAuthor = styled.h1`
+const StyledCompanyName = styled.h1`
+  color: var(--title-color-light);
   margin-left: -4px !important;
   font-size: 40px;
   line-height: 1.1;
@@ -73,7 +74,7 @@ const Hero = ({ data }) => {
     <StyledHeroSection>
         <StyledBodyWrapper>
         <StyledIntroduction>{introduction}</StyledIntroduction>
-        <StyledAuthor>{author}</StyledAuthor>
+        <StyledCompanyName>{author}</StyledCompanyName>
         <StyledTagline>{tagline}</StyledTagline>
         <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
         <ButtonLink label={ctaLabel} link={ctaLink} />

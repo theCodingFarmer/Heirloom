@@ -22,7 +22,7 @@ export const StyledH1 = styled.h1`
 `;
 
 export const StyledH2 = styled.h2`
-    color: var(--title-color);
+    color: var(--title-color-dark);
     margin: 20px 0;
     position: relative;
     
