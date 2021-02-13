@@ -14,7 +14,7 @@ const StyledTag = styled.span`
   white-space: nowrap;
   font-size: 0.8rem;
 
-  color: var(--body-color);
+  color: var(--paragraph-text-accent);
   margin: 0 1rem 0.5rem 0;
 
   & > svg {

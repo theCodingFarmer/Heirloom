@@ -62,6 +62,7 @@ const StyledTagline = styled.h2`
   }
 `;
 const StyledDescription = styled.div`
+  color: var(--paragraph-text-light);
   margin-top: 0.5rem;
   width: 100%;
   max-width: 500px;

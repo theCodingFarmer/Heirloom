@@ -25,7 +25,7 @@ const StyledFeatureGridContainer = styled.section`
 `;
 
 const StyledFeatureCard = styled.article`
-    border: 1px solid var(--body-color);
+    border: 1px solid var(--bg-content-color);
     border-radius: var(--radius);
     
     background-repeat: no-repeat;
