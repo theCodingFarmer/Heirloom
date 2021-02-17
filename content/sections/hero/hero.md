@@ -1,7 +1,7 @@
 ---
 introduction: 'Welcome to'
 tagline: 'Fresh. Local. Produce.'
-cta_label: 'Join Today!'
+cta_label: 'There is Limited Space!'
 cta_link: 'https://hlfarm.com'
 ---
 

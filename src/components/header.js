@@ -3,10 +3,9 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Logo from '../assets/logo.svg';
-import SocialIcons from './social-icons';
-import { socialIconList } from './_config/social-icon-list';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
+import {HeaderButtonLink} from './links/button-link';
 
 const StyledHeader = styled.header`
   height: var(--header-height);
@@ -89,7 +88,7 @@ const Header = ({ menuLinks }) => (
                     </StyledNavLink>
                 ))}
             </StyledNav>
-            <SocialIcons icons={socialIconList} />
+            <HeaderButtonLink label={'Join Today'} link={'ctaLink'}/>
         </StyledContainer>
     </StyledHeader>
 );
