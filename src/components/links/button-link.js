@@ -65,34 +65,6 @@ export const StyledHeaderButtonLink = styled.a`
     font-weight: 600;
 
   }
-
-  &:after {
-    content: '';
-    z-index: -1;
-    border: 1px solid var(--title-color-light);
-    position: absolute;
-    bottom: -3px;
-    right: -3px;
-    width: 100%;
-    height: 100%;
-    transition: all ease var(--transition-fast);
-  }
-
-  &:hover:after {
-    border: 1px solid var(--primary-color);
-    bottom: -5px;
-    right: -5px;
-  }
-
-  & > svg {
-    fill: var(--bg-content-color);
-    height: 0.8rem;
-    margin-left: 0.25rem;
-  }
-
-  &:hover > svg {
-    fill: var(--primary-color);
-  }
 `;
 
 export const ButtonLink = ({ label, link }) => {

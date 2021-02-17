@@ -50,19 +50,6 @@ const StyledCopyright = styled.span`
     margin-bottom: 0;
   }
 `;
-const StyledRotator = styled.div`
-  ${flexCenter};
-  margin: 0.8rem 0;
-  font-size: 0.8rem;
-
-  & > span {
-    margin-left: 0.25rem;
-  }
-
-  ${mq.gt.xs} {
-    margin: 0;
-  }
-`;
 
 const Footer = ({ author }) => {
   return (
@@ -73,12 +60,6 @@ const Footer = ({ author }) => {
         </StyledCopyright>
         <SocialIcons icons={socialIconList} />
       </StyledSocialContainer>
-      <StyledRotator>
-        Made with
-        <span role="img" aria-label="heart emoji">
-          💖
-        </span>
-      </StyledRotator>
     </StyledFooter>
   );
 };
