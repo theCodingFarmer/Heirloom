@@ -6,6 +6,7 @@ import Logo from '../assets/logo.svg';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
 import {HeaderButtonLink} from './links/button-link';
+import Img from 'gatsby-image';
 
 const StyledHeader = styled.header`
   height: var(--header-height);
@@ -75,11 +76,11 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
-const Header = ({ menuLinks }) => (
+const Header = ({ menuLinks, headerData }) => (
     <StyledHeader>
         <StyledContainer>
             <StyledHomeLink title="logo" to="/">
-                <StyledLogo />
+                {/*<StyledLogo  />*/}
             </StyledHomeLink>
             <StyledNav>
                 {menuLinks.map((link, index) => (
@@ -88,7 +89,7 @@ const Header = ({ menuLinks }) => (
                     </StyledNavLink>
                 ))}
             </StyledNav>
-            <HeaderButtonLink label={'Join Today'} link={'ctaLink'}/>
+            <HeaderButtonLink label={headerData.label} link={headerData.link}/>
         </StyledContainer>
     </StyledHeader>
 );

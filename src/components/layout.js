@@ -24,13 +24,24 @@ const Layout = ({ children, menuLinks }) => {
           author
         }
       }
+    header: markdownRemark(fileAbsolutePath: { regex: "/content/sections/header/" }) {
+      frontmatter {
+        button_label
+        button_link
+      }
+    }
     }
   `);
 
   const { author } = data.site.siteMetadata;
+  const headerData = {
+      label: data.header.frontmatter.button_label,
+      link: data.header.frontmatter.button_link
+  };
+
   return (
     <React.Fragment>
-      <Header menuLinks={menuLinks} />
+      <Header menuLinks={menuLinks} headerData={headerData}/>
       <main>{children}</main>
       <Footer author={author} />
       <NavigationBar menuLinks={menuLinks} />
