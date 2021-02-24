@@ -10,9 +10,11 @@ import {HeaderButtonLink} from './links/button-link';
 const StyledHeader = styled.header`
   height: var(--header-height);
   flex-shrink: 0;
-  background-color: var(--bg-content-color);
+  background-color: var(--card-tint-color);
+  border-bottom: 2px solid var(--primary-color);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-left);
+  z-index: 1;
 `;
 const StyledContainer = styled.div`
   display: flex;
@@ -28,7 +30,8 @@ const StyledHomeLink = styled(Link)`
 const StyledLogo = styled('img')`
   position: absolute;
   top: 0;
-  height: calc(1.2 * var(--header-height));
+  border-radius: 0px 0px 20px 20px;
+  height: calc(1.3 * var(--header-height));
   width: auto;
   z-index: 2;
 `;
@@ -40,7 +43,7 @@ const StyledNav = styled.nav`
   ${mq.gt.sm} {
     display: flex;
     align-items: stretch;
-    margin-left: 8rem;
+    margin-left: 9rem;
   }
 
   & > a {
