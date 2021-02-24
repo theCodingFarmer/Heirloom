@@ -2,11 +2,10 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Logo from '../assets/logo.svg';
+import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
 import {HeaderButtonLink} from './links/button-link';
-import Img from 'gatsby-image';
 
 const StyledHeader = styled.header`
   height: var(--header-height);
@@ -26,14 +25,12 @@ const StyledContainer = styled.div`
 const StyledHomeLink = styled(Link)`
   text-decoration: none;
 `;
-const StyledLogo = styled(Logo)`
-  width: var(--header-height);
-  height: var(--header-height);
-  fill: var(--title-color-light);
-
-  &:hover path.level-2 {
-    fill: var(--primary-color);
-  }
+const StyledLogo = styled('img')`
+  position: absolute;
+  top: 0;
+  height: calc(1.2 * var(--header-height));
+  width: auto;
+  z-index: 2;
 `;
 const StyledNav = styled.nav`
   flex: 1;
@@ -43,7 +40,7 @@ const StyledNav = styled.nav`
   ${mq.gt.sm} {
     display: flex;
     align-items: stretch;
-    margin-left: 0.75rem;
+    margin-left: 8rem;
   }
 
   & > a {
@@ -80,7 +77,7 @@ const Header = ({ menuLinks, headerData }) => (
     <StyledHeader>
         <StyledContainer>
             <StyledHomeLink title="logo" to="/">
-                {/*<StyledLogo  />*/}
+                <StyledLogo src={logo}/>
             </StyledHomeLink>
             <StyledNav>
                 {menuLinks.map((link, index) => (
