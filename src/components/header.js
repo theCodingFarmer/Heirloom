@@ -30,7 +30,7 @@ const StyledHomeLink = styled(Link)`
 const StyledLogo = styled('img')`
   position: absolute;
   top: 0;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 14px 14px;
   height: calc(1.3 * var(--header-height));
   width: auto;
   z-index: 2;
