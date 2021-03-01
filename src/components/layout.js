@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -42,7 +43,7 @@ const Layout = ({ children, menuLinks }) => {
   return (
     <React.Fragment>
       <Header menuLinks={menuLinks} headerData={headerData}/>
-      <main>{children}</main>
+      <main style={{marginTop: 'calc(var(--header-height) - 2 * var(--header-height))'}}>{children}</main>
       <Footer author={author} />
       <NavigationBar menuLinks={menuLinks} />
       <ScrollToTop />

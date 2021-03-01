@@ -8,7 +8,7 @@ import { flexCenter } from './_shared/styled-mixins';
 import {StyledSpan} from './_shared/styled-headings';
 
 const StyledNav = styled.nav`
-  background-color: var(--bg-content-color);
+  background-color: var(--header-color);
   border-top: 1px solid var(--border-color);
   flex: 1;
   display: flex;

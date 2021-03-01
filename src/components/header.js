@@ -10,7 +10,7 @@ import {HeaderButtonLink} from './links/button-link';
 const StyledHeader = styled.header`
   height: var(--header-height);
   flex-shrink: 0;
-  background-color: var(--card-tint-color);
+  background-color: var(--header-color);
   border-bottom: 2px solid var(--primary-color);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-left);
