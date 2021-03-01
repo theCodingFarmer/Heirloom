@@ -25,7 +25,7 @@ const StyledFooter = styled.footer`
     justify-content: space-between;
   }
   ${mq.lt.md} {
-    margin-bottom: var(--header-height);
+    padding-bottom: var(--header-height);
   }
 `;
 const StyledSocialContainer = styled.div`
