@@ -48,7 +48,26 @@ export const StyledButtonLink = styled.a`
   }
 `;
 
-const ButtonLink = ({ label, link }) => {
+export const StyledHeaderButtonLink = styled.a`
+  ${flexCenter};
+  text-decoration: none;
+  color: var(--primary-color) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  border: 1px solid var(--title-color-light);
+  padding: 0.4rem 0.8rem;
+
+  &:hover {
+    color:  var(--title-color-light) !important;
+    border: 1px solid var(--primary-color) !important;
+    font-weight: 600;
+
+  }
+`;
+
+export const ButtonLink = ({ label, link }) => {
   return (
     <React.Fragment>
       {label && link && (
@@ -61,4 +80,15 @@ const ButtonLink = ({ label, link }) => {
   );
 };
 
-export default ButtonLink;
+export const HeaderButtonLink = ({ label, link }) => {
+  return (
+      <React.Fragment>
+        {label && link && (
+            <StyledHeaderButtonLink href={link ? link : '#'} target="_blank" rel="noopener">
+              {label}
+            </StyledHeaderButtonLink>
+        )}
+      </React.Fragment>
+  );
+};
+

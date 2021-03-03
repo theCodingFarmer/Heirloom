@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -24,14 +25,25 @@ const Layout = ({ children, menuLinks }) => {
           author
         }
       }
+    header: markdownRemark(fileAbsolutePath: { regex: "/content/sections/header/" }) {
+      frontmatter {
+        button_label
+        button_link
+      }
+    }
     }
   `);
 
   const { author } = data.site.siteMetadata;
+  const headerData = {
+      label: data.header.frontmatter.button_label,
+      link: data.header.frontmatter.button_link
+  };
+
   return (
     <React.Fragment>
-      <Header menuLinks={menuLinks} />
-      <main>{children}</main>
+      <Header menuLinks={menuLinks} headerData={headerData}/>
+      <main style={{marginTop: 'calc(var(--header-height) - 2 * var(--header-height))'}}>{children}</main>
       <Footer author={author} />
       <NavigationBar menuLinks={menuLinks} />
       <ScrollToTop />

@@ -6,7 +6,7 @@ import { flexCenter } from './_shared/styled-mixins';
 
 const StyledContainer = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: calc(var(--header-height) + 2rem);
   left: 0;
   right: 0;
   width: 100%;
@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
 
   display: none;
-
+  
   ${mq.gt.xs} {
     display: flex;
   }

@@ -6,6 +6,7 @@ import SocialIcons from './social-icons';
 import { socialIconList } from './_config/social-icon-list';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
+import {iosSafeZone} from '../utils/utilities';
 
 const marginMediaQuery = css`
   ${mq.gt.xs} {
@@ -25,7 +26,7 @@ const StyledFooter = styled.footer`
     justify-content: space-between;
   }
   ${mq.lt.md} {
-    margin-bottom: var(--header-height);
+    padding-bottom: calc(var(--header-height) + ${iosSafeZone});
   }
 `;
 const StyledSocialContainer = styled.div`
@@ -50,19 +51,6 @@ const StyledCopyright = styled.span`
     margin-bottom: 0;
   }
 `;
-const StyledRotator = styled.div`
-  ${flexCenter};
-  margin: 0.8rem 0;
-  font-size: 0.8rem;
-
-  & > span {
-    margin-left: 0.25rem;
-  }
-
-  ${mq.gt.xs} {
-    margin: 0;
-  }
-`;
 
 const Footer = ({ author }) => {
   return (
@@ -73,12 +61,6 @@ const Footer = ({ author }) => {
         </StyledCopyright>
         <SocialIcons icons={socialIconList} />
       </StyledSocialContainer>
-      <StyledRotator>
-        Made with
-        <span role="img" aria-label="heart emoji">
-          💖
-        </span>
-      </StyledRotator>
     </StyledFooter>
   );
 };

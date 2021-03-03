@@ -59,6 +59,13 @@ export const query = graphql`
       }
       html
     }
+    
+    header: markdownRemark(fileAbsolutePath: { regex: "/content/sections/header/" }) {
+      frontmatter {
+        button_label
+        button_link
+      }
+    }
 
     about: markdownRemark(fileAbsolutePath: { regex: "/content/sections/about/" }) {
       frontmatter {

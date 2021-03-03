@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ButtonLink from './links/button-link';
+import {ButtonLink} from './links/button-link';
 import ScrollIndicator from './scroll-indicator';
 import { mq } from './_shared/media';
 import { StyledSectionHero } from './_shared/styled-section';
 import backgroundImg from '../images/backgroundVeggies.jpg';
 
 const StyledHeroSection = styled(StyledSectionHero)`
-  min-height: calc(100vh - 2 * var(--header-height));
+  min-height: calc(100vh);
   position: relative;
   max-width: 100%;
   background-image: url(${backgroundImg});
@@ -19,7 +19,7 @@ const StyledHeroSection = styled(StyledSectionHero)`
   z-index: 0;
 
   ${mq.gt.sm} {
-   min-height: calc(100vh - var(--header-height));
+   min-height: calc(100vh);
   }
 `;
 const StyledBodyWrapper = styled.div`
@@ -29,7 +29,7 @@ const StyledBodyWrapper = styled.div`
   flex-direction: column;
   margin: 0 auto;
   width: 95%;
-  padding: 30px 0;
+  padding: calc(2 * var(--header-height)) 0 0 0;
   max-width: 1000px;
 `;
 const StyledIntroduction = styled.div`

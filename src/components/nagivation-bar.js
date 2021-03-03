@@ -6,19 +6,22 @@ import Icon from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 import {StyledSpan} from './_shared/styled-headings';
+import {iosSafeZone} from '../utils/utilities';
 
 const StyledNav = styled.nav`
-  background-color: var(--bg-content-color);
+  background-color: var(--header-color);
   border-top: 1px solid var(--border-color);
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding-bottom: ${iosSafeZone};
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--header-height);
+  height: calc(var(--header-height) + ${iosSafeZone});
+  z-index: 2;
 
   ${mq.gt.sm} {
     display: none;
