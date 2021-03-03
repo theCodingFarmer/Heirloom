@@ -1,4 +1,8 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/aa9c2904-d115-4d9c-9ca1-f426d5697811/deploy-status)](https://app.netlify.com/sites/heirloomfarm/deploys)
+| Enviromment   | Status   |
+| ------------- | -------- | 
+| Dev           | [![Netlify Status](https://api.netlify.com/api/v1/badges/15721b89-622e-4b4a-8fc5-6433b71d7992/deploy-status)](https://app.netlify.com/sites/heirloomfarm-dev/deploys)     | 
+| Prod          | [![Netlify Status](https://api.netlify.com/api/v1/badges/aa9c2904-d115-4d9c-9ca1-f426d5697811/deploy-status)](https://app.netlify.com/sites/heirloomfarm/deploys)   |
+
 
 
 <h1 align="center">
