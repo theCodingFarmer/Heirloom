@@ -11,7 +11,8 @@ const StyledContainer = styled.div`
   color: var(--title-color-light);
 
   &:hover {
-    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border-radius: var(--radius);
   }
 `;
 
