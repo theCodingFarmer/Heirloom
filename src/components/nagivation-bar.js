@@ -65,8 +65,6 @@ const NavigationBar = ({menuLinks}) => {
 
     const state = useContext(GlobalStateContext);
 
-    console.log('render');
-    console.log('state', state);
   return (
       state.isMenuShown ?
           <StyledNav>
