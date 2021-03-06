@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useContext} from 'react';
 import Icon from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 import {StyledSpan} from './_shared/styled-headings';
+import {GlobalStateContext} from '../contexts/GlobalContextProvider';
 
 const StyledNav = styled.nav`
   background-color: var(--header-color);
@@ -61,17 +62,24 @@ const StyledNavLink = styled(Link)`
 
 // Note: The NavigationBar component should only be used for up to 5 menu links
 const NavigationBar = ({menuLinks}) => {
+
+    const state = useContext(GlobalStateContext);
+
+    console.log('render');
+    console.log('state', state);
   return (
-      <StyledNav>
-        {menuLinks.map((link, index) => (
-            <StyledNavLink key={link.name} to={link.link} activeClassName="active">
-              <Icon icon={link.icon} />
-              <StyledSpan>
-                {link.name}
-              </StyledSpan>
-            </StyledNavLink>
-        ))}
-      </StyledNav>
+      state.isMenuShown ?
+          <StyledNav>
+            {menuLinks.map((link, index) => (
+                <StyledNavLink key={link.name} to={link.link} activeClassName="active">
+                  <Icon icon={link.icon} />
+                  <StyledSpan>
+                    {link.name}
+                  </StyledSpan>
+                </StyledNavLink>
+            ))}
+          </StyledNav>
+          : null
   );
 };
 

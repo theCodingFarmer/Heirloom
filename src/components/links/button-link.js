@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, {useContext} from 'react';
 import Icon from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
+import {GlobalDispatchContext} from '../../contexts/GlobalContextProvider';
 
 export const StyledButtonLink = styled.a`
   ${flexCenter};
@@ -49,12 +50,13 @@ export const StyledButtonLink = styled.a`
   }
 `;
 
-export const StyledMenuLink = styled.a`
+export const StyledMenuButton = styled.button`
   ${flexCenter};
   position: relative;
   border: none;
   padding: 0.4rem 0.8rem;
   font-size: 1.2rem;
+  background-color: transparent;
 
   & > svg {
     color: var(--title-color-light);
@@ -118,11 +120,14 @@ export const HeaderButtonLink = ({ label, link }) => {
 };
 
 export const ButtonHamburgerMenu = () => {
+
+    const dispatch = useContext(GlobalDispatchContext);
+
   return (
       <React.Fragment>
-            <StyledMenuLink href={'#'} target="_blank" rel="noopener">
+            <StyledMenuButton type='button' onClick={() => {dispatch({type: 'toggle_menu'})}}>
               <Icon icon={'bars'} />
-            </StyledMenuLink>
+            </StyledMenuButton>
       </React.Fragment>
   );
 };
