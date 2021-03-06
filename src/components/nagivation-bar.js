@@ -6,21 +6,19 @@ import Icon from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 import {StyledSpan} from './_shared/styled-headings';
-import {iosSafeZone} from '../utils/utilities';
 
 const StyledNav = styled.nav`
   background-color: var(--header-color);
   border-top: 1px solid var(--border-color);
   flex: 1;
+  flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding-bottom: ${iosSafeZone};
+  justify-content: flex-end;
+  padding: 1rem;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: var(--header-height);
   right: 0;
-  height: calc(var(--header-height) + ${iosSafeZone});
   z-index: 2;
 
   ${mq.gt.sm} {
@@ -36,7 +34,7 @@ const StyledNavLink = styled(Link)`
   font-size: 0.8rem;
   line-height: 1;
   position: relative;
-  height: var(--header-height);
+  height: calc(var(--header-height) + 10px);
 
   > svg {
     margin-bottom: 0.4rem;

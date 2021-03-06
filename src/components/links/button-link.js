@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import Icon from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
+import {mq} from '../_shared/media';
 
 export const StyledButtonLink = styled.a`
   ${flexCenter};
@@ -48,8 +49,29 @@ export const StyledButtonLink = styled.a`
   }
 `;
 
+export const StyledMenuLink = styled.a`
+  ${flexCenter};
+  position: relative;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+
+  & > svg {
+    color: var(--title-color-light);
+  }
+
+  &:hover > svg {
+    color: var(--primary-color);
+  }
+  
+  ${mq.gt.sm} {
+    display: none;
+  }
+`;
+
 export const StyledHeaderButtonLink = styled.a`
   ${flexCenter};
+  display: none;
   text-decoration: none;
   color: var(--primary-color) !important;
   font-size: 0.9rem;
@@ -63,7 +85,10 @@ export const StyledHeaderButtonLink = styled.a`
     color:  var(--title-color-light) !important;
     border: 1px solid var(--primary-color) !important;
     font-weight: 600;
-
+  }
+  
+  ${mq.gt.sm} {
+    display: flex;
   }
 `;
 
@@ -88,6 +113,16 @@ export const HeaderButtonLink = ({ label, link }) => {
               {label}
             </StyledHeaderButtonLink>
         )}
+      </React.Fragment>
+  );
+};
+
+export const ButtonHamburgerMenu = () => {
+  return (
+      <React.Fragment>
+            <StyledMenuLink href={'#'} target="_blank" rel="noopener">
+              <Icon icon={'bars'} />
+            </StyledMenuLink>
       </React.Fragment>
   );
 };
