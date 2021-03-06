@@ -5,7 +5,7 @@ import React, {useContext} from 'react';
 import Icon from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
-import {StyledSpan} from './_shared/styled-headings';
+import {StyledNavigationSpan} from './_shared/styled-headings';
 import {GlobalStateContext} from '../contexts/GlobalContextProvider';
 
 const StyledNav = styled.nav`
@@ -15,12 +15,12 @@ const StyledNav = styled.nav`
   flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 1rem;
+  justify-content: center;
+  padding: 0 1rem;
   position: fixed;
-  top: var(--header-height);
+  top: calc(var(--header-height) - 2px);
   right: 0;
-  z-index: 2;
+  z-index: 0;
 
   ${mq.gt.sm} {
     display: none;
@@ -28,6 +28,7 @@ const StyledNav = styled.nav`
 `;
 const StyledNavLink = styled(Link)`
   ${flexCenter};
+  border-top: 1px solid var(--primary-color);
   flex-direction: column;
   flex-shrink: 1;
   text-decoration: none;
@@ -36,6 +37,7 @@ const StyledNavLink = styled(Link)`
   line-height: 1;
   position: relative;
   height: calc(var(--header-height) + 10px);
+  width: 120px;
 
   > svg {
     margin-bottom: 0.4rem;
@@ -71,9 +73,9 @@ const NavigationBar = ({menuLinks}) => {
             {menuLinks.map((link, index) => (
                 <StyledNavLink key={link.name} to={link.link} activeClassName="active">
                   <Icon icon={link.icon} />
-                  <StyledSpan>
+                  <StyledNavigationSpan>
                     {link.name}
-                  </StyledSpan>
+                  </StyledNavigationSpan>
                 </StyledNavLink>
             ))}
           </StyledNav>

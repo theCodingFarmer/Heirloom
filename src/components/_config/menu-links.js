@@ -19,6 +19,11 @@ export const indexMenuLinks = [
     link: '/#contact',
     icon: 'envelope',
   },
+  {
+    name: "Shop",
+    link: '/tags',
+    icon: 'carrot',
+  }
 ];
 
 export const blogMenuLinks = [
@@ -33,7 +38,7 @@ export const blogMenuLinks = [
     icon: 'feather-alt',
   },
   {
-    name: "Join Today",
+    name: "Join Today!",
     link: '/tags',
     icon: 'carrot',
   }

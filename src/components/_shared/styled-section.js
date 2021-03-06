@@ -7,7 +7,7 @@ export const StyledSection = styled.section`
   flex-direction: column;
   margin: 0 auto;
   width: 95%;
-  padding: 30px 0;
+  padding: calc(var(--header-height) + 3rem) 0 1rem 0;
   max-width: 1000px;
   margin-bottom: 60px;
 `;
@@ -19,7 +19,7 @@ export const StyledSectionHero = styled.section`
 
 
 export const StyledFullHeightSection = styled(StyledSection)`
-  padding-top: calc(1.5 * var(--header-height));
+  padding-top: calc(var(--header-height) + 5rem);
   min-height: calc(100vh - var(--header-height));
   justify-content: start;
 `;
