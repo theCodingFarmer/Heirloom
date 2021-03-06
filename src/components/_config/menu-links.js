@@ -38,7 +38,7 @@ export const blogMenuLinks = [
     icon: 'feather-alt',
   },
   {
-    name: "Join Today!",
+    name: "Shop",
     link: '/tags',
     icon: 'carrot',
   }
