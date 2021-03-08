@@ -1,27 +1,26 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useContext} from 'react';
 import Icon from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
-import {StyledSpan} from './_shared/styled-headings';
-import {iosSafeZone} from '../utils/utilities';
+import {StyledNavigationSpan} from './_shared/styled-headings';
+import {GlobalStateContext} from '../contexts/GlobalContextProvider';
 
 const StyledNav = styled.nav`
   background-color: var(--header-color);
   border-top: 1px solid var(--border-color);
   flex: 1;
+  flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding-bottom: ${iosSafeZone};
+  justify-content: center;
+  padding: 0 1rem;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: calc(var(--header-height) - 2px);
   right: 0;
-  height: calc(var(--header-height) + ${iosSafeZone});
-  z-index: 2;
+  z-index: 0;
 
   ${mq.gt.sm} {
     display: none;
@@ -29,6 +28,7 @@ const StyledNav = styled.nav`
 `;
 const StyledNavLink = styled(Link)`
   ${flexCenter};
+  border-top: 1px solid var(--primary-color);
   flex-direction: column;
   flex-shrink: 1;
   text-decoration: none;
@@ -36,7 +36,8 @@ const StyledNavLink = styled(Link)`
   font-size: 0.8rem;
   line-height: 1;
   position: relative;
-  height: var(--header-height);
+  height: calc(var(--header-height) + 10px);
+  width: 120px;
 
   > svg {
     margin-bottom: 0.4rem;
@@ -63,17 +64,22 @@ const StyledNavLink = styled(Link)`
 
 // Note: The NavigationBar component should only be used for up to 5 menu links
 const NavigationBar = ({menuLinks}) => {
+
+    const state = useContext(GlobalStateContext);
+
   return (
-      <StyledNav>
-        {menuLinks.map((link, index) => (
-            <StyledNavLink key={link.name} to={link.link} activeClassName="active">
-              <Icon icon={link.icon} />
-              <StyledSpan>
-                {link.name}
-              </StyledSpan>
-            </StyledNavLink>
-        ))}
-      </StyledNav>
+      state.isMenuShown ?
+          <StyledNav>
+            {menuLinks.map((link, index) => (
+                <StyledNavLink key={link.name} to={link.link} activeClassName="active">
+                  <Icon icon={link.icon} />
+                  <StyledNavigationSpan>
+                    {link.name}
+                  </StyledNavigationSpan>
+                </StyledNavLink>
+            ))}
+          </StyledNav>
+          : null
   );
 };
 

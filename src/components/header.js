@@ -5,9 +5,12 @@ import React from 'react';
 import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
-import {HeaderButtonLink} from './links/button-link';
+import {ButtonHamburgerMenu, HeaderButtonLink} from './links/button-link';
 
 const StyledHeader = styled.header`
+  position: fixed;
+  left: 0;
+  right: 0;
   height: var(--header-height);
   flex-shrink: 0;
   background-color: var(--header-color);
@@ -79,7 +82,7 @@ const StyledNavLink = styled(Link)`
 const Header = ({ menuLinks, headerData }) => (
     <StyledHeader>
         <StyledContainer>
-            <StyledHomeLink title="logo" to="/">
+            <StyledHomeLink title="Heirloom Farm" to="/">
                 <StyledLogo src={logo}/>
             </StyledHomeLink>
             <StyledNav>
@@ -90,6 +93,7 @@ const Header = ({ menuLinks, headerData }) => (
                 ))}
             </StyledNav>
             <HeaderButtonLink label={headerData.label} link={headerData.link}/>
+            <ButtonHamburgerMenu/>
         </StyledContainer>
     </StyledHeader>
 );

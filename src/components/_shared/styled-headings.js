@@ -46,3 +46,14 @@ export const StyledSpan = styled.span`
         color: var(--primary-color);
     }
 `;
+
+export const StyledNavigationSpan = styled.span`
+    padding: 0 50%
+    width: 100%;
+    position: relative;
+    
+    &:first-letter {
+        font-weight: 500;
+        color: var(--primary-color);
+    }
+`;
