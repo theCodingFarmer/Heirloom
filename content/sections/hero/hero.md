@@ -2,7 +2,7 @@
 introduction: 'Welcome to'
 tagline: 'Fresh. Local. Produce.'
 cta_label: 'There is Limited Space!'
-cta_link: 'https://hlfarm.com'
+cta_link: 'shop'
 ---
 
 Let us be your family's trusted source for produce direct from the farm. We help Central Iowans who want a healthy diet by offering a membership in our farm.
