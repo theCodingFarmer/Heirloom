@@ -57,17 +57,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-
-  const tags = result.data.tagsGroup.group;
-  const tagTemplate = path.resolve('src/templates/tags.js');
-
-  tags.forEach((tag) => {
-    createPage({
-      path: `/tags/${tag.fieldValue}/`,
-      component: tagTemplate,
-      context: {
-        tag: tag.fieldValue,
-      },
-    });
-  });
 };

@@ -3,16 +3,8 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TagList from './tag-list';
 import { contentBox } from './_shared/styled-mixins';
 
-const StyledPostTags = styled.div`
-  pointer-events: none;
-  margin: 1rem 0 0;
-  padding: 0 var(--space);
-  position: relative;
-  z-index: 2;
-`;
 const StyledReadMoreLink = styled(Link)`
   color: var(--primary-color);
   background: transparent;
@@ -69,17 +61,13 @@ const StyledPostCard = styled.article`
   }
 `;
 
-const PostCard = ({ title, date, description, link, coverImage, tags }) => {
-  // const tagsList = tags.map(tag => <PostTag key={tag} tag={tag} />);
+const PostCard = ({ title, date, description, link, coverImage }) => {
 
   return (
     <StyledPostCard>
       <Link to={link}>
         <StyledCoverImageContainer>{coverImage && <Img fluid={coverImage} />}</StyledCoverImageContainer>
       </Link>
-      <StyledPostTags>
-        <TagList tags={tags} />
-      </StyledPostTags>
       <Link to={link}>
         <StyledContent>
           <StyledTitle>{title}</StyledTitle>
@@ -106,7 +94,6 @@ PostCard.propTypes = {
   coverImage: coverImageShape,
   description: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
 };
 

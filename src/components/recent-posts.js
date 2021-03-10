@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextLink from './links/text-link';
-import TagList from './tag-list';
 import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
 import { StyledImageContainer } from './_shared/styled-image-container';
@@ -73,7 +72,7 @@ const StyledPostText = styled(StyledTextSection)`
 
 const RecentPosts = ({ data }) => {
   const recentPosts = data.map((post) => {
-    const { title, tags, description, date } = post.node.frontmatter;
+    const { title, description, date } = post.node.frontmatter;
     const coverImage = post.node.frontmatter.cover_image
       ? post.node.frontmatter.cover_image.childImageSharp.fluid
       : null;
@@ -92,7 +91,6 @@ const RecentPosts = ({ data }) => {
         <Link to={link} aria-label={`recent post ${title}`}>
           <StyledImageContainer>{coverImage && <Img fluid={coverImage} />}</StyledImageContainer>
         </Link>
-        <TagList tags={tags} />
         <StyledTitleLink to={link}>
           <StyledH2>{title}</StyledH2>
         </StyledTitleLink>

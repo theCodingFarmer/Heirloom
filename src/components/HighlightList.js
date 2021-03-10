@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './icon';
 
-const StyledTechContainer = styled.section`
+const StyledHighLightContainer = styled.section`
   margin-top: 0.8rem;
   display: flex;
   flex-wrap: wrap;
@@ -26,14 +26,14 @@ const StyledTag = styled.span`
 
 const HighlightList = ({ highlights }) => {
   return (
-    <StyledTechContainer>
+    <StyledHighLightContainer>
       {highlights.map((highlight) => (
         <StyledTag key={highlight}>
           <Icon icon="caret-right" />
           {highlight}
         </StyledTag>
       ))}
-    </StyledTechContainer>
+    </StyledHighLightContainer>
   );
 };
 
