@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import React, {useContext} from 'react';
+import { Link } from 'gatsby';
 import Icon from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
 import {GlobalDispatchContext, GlobalStateContext} from '../../contexts/GlobalContextProvider';
 
-export const StyledAnchorLink = styled.a`
+export const StyledAnchorLink = styled(Link)`
   ${flexCenter};
   text-decoration: none;
   color: var(--bg-content-color) !important;
@@ -71,7 +72,7 @@ export const StyledMenuButton = styled.button`
   }
 `;
 
-export const StyledHeaderButtonLink = styled.a`
+export const StyledHeaderButtonLink = styled(Link)`
   ${flexCenter};
   display: none;
   text-decoration: none;
@@ -98,7 +99,7 @@ export const ButtonLink = ({ label, link }) => {
   return (
     <React.Fragment>
       {label && link && (
-        <StyledAnchorLink href={link ? link : '#'}>
+        <StyledAnchorLink to={link ? link : '#'}>
           {label}
           <Icon icon="arrow-right" />
         </StyledAnchorLink>
@@ -111,7 +112,7 @@ export const HeaderButtonLink = ({ label, link }) => {
   return (
       <React.Fragment>
         {label && link && (
-            <StyledHeaderButtonLink href={link ? link : '#'} target="_blank" rel="noopener">
+            <StyledHeaderButtonLink to={link ? link : '#'}>
               {label}
             </StyledHeaderButtonLink>
         )}
