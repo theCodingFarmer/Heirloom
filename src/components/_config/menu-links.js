@@ -21,7 +21,7 @@ export const indexMenuLinks = [
   },
   {
     name: "Shop",
-    link: '/tags',
+    link: '/shop',
     icon: 'carrot',
   }
 ];
@@ -39,7 +39,7 @@ export const blogMenuLinks = [
   },
   {
     name: "Shop",
-    link: '/tags',
+    link: '/shop',
     icon: 'carrot',
   }
 ];

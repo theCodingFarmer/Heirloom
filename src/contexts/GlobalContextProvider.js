@@ -14,6 +14,16 @@ const reducer = (state, action) => {
                 ...state,
                 isMenuShown: !state.isMenuShown
             }
+        case "toggle_menu_hidden":
+            return {
+                ...state,
+                isMenuShown: false
+            }
+        case "toggle_menu_shown":
+            return {
+                ...state,
+                isMenuShown: true
+            }
 
         default:
             return state

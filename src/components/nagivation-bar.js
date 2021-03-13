@@ -6,7 +6,7 @@ import Icon from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 import {StyledNavigationSpan} from './_shared/styled-headings';
-import {GlobalStateContext} from '../contexts/GlobalContextProvider';
+import {GlobalDispatchContext, GlobalStateContext} from '../contexts/GlobalContextProvider';
 
 const StyledNav = styled.nav`
   background-color: var(--header-color);
@@ -66,12 +66,13 @@ const StyledNavLink = styled(Link)`
 const NavigationBar = ({menuLinks}) => {
 
     const state = useContext(GlobalStateContext);
+    const dispatch = useContext(GlobalDispatchContext);
 
-  return (
+    return (
       state.isMenuShown ?
           <StyledNav>
             {menuLinks.map((link, index) => (
-                <StyledNavLink key={link.name} to={link.link} activeClassName="active">
+                <StyledNavLink key={link.name} to={link.link} onClick={() => setTimeout(dispatch({type: 'toggle_menu_hidden'}), 500)} activeClassName="active">
                   <Icon icon={link.icon} />
                   <StyledNavigationSpan>
                     {link.name}

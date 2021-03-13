@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import React, {useContext} from 'react';
+import { Link } from 'gatsby';
 import Icon from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
-import {GlobalDispatchContext} from '../../contexts/GlobalContextProvider';
+import {GlobalDispatchContext, GlobalStateContext} from '../../contexts/GlobalContextProvider';
 
-export const StyledButtonLink = styled.a`
+export const StyledAnchorLink = styled(Link)`
   ${flexCenter};
   text-decoration: none;
   color: var(--bg-content-color) !important;
@@ -71,7 +72,7 @@ export const StyledMenuButton = styled.button`
   }
 `;
 
-export const StyledHeaderButtonLink = styled.a`
+export const StyledHeaderButtonLink = styled(Link)`
   ${flexCenter};
   display: none;
   text-decoration: none;
@@ -98,10 +99,10 @@ export const ButtonLink = ({ label, link }) => {
   return (
     <React.Fragment>
       {label && link && (
-        <StyledButtonLink href={link ? link : '#'} target="_blank" rel="noopener">
+        <StyledAnchorLink to={link ? link : '#'}>
           {label}
           <Icon icon="arrow-right" />
-        </StyledButtonLink>
+        </StyledAnchorLink>
       )}
     </React.Fragment>
   );
@@ -111,7 +112,7 @@ export const HeaderButtonLink = ({ label, link }) => {
   return (
       <React.Fragment>
         {label && link && (
-            <StyledHeaderButtonLink href={link ? link : '#'} target="_blank" rel="noopener">
+            <StyledHeaderButtonLink to={link ? link : '#'}>
               {label}
             </StyledHeaderButtonLink>
         )}
@@ -122,11 +123,12 @@ export const HeaderButtonLink = ({ label, link }) => {
 export const ButtonHamburgerMenu = () => {
 
     const dispatch = useContext(GlobalDispatchContext);
+    const state = useContext(GlobalStateContext);
 
-  return (
+    return (
       <React.Fragment>
             <StyledMenuButton type='button' onClick={() => {dispatch({type: 'toggle_menu'})}}>
-              <Icon icon={'bars'} />
+              <Icon icon={state.isMenuShown ? 'window-close' : 'bars'} />
             </StyledMenuButton>
       </React.Fragment>
   );
