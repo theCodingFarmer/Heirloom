@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useContext} from 'react';
 import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
 import {ButtonHamburgerMenu, HeaderButtonLink} from './links/button-link';
+import {GlobalDispatchContext} from '../contexts/GlobalContextProvider';
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -79,24 +80,31 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
-const Header = ({ menuLinks, headerData }) => (
-    <StyledHeader>
-        <StyledContainer>
-            <StyledHomeLink title="Heirloom Farm" to="/">
-                <StyledLogo src={logo}/>
-            </StyledHomeLink>
-            <StyledNav>
-                {menuLinks.map((link, index) => (
-                    <StyledNavLink key={link.name} to={link.link} activeClassName="active">
-                        <StyledSpan>{link.name}</StyledSpan>
-                    </StyledNavLink>
-                ))}
-            </StyledNav>
-            <HeaderButtonLink label={headerData.label} link={headerData.link}/>
-            <ButtonHamburgerMenu/>
-        </StyledContainer>
-    </StyledHeader>
-);
+const Header = ({ menuLinks, headerData }) => {
+
+    const dispatch = useContext(GlobalDispatchContext);
+
+    return (
+        <StyledHeader>
+            <StyledContainer>
+                <StyledHomeLink title="Heirloom Farm" to="/"
+                                onClick={() => setTimeout(dispatch({type: 'toggle_menu_hidden'}), 500)}
+                >
+                    <StyledLogo src={logo} />
+                </StyledHomeLink>
+                <StyledNav>
+                    {menuLinks.map((link, index) => (
+                        <StyledNavLink key={link.name} to={link.link} activeClassName="active">
+                            <StyledSpan>{link.name}</StyledSpan>
+                        </StyledNavLink>
+                    ))}
+                </StyledNav>
+                <HeaderButtonLink label={headerData.label} link={headerData.link} />
+                <ButtonHamburgerMenu />
+            </StyledContainer>
+        </StyledHeader>
+    )
+};
 
 export default Header;
 
