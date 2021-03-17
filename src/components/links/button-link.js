@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, {useContext} from 'react';
 import { Link } from 'gatsby';
-import Icon from '../icon';
+import {Icon} from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
 import {GlobalDispatchContext, GlobalStateContext} from '../../contexts/GlobalContextProvider';

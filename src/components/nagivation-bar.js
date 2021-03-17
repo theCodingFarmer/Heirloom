@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, {useContext} from 'react';
-import Icon from './icon';
+import {Icon} from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 import {StyledNavigationSpan} from './_shared/styled-headings';

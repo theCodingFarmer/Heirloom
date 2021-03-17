@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import Icon from './icon';
+import {HeirloomIcon, Icon} from './icon';
 import { mq } from './_shared/media';
 import { StyledH1 } from './_shared/styled-headings';
 import { StyledSection } from './_shared/styled-section';
@@ -71,7 +71,8 @@ const Contact = ({ data }) => {
         <StyledContacts>
           {address && (
             <StyledContainer>
-              <Icon icon="map-marker-alt" />
+              <HeirloomIcon icon={'sign'} />
+              {/*<Icon icon="map-marker-alt" />*/}
               <StyledFormContainer>
                 <StyledForm>Address</StyledForm>
                 <span>{address}</span>

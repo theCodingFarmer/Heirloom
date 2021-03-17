@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
-import Icon from '../icon';
+import {Icon} from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 
 export const StyledTextLink = styled(Link)`
