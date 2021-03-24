@@ -81,7 +81,8 @@ const Contact = ({ data }) => {
           )}
           {email && (
             <StyledContainer>
-              <Icon icon="paper-plane" />
+              <HeirloomIcon icon='envelope' />
+              {/*<Icon icon="paper-plane" />*/}
               <StyledFormContainer>
                 <StyledForm>E-Mail</StyledForm>
                 <span>{email}</span>
@@ -90,7 +91,8 @@ const Contact = ({ data }) => {
           )}
           {phone && (
             <StyledContainer>
-              <Icon icon="phone-alt" />
+              <HeirloomIcon icon='phone' />
+              {/*<Icon icon="phone-alt" />*/}
               <StyledFormContainer>
                 <StyledForm>Phone</StyledForm>
                 <span>{phone}</span>

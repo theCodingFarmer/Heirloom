@@ -3,11 +3,11 @@ import * as PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import iconPath from '../assets/iconLib';
 
-const defaultStyles = {display: 'inline-block', verticalAlign: 'middle'};
+const defaultStyles = {display: 'inline-block'};
 
 export const Icon = ({ icon, prefix = 'fas' }) => <FontAwesomeIcon icon={[prefix, icon]} size="lg" />;
 
-export const HeirloomIcon = ({ size, color, icon, className, style}) =>  {
+export const HeirloomIcon = ({color, icon, className, style}) =>  {
     const styles = {...defaultStyles, ...style };
     return (
         <svg
@@ -30,7 +30,7 @@ export const HeirloomIcon = ({ size, color, icon, className, style}) =>  {
 };
 
 HeirloomIcon.defaultProps = {
-    color: 'black',
+    color: 'var(--paragraph-text-accent)',
     style: {
         overflow: 'hidden',
         marginRight: '0.75rem',
