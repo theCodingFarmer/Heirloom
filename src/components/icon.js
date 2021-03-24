@@ -14,10 +14,10 @@ export const HeirloomIcon = ({ size, color, icon, className, style}) =>  {
             aria-hidden={true}
             focusable={false}
             className={className}
-            style={style}
-            viewBox='0 0 24 24'
-            width={`${size}px`}
-            height={`${size}px`}
+            style={styles}
+            viewBox='0 0 512 512'
+            width={`40px`}
+            height={`40px`}
             role={'img'}
             xmlns="http://www.w3.org/2000/svg"
         >
@@ -30,11 +30,12 @@ export const HeirloomIcon = ({ size, color, icon, className, style}) =>  {
 };
 
 HeirloomIcon.defaultProps = {
-    width: '1rem',
-    color: 'blue',
-    viewBox: '0 0 40 40',
-    style: {},
-    className: 'svg-inline--fa'
+    color: 'black',
+    style: {
+        overflow: 'hidden',
+        marginRight: '0.75rem',
+        lineHeight: '0.75rem',
+    },
 }
 
 HeirloomIcon.propTypes = {

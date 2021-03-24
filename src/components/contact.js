@@ -71,7 +71,7 @@ const Contact = ({ data }) => {
         <StyledContacts>
           {address && (
             <StyledContainer>
-              <HeirloomIcon icon={'sign'} />
+              <HeirloomIcon icon='sign' />
               {/*<Icon icon="map-marker-alt" />*/}
               <StyledFormContainer>
                 <StyledForm>Address</StyledForm>
