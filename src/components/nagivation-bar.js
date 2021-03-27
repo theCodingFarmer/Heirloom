@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, {useContext} from 'react';
-import {Icon} from './icon';
+import {HeirloomIcon} from './icon';
 import { mq } from './_shared/media';
 import { flexCenter } from './_shared/styled-mixins';
 import {StyledNavigationSpan} from './_shared/styled-headings';
@@ -40,7 +40,7 @@ const StyledNavLink = styled(Link)`
   width: 120px;
 
   > svg {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
     fill: var(--title-color-light);
   }
 
@@ -73,7 +73,10 @@ const NavigationBar = ({menuLinks}) => {
           <StyledNav>
             {menuLinks.map((link, index) => (
                 <StyledNavLink key={link.name} to={link.link} onClick={() => setTimeout(dispatch({type: 'toggle_menu_hidden'}), 500)} activeClassName="active">
-                  <Icon icon={link.icon} />
+                  <HeirloomIcon
+                      icon={link.icon}
+                      size={30}
+                  />
                   <StyledNavigationSpan>
                     {link.name}
                   </StyledNavigationSpan>

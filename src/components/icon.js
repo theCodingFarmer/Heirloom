@@ -7,17 +7,16 @@ const defaultStyles = {display: 'inline-block'};
 
 export const Icon = ({ icon, prefix = 'fas' }) => <FontAwesomeIcon icon={[prefix, icon]} size="lg" />;
 
-export const HeirloomIcon = ({color, icon, className, style}) =>  {
+export const HeirloomIcon = ({size, color, icon, style}) =>  {
     const styles = {...defaultStyles, ...style };
     return (
         <svg
             aria-hidden={true}
             focusable={false}
-            className={className}
             style={styles}
             viewBox='0 0 512 512'
-            width={`40px`}
-            height={`40px`}
+            width={`${size}}px`}
+            height={`${size}px`}
             role={'img'}
             xmlns="http://www.w3.org/2000/svg"
         >
@@ -30,19 +29,15 @@ export const HeirloomIcon = ({color, icon, className, style}) =>  {
 };
 
 HeirloomIcon.defaultProps = {
-    color: 'var(--paragraph-text-accent)',
-    style: {
-        overflow: 'hidden',
-        marginRight: '0.75rem',
-        lineHeight: '0.75rem',
-    },
+    size: 40,
+    style: {overflow: 'hidden'}
 }
 
 HeirloomIcon.propTypes = {
     size: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
+    color: PropTypes.string,
     icon: PropTypes.string.isRequired,
-    viewBox: PropTypes.string.isRequired,
+    viewBox: PropTypes.string,
     style: PropTypes.shape(PropTypes.object),
     className: PropTypes.string,
 };

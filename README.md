@@ -9,12 +9,10 @@
   Heirloom Farm 👨🏻‍🌾
 </h1>
 
-For content creation we are using **Markdown** files with Frontmatter attributes that can be easily edited or created.
 
 # Table of Contents
 
 - [Quick Start](#quick-start)
-- [Features](#features)
 - [Customize](#customize)
   - [Gatsby Configuration](#gatsby-configuration)
   - [Change the Theme](#change-the-theme)
@@ -55,23 +53,6 @@ For content creation we are using **Markdown** files with Frontmatter attributes
 
     Open the `my-portfolio` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
-# Features
-
-- Responsive Layout
-- High configurability
-- Configurable Sections via Markdown
-  - Hero
-  - About
-  - Featured AllThatWeGrow
-  - Contact
-- Social Links
-- Styled Components with Emotion
-- Organized AllThatWeGrow by techs and Blog Posts by tags
-- Posts in Markdown
-  - Syntax highlighting in code blocks
-- Pagination support
-- More to come!
-
 # Customize
 
 ## Gatsby Configuration
@@ -93,11 +74,14 @@ siteMetadata: {
 
 ## Icons
 
-Under `src/components/_config` you will find further files that allow for configuration of _social_ and _navigation_ icons.
+Under `src/components/_config` you will find further files that allow for configuration of _social_ and _navigation_ icons.  
+
+Some parts of the app still uses [Font Awsome Solid Icons](https://fontawesome.com/icons?d=gallery&s=solid&m=free).
 
 ### Navigation
 
-To change or add further menu links you can adjust the maps in `src/components/_config/menu-links.js`. If you want to change the icons that are being used you just have to change the `icon` property to another solid icon from font-awesome. Please refer to [Font Awsome Solid Icons](https://fontawesome.com/icons?d=gallery&s=solid&m=free) for available icons.
+To change or add further menu links you can adjust the maps in `src/components/_config/menu-links.js`.   
+
 
 ### Social
 
