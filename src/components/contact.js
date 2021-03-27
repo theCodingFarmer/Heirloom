@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import Icon from './icon';
+import {HeirloomIcon} from './icon';
 import { mq } from './_shared/media';
 import { StyledH1 } from './_shared/styled-headings';
 import { StyledSection } from './_shared/styled-section';
@@ -56,6 +56,11 @@ const StyledContacts = styled.div`
   }
 `;
 
+const iconStyle = {
+    marginRight: '0.75rem',
+    lineHeight: '0.75rem'
+}
+
 const Contact = ({ data }) => {
   const {
     frontmatter: { phone, email, address },
@@ -71,7 +76,11 @@ const Contact = ({ data }) => {
         <StyledContacts>
           {address && (
             <StyledContainer>
-              <Icon icon="map-marker-alt" />
+              <HeirloomIcon
+                  color={'var(--paragraph-text-accent)'}
+                  icon='sign'
+                  style={iconStyle}
+              />
               <StyledFormContainer>
                 <StyledForm>Address</StyledForm>
                 <span>{address}</span>
@@ -80,7 +89,11 @@ const Contact = ({ data }) => {
           )}
           {email && (
             <StyledContainer>
-              <Icon icon="paper-plane" />
+              <HeirloomIcon
+                  color={'var(--paragraph-text-accent)'}
+                  icon='envelope'
+                  style={iconStyle}
+              />
               <StyledFormContainer>
                 <StyledForm>E-Mail</StyledForm>
                 <span>{email}</span>
@@ -89,7 +102,11 @@ const Contact = ({ data }) => {
           )}
           {phone && (
             <StyledContainer>
-              <Icon icon="phone-alt" />
+              <HeirloomIcon
+                  color={'var(--paragraph-text-accent)'}
+                  icon='phone'
+                  style={iconStyle}
+              />
               <StyledFormContainer>
                 <StyledForm>Phone</StyledForm>
                 <span>{phone}</span>

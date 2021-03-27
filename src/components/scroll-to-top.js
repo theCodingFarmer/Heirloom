@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import ScrollUpButton from 'react-scroll-up-button';
-import Icon from './icon';
+import {Icon} from './icon';
 import { flexCenter } from './_shared/styled-mixins';
 
 const StyledContainer = styled.div`

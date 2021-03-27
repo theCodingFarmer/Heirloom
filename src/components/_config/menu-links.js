@@ -2,27 +2,27 @@ export const indexMenuLinks = [
   {
     name: 'Our Farm',
     link: '/#about',
-    icon: 'user-tie',
+    icon: 'farm',
   },
   {
     name: 'What We Grow',
     link: '/#projects',
-    icon: 'seedling',
+    icon: 'plant',
   },
   {
     name: "Farmer's Blog",
     link: '/#blog',
-    icon: 'feather-alt',
+    icon: 'farmer',
   },
   {
     name: 'Contact',
     link: '/#contact',
-    icon: 'envelope',
+    icon: 'contact',
   },
   {
     name: "Shop",
     link: '/shop',
-    icon: 'carrot',
+    icon: 'vegBox',
   }
 ];
 
@@ -30,16 +30,16 @@ export const blogMenuLinks = [
   {
     name: 'Home',
     link: '/',
-    icon: 'code',
+    icon: 'barn',
   },
   {
     name: "Farmer's Blog",
     link: '/blog',
-    icon: 'feather-alt',
+    icon: 'farmer',
   },
   {
     name: "Shop",
     link: '/shop',
-    icon: 'carrot',
+    icon: 'vegBox',
   }
 ];

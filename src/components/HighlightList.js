@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Icon from './icon';
+import {Icon} from './icon';
 
 const StyledHighLightContainer = styled.section`
   margin-top: 0.8rem;
