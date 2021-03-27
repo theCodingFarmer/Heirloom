@@ -15,7 +15,7 @@ export const HeirloomIcon = ({size, color, icon, style}) =>  {
             focusable={false}
             style={styles}
             viewBox='0 0 512 512'
-            width={`${size}}px`}
+            width={`${size}px`}
             height={`${size}px`}
             role={'img'}
             xmlns="http://www.w3.org/2000/svg"
