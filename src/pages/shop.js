@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Layout from '../components/layout';
@@ -9,16 +9,13 @@ import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
+import ShopProducts from '../components/ShopProducts';
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
 `;
 
-const Shop = ({
-  data: {
-    allMarkdownRemark: { group },
-  },
-}) => {
+const Shop = ({data}) => {
 
   return (
     <Layout menuLinks={blogMenuLinks}>
@@ -26,6 +23,7 @@ const Shop = ({
       <StyledFullHeightSection>
         <StyledTagsH1>Shop</StyledTagsH1>
         <StyledSeparator />
+        <ShopProducts available={data.products.nodes}/>
         This is where you can buy stuff.
         <StyledSeparator />
         <TextLink label="Take me home" link="/" />
@@ -53,14 +51,28 @@ Shop.propTypes = {
 };
 export default Shop;
 
-export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { published: { eq: true } } }
+export const shopQuery = graphql`
+  {
+    products: allMarkdownRemark(
+      limit: 3
+      sort: { order: DESC, fields: frontmatter___date }
+      filter: { fileAbsolutePath: { regex: "/content/shop/" }, frontmatter: { available: { eq: true } } }
     ) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
+      nodes {
+        frontmatter {
+          date(formatString: "D MMMM, YYYY")
+          title
+          price
+          options
+          cover_image {
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+        html
       }
     }
   }
