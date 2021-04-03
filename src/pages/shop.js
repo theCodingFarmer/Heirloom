@@ -23,8 +23,9 @@ const Shop = ({data}) => {
       <StyledFullHeightSection>
         <StyledTagsH1>Shop</StyledTagsH1>
         <StyledSeparator />
+        Build Your 2022 CSA!
+        <StyledSeparator />
         <ShopProducts available={data.products.nodes}/>
-        This is where you can buy stuff.
         <StyledSeparator />
         <TextLink label="Take me home" link="/" />
       </StyledFullHeightSection>
