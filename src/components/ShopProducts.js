@@ -66,7 +66,7 @@ const ShopProducts = ({available}) => {
                 <StyledProductInfoContainer>
                     <StyledH2>{title}</StyledH2>
                     <StyledDescription dangerouslySetInnerHTML={{__html: project.html}} />
-                    <HighlightList highlights={project.frontmatter.highlights} />
+                    <HighlightList highlights={project.frontmatter.options} />
                 </StyledProductInfoContainer>
             </StyledAvailableProduct>
         );
@@ -74,11 +74,8 @@ const ShopProducts = ({available}) => {
 
     return (
         <StyledSection id="projects">
-            <StyledH1>What We Grow</StyledH1>
+            <StyledH1>Additional Products</StyledH1>
             {availableProducts}
-            <StyledArchiveContainer>
-                <TextLink label="See Everything We Grow" link="/AllThatWeGrow" />
-            </StyledArchiveContainer>
         </StyledSection>
     );
 };
