@@ -32,6 +32,13 @@ const StyledBodyWrapper = styled.div`
   padding: calc(3 * var(--header-height)) 0 0 0;
   max-width: 1000px;
 `;
+
+const StyledBackroundWrapper = styled.div`
+  background-color: var(--card-tint-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+`;
+
 const StyledIntroduction = styled.div`
   color: var(--primary-color);
   font-weight: normal;
@@ -73,12 +80,14 @@ const Hero = ({ data }) => {
   return (
     <StyledHeroSection>
         <StyledBodyWrapper>
-        <StyledIntroduction>{introduction}</StyledIntroduction>
-        <StyledCompanyName>{author}</StyledCompanyName>
-        <StyledTagline>{tagline}</StyledTagline>
-        <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
-        <ButtonLink label={ctaLabel} link={ctaLink} />
-        <ScrollIndicator />
+            <StyledBackroundWrapper>
+                <StyledIntroduction>{introduction}</StyledIntroduction>
+                <StyledCompanyName>{author}</StyledCompanyName>
+                <StyledTagline>{tagline}</StyledTagline>
+                <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
+                <ButtonLink label={ctaLabel} link={ctaLink} />
+            </StyledBackroundWrapper>
+            <ScrollIndicator />
         </StyledBodyWrapper>
     </StyledHeroSection>
   );
