@@ -59,6 +59,7 @@ const StyledContentWrapper = styled.section`
   flex-direction: column;
   margin: 0 auto;
   width: 95%;
+  max-width: 1000px;
 `;
 
 const StyledBulletPoints = styled.section`
