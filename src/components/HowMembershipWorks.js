@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { mq } from './_shared/media';
+
 
 const StyledSectionContainer = styled.section`
   margin: 0 0 6rem 0;
@@ -78,12 +80,17 @@ const StyledFactNumber = styled.section`
   margin-bottom: -1px;
   border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
+`;
 
-    
-  & > .bulletPoint {
-    font-size: 4rem;
-    font-weight: bold;
-    color: var(--title-color-light);
+const StyledBullet = styled.h1`
+  align-self: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--title-color-light);
+   
+   ${mq.gt.sm} {
+   padding: 0 1rem;
+   font-size: 4rem;;
   }
 `;
 
@@ -94,13 +101,21 @@ const StyledFactContentWrapper = styled.div `
 
 const StyledFactHighlight = styled.h1`
   color: var(--primary-color);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: bold;
+  
+  ${mq.gt.sm} {
+   font-size: 2.0rem;;
+  }
 `;
 
 const StyledFactDetails = styled.section`
   color: var(--title-color-light);
   font-size: 0.8rem;
+  
+  ${mq.gt.sm} {
+   font-size: 1.0rem;;
+  }
 `;
 
 const HowMembershipWorks = () => {
@@ -110,21 +125,21 @@ const HowMembershipWorks = () => {
         <StyledH1>How Our CSA Works</StyledH1>
         <StyledBulletPoints>
           <StyledFactNumber>
-            <span className="bulletPoint">1.</span>
+            <StyledBullet>1.</StyledBullet>
             <StyledFactContentWrapper>
               <StyledFactHighlight>Decide How Much & When</StyledFactHighlight>
-              <StyledFactDetails>Build your own share that fits your needs. Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</StyledFactDetails>
+              <StyledFactDetails>Customize your own share that fits your needs. Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</StyledFactDetails>
             </StyledFactContentWrapper>
           </StyledFactNumber>
           <StyledFactNumber>
-            <span className="bulletPoint">2.</span>
+            <StyledBullet>2.</StyledBullet>
             <StyledFactContentWrapper>
               <StyledFactHighlight>Get Information & Recipes</StyledFactHighlight>
-              <StyledFactDetails>Get access our private community with direct communication with the farmers other members</StyledFactDetails>
+              <StyledFactDetails>Get special access to recipes. Also be a part of our private member community with direct communication with the farmers</StyledFactDetails>
             </StyledFactContentWrapper>
           </StyledFactNumber>
           <StyledFactNumber>
-            <span className="bulletPoint">3.</span>
+            <StyledBullet>3.</StyledBullet>
             <StyledFactContentWrapper>
               <StyledFactHighlight>Feel Better</StyledFactHighlight>
               <StyledFactDetails>Take positive steps toward your health and know the source of your food</StyledFactDetails>
