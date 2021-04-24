@@ -72,36 +72,35 @@ const StyledBulletPoints = styled.section`
 const StyledFactNumber = styled.section`
   color: var(--title-color-light);
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 1rem 0.5rem;
+  margin-bottom: -1px;
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
 
-  & > .bulletPoint {
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-
-  & > .details {
-    color: var(--title-color-dark);
-    position: relative;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    margin-left: 1rem;
-    border-radius: 1rem;
     
-    &:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: -2rem;
-      width: 1rem;
-      height: 2px;
-      background-color: var(--primary-color);
-    }
+  & > .bulletPoint {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--title-color-light);
   }
+`;
+
+const StyledFactContentWrapper = styled.div `
+  flex-direction: column;
+  padding: 0.5rem;
+`;
+
+const StyledFactHighlight = styled.h1`
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  font-weight: bold;
+`;
+
+const StyledFactDetails = styled.section`
+  color: var(--title-color-light);
+  font-size: 0.8rem;
 `;
 
 const HowMembershipWorks = () => {
@@ -111,16 +110,25 @@ const HowMembershipWorks = () => {
         <StyledH1>How Our CSA Works</StyledH1>
         <StyledBulletPoints>
           <StyledFactNumber>
-            <span className="bulletPoint">Decide How Much & When</span>
-            <span className="details">Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</span>
+            <span className="bulletPoint">1.</span>
+            <StyledFactContentWrapper>
+              <StyledFactHighlight>Decide How Much & When</StyledFactHighlight>
+              <StyledFactDetails>Build your own share that fits your needs. Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</StyledFactDetails>
+            </StyledFactContentWrapper>
           </StyledFactNumber>
           <StyledFactNumber>
-            <span className="bulletPoint">Get Recipes From Farmers & Other Members</span>
-            <span className="details">Get weekly emails and get access our private Facebook community</span>
+            <span className="bulletPoint">2.</span>
+            <StyledFactContentWrapper>
+              <StyledFactHighlight>Get Information & Recipes</StyledFactHighlight>
+              <StyledFactDetails>Get access our private community with direct communication with the farmers other members</StyledFactDetails>
+            </StyledFactContentWrapper>
           </StyledFactNumber>
           <StyledFactNumber>
-            <span className="bulletPoint">Feel Better</span>
-            <span className="details">About your health and the source of your food</span>
+            <span className="bulletPoint">3.</span>
+            <StyledFactContentWrapper>
+              <StyledFactHighlight>Feel Better</StyledFactHighlight>
+              <StyledFactDetails>Take positive steps toward your health and know the source of your food</StyledFactDetails>
+            </StyledFactContentWrapper>
           </StyledFactNumber>
         </StyledBulletPoints>
       </StyledContentWrapper>
