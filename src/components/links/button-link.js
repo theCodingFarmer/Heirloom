@@ -17,6 +17,7 @@ export const StyledAnchorLink = styled(Link)`
   position: relative;
   border: none;
   padding: 0.4rem 0.8rem;
+  max-width: 300px;
 
   &:hover {
     color: var(--primary-color) !important;

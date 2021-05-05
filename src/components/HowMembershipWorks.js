@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { mq } from './_shared/media';
+
 
 const StyledSectionContainer = styled.section`
   margin: 0 0 6rem 0;
@@ -59,6 +61,7 @@ const StyledContentWrapper = styled.section`
   flex-direction: column;
   margin: 0 auto;
   width: 95%;
+  max-width: 1000px;
 `;
 
 const StyledBulletPoints = styled.section`
@@ -71,35 +74,47 @@ const StyledBulletPoints = styled.section`
 const StyledFactNumber = styled.section`
   color: var(--title-color-light);
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 1rem 0.5rem;
+  margin-bottom: -1px;
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+`;
 
-  & > .bulletPoint {
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    font-weight: bold;
+const StyledBullet = styled.h1`
+  align-self: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--title-color-light);
+   
+   ${mq.gt.sm} {
+   padding: 0 1rem;
+   font-size: 4rem;;
   }
+`;
 
-  & > .details {
-    color: var(--title-color-dark);
-    position: relative;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    margin-left: 1rem;
-    border-radius: 1rem;
-    
-    &:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: -2rem;
-      width: 1rem;
-      height: 2px;
-      background-color: var(--primary-color);
-    }
+const StyledFactContentWrapper = styled.div `
+  flex-direction: column;
+  padding: 0.5rem;
+`;
+
+const StyledFactHighlight = styled.h1`
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: bold;
+  
+  ${mq.gt.sm} {
+   font-size: 2.0rem;;
+  }
+`;
+
+const StyledFactDetails = styled.section`
+  color: var(--title-color-light);
+  font-size: 0.8rem;
+  
+  ${mq.gt.sm} {
+   font-size: 1.0rem;;
   }
 `;
 
@@ -110,16 +125,25 @@ const HowMembershipWorks = () => {
         <StyledH1>How Our CSA Works</StyledH1>
         <StyledBulletPoints>
           <StyledFactNumber>
-            <span className="bulletPoint">Decide How Much & When</span>
-            <span className="details">Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</span>
+            <StyledBullet>1.</StyledBullet>
+            <StyledFactContentWrapper>
+              <StyledFactHighlight>Decide How Much & When</StyledFactHighlight>
+              <StyledFactDetails>Customize your own share that fits your needs. Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</StyledFactDetails>
+            </StyledFactContentWrapper>
           </StyledFactNumber>
           <StyledFactNumber>
-            <span className="bulletPoint">Get Recipes From Farmers & Other Members</span>
-            <span className="details">Get weekly emails and get access our private Facebook community</span>
+            <StyledBullet>2.</StyledBullet>
+            <StyledFactContentWrapper>
+              <StyledFactHighlight>Get Information & Recipes</StyledFactHighlight>
+              <StyledFactDetails>Get special access to recipes. Also be a part of our private member community with direct communication with the farmers</StyledFactDetails>
+            </StyledFactContentWrapper>
           </StyledFactNumber>
           <StyledFactNumber>
-            <span className="bulletPoint">Feel Better</span>
-            <span className="details">About your health and the source of your food</span>
+            <StyledBullet>3.</StyledBullet>
+            <StyledFactContentWrapper>
+              <StyledFactHighlight>Feel Better</StyledFactHighlight>
+              <StyledFactDetails>Take positive steps toward your health and know the source of your food</StyledFactDetails>
+            </StyledFactContentWrapper>
           </StyledFactNumber>
         </StyledBulletPoints>
       </StyledContentWrapper>

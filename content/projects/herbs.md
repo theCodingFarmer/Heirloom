@@ -1,5 +1,5 @@
 ---
-featured: true
+featured: false
 date: '2021-02-07'
 title: 'Herbs & Garlic'
 cover_image: './images/herbs.png'
