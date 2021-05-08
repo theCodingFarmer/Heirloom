@@ -40,6 +40,12 @@ export default {
                     name: 'callToActionButton',
                     title: 'Call To Action Button Text',
                     type: 'string',
+                },
+                {
+                    name: 'heroImage',
+                    title: 'Hero Image',
+                    type: 'image',
+                    validation: Rule => Rule.required()
                 }
             ]
         }
