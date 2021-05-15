@@ -4,49 +4,24 @@ export default {
     type: 'document',
     fields: [
         {
-            name: 'title',
+            name: 'homePage',
             title: 'Save As...',
             type: 'string',
-            validation: Rule => Rule.required()
+            description: 'Build out your home landing page.'
         },
         {
-            name: 'hero',
-            title: 'Hero',
-            type: 'object',
-            fields: [
-                {
-                    name: 'introduction',
-                    title: 'Introduction',
-                    type: 'string',
-                },
-                {
-                    name: 'title',
-                    title: 'Title',
-                    type: 'string',
-                    validation: Rule => Rule.required()
-                },
-                {
-                    name: 'tagLine',
-                    title: 'Tag Line',
-                    type: 'string',
-                },
-                {
-                    name: 'description',
-                    title: 'Description',
-                    type: 'text',
-                    validation: Rule => Rule.required()
-                },
-                {
-                    name: 'callToActionButton',
-                    title: 'Call To Action Button Text',
-                    type: 'string',
-                },
-                {
-                    name: 'heroImage',
-                    title: 'Hero Image',
-                    type: 'image',
-                    validation: Rule => Rule.required()
-                }
+            name: 'homeHero',
+            title: 'Hero Section',
+            type: 'array',
+            of: [{
+                    name: 'hero',
+                    type: 'hero'
+                }],
+            description: 'Hero section details',
+            validation: Rule => [
+                Rule.required().error('A hero is required'),
+                Rule.min(1).error('Must setup a hero for home page'),
+                Rule.max(1).error('Only 1 hero banner is allowed')
             ]
         }
     ]

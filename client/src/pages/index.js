@@ -22,6 +22,9 @@ const Index = ({ data }) => {
     ctaLink: data.hero.frontmatter.cta_link,
   };
 
+  console.log('data.hero', data.hero);
+  console.log('data.heroGQL', data.heroGQL.edges[0].node);
+
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
@@ -49,7 +52,25 @@ export const query = graphql`
         author
       }
     }
-
+    
+     heroGQL: allSanityPageHome {
+        edges {
+          node {
+            id
+            callToActionButton
+            introduction
+            tagLine
+            title
+            description
+            heroImage {
+              asset {
+                url
+              }
+            }
+          }
+        }
+      }
+    
     hero: markdownRemark(fileAbsolutePath: { regex: "/content/sections/hero/" }) {
       frontmatter {
         introduction
@@ -59,7 +80,7 @@ export const query = graphql`
       }
       html
     }
-    
+
     header: markdownRemark(fileAbsolutePath: { regex: "/content/sections/header/" }) {
       frontmatter {
         button_label

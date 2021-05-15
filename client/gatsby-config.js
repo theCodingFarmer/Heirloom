@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   pathPrefix: '/gatsby-starter-level-2',
   siteMetadata: {
@@ -12,6 +14,16 @@ module.exports = {
   plugins: [
     `gatsby-plugin-stylus`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        apiVersion: '2021-03-25',
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: 'production',
+        token: process.env.SANITY_TOKEN,
+        graphqlTag: 'default'
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
