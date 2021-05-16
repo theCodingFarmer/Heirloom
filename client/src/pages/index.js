@@ -13,17 +13,17 @@ import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
 
 const Index = ({ data }) => {
-  const heroData = {
-    author: data.site.siteMetadata.author,
-    tagline: data.hero.frontmatter.tagline,
-    description: data.hero.html,
-    introduction: data.hero.frontmatter.introduction,
-    ctaLabel: data.hero.frontmatter.cta_label,
-    ctaLink: data.hero.frontmatter.cta_link,
-  };
+  const heroSanityData = data.hero.edges[0].node.homeHero[0];
 
-  console.log('data.hero', data.hero);
-  console.log('data.heroGQL', data.heroGQL.edges[0].node);
+  const heroData = {
+    backgroundImg: heroSanityData.heroImage.asset.url,
+    title: heroSanityData.title,
+    tagline: heroSanityData.tagLine,
+    description: heroSanityData.description,
+    introduction: heroSanityData.introduction,
+    ctaLabel: heroSanityData.ctaButtonText,
+    ctaLink: heroSanityData.ctaButtonLink,
+  };
 
   return (
     <Layout menuLinks={indexMenuLinks}>
@@ -53,33 +53,26 @@ export const query = graphql`
       }
     }
     
-     heroGQL: allSanityPageHome {
-        edges {
-          node {
-            id
-            callToActionButton
-            introduction
-            tagLine
-            title
-            description
-            heroImage {
-              asset {
-                url
-              }
-            }
-          }
-        }
-      }
-    
-    hero: markdownRemark(fileAbsolutePath: { regex: "/content/sections/hero/" }) {
-      frontmatter {
-        introduction
-        tagline
-        cta_label
-        cta_link
-      }
-      html
-    }
+     hero: allSanityPageHome {
+       edges {
+         node {
+           id
+           homeHero {
+             ctaButtonLink
+             ctaButtonText
+             description
+             introduction
+             tagLine
+             title
+             heroImage {
+               asset {
+                 url
+               }
+             }
+           }
+         }
+       }
+     }
 
     header: markdownRemark(fileAbsolutePath: { regex: "/content/sections/header/" }) {
       frontmatter {

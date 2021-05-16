@@ -5,13 +5,11 @@ import {ButtonLink} from './links/button-link';
 import ScrollIndicator from './scroll-indicator';
 import { mq } from './_shared/media';
 import { StyledSectionHero } from './_shared/styled-section';
-import backgroundImg from '../images/backgroundVeggies.jpg';
 
 const StyledHeroSection = styled(StyledSectionHero)`
   min-height: calc(100vh + var(--header-height));
   position: relative;
   max-width: 100%;
-  background-image: url(${backgroundImg});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -72,17 +70,18 @@ const StyledDescription = styled.div`
   margin-top: 0.5rem;
   width: 100%;
   max-width: 500px;
+  white-space: pre-line;
 `;
 
 const Hero = ({ data }) => {
-  const { introduction, author, tagline, description, ctaLink, ctaLabel } = data;
+  const { backgroundImg, introduction, title, tagline, description, ctaLink, ctaLabel } = data;
 
   return (
-    <StyledHeroSection>
+    <StyledHeroSection style={{backgroundImage:`url(${backgroundImg})`}}>
         <StyledBodyWrapper>
             <StyledBackroundWrapper>
                 <StyledIntroduction>{introduction}</StyledIntroduction>
-                <StyledCompanyName>{author}</StyledCompanyName>
+                <StyledCompanyName>{title}</StyledCompanyName>
                 <StyledTagline>{tagline}</StyledTagline>
                 <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
                 <ButtonLink label={ctaLabel} link={ctaLink} />

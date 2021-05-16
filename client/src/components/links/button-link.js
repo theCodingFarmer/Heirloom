@@ -100,7 +100,7 @@ export const ButtonLink = ({ label, link }) => {
   return (
     <React.Fragment>
       {label && link && (
-        <StyledAnchorLink to={link ? link : '#'}>
+        <StyledAnchorLink to={link ? link : '#'} style={{marginTop: 20}}>
           {label}
           <Icon icon="arrow-right" />
         </StyledAnchorLink>
