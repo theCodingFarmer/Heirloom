@@ -5,6 +5,11 @@ import farmersBlog from './contentSchemas/farmersBlog';
 import whatWeGrow from './contentSchemas/whatWeGrow';
 import pageHome from './contentSchemas/pageHome';
 import hero from './contentSchemas/hero';
+import howItWorksSteps from './contentSchemas/howItWorksSteps';
+import howItWorks from './contentSchemas/howItWorks';
+import aboutUs from './contentSchemas/aboutUs';
+import cardGrid from './contentSchemas/cardGrid';
+import contactUs from './contentSchemas/contactUs';
 
 export default createSchema({
   // We name our schema
@@ -13,8 +18,14 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
       pageHome,
-      hero,
       farmersBlog,
-      whatWeGrow
+      whatWeGrow,
+      howItWorks,
+      aboutUs,
+      cardGrid,
+      contactUs,
+      //hidden schemas
+      hero,
+      howItWorksSteps
   ]),
 })

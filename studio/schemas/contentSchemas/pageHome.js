@@ -23,6 +23,34 @@ export default {
                 Rule.min(1).error('Must setup a hero for home page'),
                 Rule.max(1).error('Only 1 hero banner is allowed')
             ]
+        },
+        {
+            name: 'howItWorks',
+            title: 'How It Works',
+            type: 'howItWorks'
+        },
+        {
+            name: 'aboutUs',
+            title: 'About Us',
+            type: 'aboutUs'
+        },
+        {
+            name: 'cardGrid',
+            title: 'Card Grid',
+            type: 'cardGrid',
+
+        },
+        {
+            name: 'whatWeGrow',
+            title: 'What We Grow',
+            type: 'reference',
+            to: [{type: 'whatWeGrow'}],
+            description: 'Select the products to feature.'
+        },
+        {
+            name: 'contactUs',
+            title: 'Contact Us',
+            type: 'contactUs'
         }
     ]
 }
