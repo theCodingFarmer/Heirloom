@@ -5,10 +5,11 @@ import farmersBlog from './contentSchemas/farmersBlog';
 import whatWeGrow from './contentSchemas/whatWeGrow';
 import pageHome from './contentSchemas/pageHome';
 import hero from './contentSchemas/hero';
-import howItWorksSteps from './contentSchemas/howItWorksSteps';
+import howItWorksSteps from './contentSchemas/howItWorksStep';
 import howItWorks from './contentSchemas/howItWorks';
 import aboutUs from './contentSchemas/aboutUs';
 import cardGrid from './contentSchemas/cardGrid';
+import cardGridCard from './contentSchemas/cardGridCard';
 import contactUs from './contentSchemas/contactUs';
 
 export default createSchema({
@@ -20,12 +21,13 @@ export default createSchema({
       pageHome,
       farmersBlog,
       whatWeGrow,
-      howItWorks,
-      aboutUs,
-      cardGrid,
-      contactUs,
       //hidden schemas
       hero,
-      howItWorksSteps
+      howItWorks,
+      howItWorksSteps,
+      aboutUs,
+      cardGrid,
+      cardGridCard,
+      contactUs
   ]),
 })

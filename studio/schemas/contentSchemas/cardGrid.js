@@ -19,21 +19,11 @@ export default {
             name: 'cardGridCards',
             title: 'Cards',
             type: 'array',
+            description: 'Create the cards. Drag and drop to change order.',
             of: [
                 {
-                    name: 'cardGridCardTitle',
-                    title: 'Card Title',
-                    type: 'string'
-                },
-                {
-                    name: 'cardGridCardDescription',
-                    title: 'Card Description',
-                    type: 'text'
-                },
-                {
-                    name: 'cardGridCardImage',
-                    title: 'Card Background Image',
-                    type: 'image'
+                    name: 'cardGridCard',
+                    type: 'cardGridCard'
                 }
             ]
         }

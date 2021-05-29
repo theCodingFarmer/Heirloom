@@ -43,9 +43,12 @@ export default {
         {
             name: 'whatWeGrow',
             title: 'What We Grow',
-            type: 'reference',
-            to: [{type: 'whatWeGrow'}],
-            description: 'Select the products to feature.'
+            type: 'array',
+            of: [{
+                type: 'reference',
+                to: [{type: 'whatWeGrow'}]
+            }],
+            description: 'Select the products to feature on the home landing page. Drag and drop to change order.'
         },
         {
             name: 'contactUs',

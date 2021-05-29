@@ -1,5 +1,5 @@
 export default {
-    name: 'howItWorksSteps',
+    name: 'howItWorksStep',
     title: "Step",
     type: 'object',
     hidden: true,

@@ -6,7 +6,8 @@ export default {
         {
             name: 'howItWorksSectionTitle',
             title: 'Section Title',
-            type: 'string'
+            type: 'string',
+            description: 'The main header for this section. e.g. How it Works...'
         },
         {
             name: 'howItWorksSteps',
@@ -14,14 +15,8 @@ export default {
             type: 'array',
             of: [
                 {
-                    name: 'stepTitle',
-                    title: 'Step Title',
-                    type: 'string',
-                },
-                {
-                    name: 'stepDescription',
-                    title: 'Step Description',
-                    type: 'string',
+                    name: 'howItWorksStep',
+                    type: 'howItWorksStep'
                 }
             ]
         }
