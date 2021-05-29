@@ -6,14 +6,15 @@ export default {
         {
             name: 'title',
             title: 'Product',
-            description: 'Name of the product or produce',
             type: 'string',
+            description: 'Name of the product or produce.',
             validation: Rule => Rule.required()
         },
         {
             name: 'description',
             title: 'Description',
             type: 'text',
+            description: 'Short description or features of this product.',
             validation: Rule => Rule.required()
         },
         {

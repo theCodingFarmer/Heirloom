@@ -6,12 +6,14 @@ export default {
         {
             name: 'cardGridSectionTitle',
             title: 'Section Title',
-            type: 'string'
+            type: 'string',
+            description: 'The main header for this section. e.g. Our Farm is For You'
         },
         {
             name: 'cardGridSectionDescription',
             title: 'Section Description',
-            type: 'string'
+            type: 'string',
+            description: 'One or two sentences to add to this section.'
         },
         {
             name: 'cardGridCards',

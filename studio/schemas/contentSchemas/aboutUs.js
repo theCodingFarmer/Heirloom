@@ -6,7 +6,9 @@ export default {
         {
             name: 'aboutUsSectionTitle',
             title: 'Section Title',
-            type: 'string'
+            type: 'string',
+            description: 'The main header for this section. e.g. About Us'
+
         },
         {
             name: 'aboutUsHeader',

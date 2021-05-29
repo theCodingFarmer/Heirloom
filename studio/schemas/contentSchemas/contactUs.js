@@ -6,12 +6,14 @@ export default {
         {
             name: 'contactUsSectionTitle',
             title: 'Section Title',
-            type: 'string'
+            type: 'string',
+            description: 'The main header for this section. e.g. Contact Us'
         },
         {
             name: 'contactUsSectionDescription',
-            title: 'Section Description',
-            type: 'string'
+            title: 'Contact Us Message',
+            type: 'text',
+            description: 'More details about contacting your business.'
         },
         {
             name: 'contactUsAddress',
