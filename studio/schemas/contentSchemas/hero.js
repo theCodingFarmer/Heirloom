@@ -2,7 +2,6 @@ export default {
     name: 'hero',
     title: "Hero",
     type: 'object',
-    hidden: true,
     fields: [
         {
             name: 'introduction',
