@@ -11,24 +11,27 @@ import Layout from '../components/layout';
 import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
+import {sanityHomeData} from '../queries/home-query';
 
 const Index = ({ data }) => {
-  const heroSanityData = data.hero.edges[0].node.homeHero[0];
-
-  const heroData = {
-    backgroundImg: heroSanityData.heroImage.asset.url,
-    title: heroSanityData.title,
-    tagline: heroSanityData.tagLine,
-    description: heroSanityData.description,
-    introduction: heroSanityData.introduction,
-    ctaLabel: heroSanityData.ctaButtonText,
-    ctaLink: heroSanityData.ctaButtonLink,
-  };
+  // const heroSanityData = data.sanityData.edges[0].node.homeHero[0];
+  const {howItWorks} = data.sanityData.edges[0].node
+  console.log('data', data.sanityData);
+console.log('sanityHomeData', sanityHomeData);
+  // const heroData = {
+  //   backgroundImg: heroSanityData.heroImage.asset.url,
+  //   title: heroSanityData.title,
+  //   tagline: heroSanityData.tagLine,
+  //   description: heroSanityData.description,
+  //   introduction: heroSanityData.introduction,
+  //   ctaLabel: heroSanityData.ctaButtonText,
+  //   ctaLink: heroSanityData.ctaButtonLink,
+  // };
 
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
-      <Hero data={heroData} />
+      {/*<Hero data={heroData} />*/}
       <HowMembershipWorks/>
       <About data={data.about} />
       <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Farm is For You" id="features" />
@@ -53,22 +56,73 @@ export const query = graphql`
       }
     }
     
-     hero: allSanityPageHome {
+     sanityData: allSanityPageHome {
        edges {
          node {
            id
            homeHero {
-             ctaButtonLink
-             ctaButtonText
-             description
              introduction
-             tagLine
              title
+             tagLine
+             description
+             ctaButtonText
+             ctaButtonLink
              heroImage {
+               asset {
+                 altText
+                 url
+               }
+             }
+           }
+           howItWorks {
+             howItWorksSectionTitle
+             howItWorksSteps {
+               stepTitle
+               stepDescription
+               _key
+             }
+           }
+           aboutUs {
+             aboutUsSectionTitle
+             aboutUsHeader
+             aboutUsDescription
+             aboutUsHighlights
+             aboutUsImage {
+               asset {
+                 altText
+                 url
+               }
+             }
+           }
+           cardGrid {
+             cardGridSectionTitle
+             cardGridSectionDescription
+             cardGridCards {
+               cardGridCardTitle
+               cardGridCardDescription
+               cardGridCardImage {
+                 asset {
+                   url
+                 }
+               }
+             }
+           }
+           whatWeGrow {
+             title
+             description
+             highlights
+             image {
                asset {
                  url
                }
              }
+           }
+           contactUs {
+             contactUsSectionTitle
+             contactUsSectionDescription
+             contactUsAddress
+             contactUsEmail
+             contactUsPhone
            }
          }
        }
@@ -167,3 +221,74 @@ export const query = graphql`
     }
   }
 `;
+
+// Query for all data from gql
+//
+// query {
+//   allPageHome {
+//     homeHero {
+//       introduction
+//       title
+//       tagLine
+//       description
+//       ctaButtonText
+//       ctaButtonLink
+//       heroImage {
+//         asset {
+//           altText
+//           url
+//         }
+//       }
+//     }
+//     howItWorks {
+//       howItWorksSectionTitle
+//       howItWorksSteps {
+//         stepTitle
+//         stepDescription
+//         _key
+//       }
+//     }
+//     aboutUs {
+//       aboutUsSectionTitle
+//       aboutUsHeader
+//       aboutUsDescription
+//       aboutUsHighlights
+//       aboutUsImage {
+//         asset {
+//           altText
+//           url
+//         }
+//       }
+//     }
+//     cardGrid {
+//       cardGridSectionTitle
+//       cardGridSectionDescription
+//       cardGridCards {
+//         cardGridCardTitle
+//         cardGridCardDescription
+//         cardGridCardImage {
+//           asset {
+//             url
+//           }
+//         }
+//       }
+//     }
+//     whatWeGrow {
+//       title
+//       description
+//       highlights
+//       image {
+//         asset {
+//           url
+//         }
+//       }
+//     }
+//     contactUs {
+//       contactUsSectionTitle
+//       contactUsSectionDescription
+//       contactUsAddress
+//       contactUsEmail
+//       contactUsPhone
+//     }
+//   }
+// }
