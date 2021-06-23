@@ -13,14 +13,18 @@ import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
 
 const Index = ({ data }) => {
-  const {howItWorks, homeHero} = data.sanityData.edges[0].node
+  const {
+    aboutUs,
+    howItWorks,
+    homeHero
+  } = data.sanityData.edges[0].node
 
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
       <Hero data={homeHero} />
       <HowMembershipWorks/>
-      <About data={data.about} />
+      <About data={aboutUs} />
       <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Farm is For You" id="features" />
       <WhatWeGrow featured={data.featuredProjects.nodes} />
       <RecentPosts data={data.blog.edges} />

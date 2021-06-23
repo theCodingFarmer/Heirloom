@@ -23,16 +23,27 @@ const StyledTextSection = styled.section`
 `;
 
 const About = ({ data }) => {
+  // const {
+  //   frontmatter: { title, highlights, about_image },
+  //   html,
+  // } = data;
+
   const {
-    frontmatter: { title, highlights, about_image },
-    html,
+    aboutUsDescription,
+    aboutUsHeader,
+    aboutUsHighlights,
+    aboutUsImage,
+    aboutUsSectionTitle
   } = data;
 
-  const image = about_image ? about_image.childImageSharp.fluid : null;
+ // const image = about_image ? about_image.childImageSharp.fluid : null;
+  
+  //Temporary for now so this doesn't error...
+  const image = null;
 
   return (
     <StyledSection id="about">
-      <StyledH1>Our Farm</StyledH1>
+      <StyledH1>{aboutUsSectionTitle}</StyledH1>
       <StyledAboutContainer>
         {image && (
           <StyledStaticImageContainer>
@@ -40,9 +51,9 @@ const About = ({ data }) => {
           </StyledStaticImageContainer>
         )}
         <div>
-          <StyledH2>{title}</StyledH2>
-          <StyledTextSection dangerouslySetInnerHTML={{ __html: html }} />
-          <HighlightList highlights={highlights} />
+          <StyledH2>{aboutUsHeader}</StyledH2>
+          <StyledTextSection dangerouslySetInnerHTML={{__html: aboutUsDescription}} />
+          <HighlightList highlights={aboutUsHighlights} />
         </div>
       </StyledAboutContainer>
     </StyledSection>
