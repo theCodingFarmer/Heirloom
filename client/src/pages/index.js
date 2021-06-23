@@ -11,27 +11,14 @@ import Layout from '../components/layout';
 import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
-import {sanityHomeData} from '../queries/home-query';
 
 const Index = ({ data }) => {
-  // const heroSanityData = data.sanityData.edges[0].node.homeHero[0];
-  const {howItWorks} = data.sanityData.edges[0].node
-  console.log('data', data.sanityData);
-console.log('sanityHomeData', sanityHomeData);
-  // const heroData = {
-  //   backgroundImg: heroSanityData.heroImage.asset.url,
-  //   title: heroSanityData.title,
-  //   tagline: heroSanityData.tagLine,
-  //   description: heroSanityData.description,
-  //   introduction: heroSanityData.introduction,
-  //   ctaLabel: heroSanityData.ctaButtonText,
-  //   ctaLink: heroSanityData.ctaButtonLink,
-  // };
+  const {howItWorks, homeHero} = data.sanityData.edges[0].node
 
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
-      {/*<Hero data={heroData} />*/}
+      <Hero data={homeHero} />
       <HowMembershipWorks/>
       <About data={data.about} />
       <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Farm is For You" id="features" />

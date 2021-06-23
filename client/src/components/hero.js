@@ -5,6 +5,7 @@ import {ButtonLink} from './links/button-link';
 import ScrollIndicator from './scroll-indicator';
 import { mq } from './_shared/media';
 import { StyledSectionHero } from './_shared/styled-section';
+import hero from '../../../studio/schemas/contentSchemas/hero';
 
 const StyledHeroSection = styled(StyledSectionHero)`
   min-height: calc(100vh + var(--header-height));
@@ -74,17 +75,17 @@ const StyledDescription = styled.div`
 `;
 
 const Hero = ({ data }) => {
-  const { backgroundImg, introduction, title, tagline, description, ctaLink, ctaLabel } = data;
+  const { heroImage, introduction, title, tagLine, description, ctaButtonLink, ctaButtonText } = data;
 
   return (
-    <StyledHeroSection style={{backgroundImage:`url(${backgroundImg})`}}>
+    <StyledHeroSection style={{backgroundImage:`url(${heroImage.asset.url})`}}>
         <StyledBodyWrapper>
             <StyledBackroundWrapper>
                 <StyledIntroduction>{introduction}</StyledIntroduction>
                 <StyledCompanyName>{title}</StyledCompanyName>
-                <StyledTagline>{tagline}</StyledTagline>
+                <StyledTagline>{tagLine}</StyledTagline>
                 <StyledDescription dangerouslySetInnerHTML={{ __html: description }} />
-                <ButtonLink label={ctaLabel} link={ctaLink} />
+                <ButtonLink label={ctaButtonText} link={ctaButtonLink} />
             </StyledBackroundWrapper>
             <ScrollIndicator />
         </StyledBodyWrapper>
