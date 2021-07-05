@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Img from 'gatsby-image';
+import Image from 'gatsby-plugin-sanity-image';
 import React from 'react';
 import HighlightList from './HighlightList';
 import { mq } from './_shared/media';
@@ -36,18 +36,14 @@ const About = ({ data }) => {
     aboutUsSectionTitle
   } = data;
 
- // const image = about_image ? about_image.childImageSharp.fluid : null;
-  
-  //Temporary for now so this doesn't error...
-  const image = null;
-
+  console.log('aboutUsImage', aboutUsHighlights);
   return (
     <StyledSection id="about">
       <StyledH1>{aboutUsSectionTitle}</StyledH1>
       <StyledAboutContainer>
-        {image && (
+        {aboutUsImage && (
           <StyledStaticImageContainer>
-            <Img fluid={image} objectFit="contain" />
+            <Image {...aboutUsImage}/>
           </StyledStaticImageContainer>
         )}
         <div>

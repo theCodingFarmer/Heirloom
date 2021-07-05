@@ -87,6 +87,13 @@ module.exports = {
         path: `${__dirname}/content/sections/contact`,
       },
     },
+    {
+        resolve: `gatsby-plugin-sanity-image`,
+        options: {
+            projectId: process.env.SANITY_PROJECT_ID,
+            dataset: 'production'
+        }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

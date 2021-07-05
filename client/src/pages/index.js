@@ -80,6 +80,7 @@ export const query = graphql`
              aboutUsHighlights
              aboutUsImage {
                asset {
+                 _id
                  altText
                  url
                }
