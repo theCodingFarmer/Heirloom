@@ -6,6 +6,8 @@ import { flexCenter } from './_shared/styled-mixins';
 
 const StyledContainer = styled.div`
   ${flexCenter};
+  max-height: 50px;
+  max-width: 50px;
   padding: 0.5rem;
   cursor: pointer;
   color: var(--title-color-light);
