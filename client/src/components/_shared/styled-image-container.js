@@ -14,6 +14,20 @@ export const StyledImageContainer = styled.div`
   }
 `;
 
+export const StyledSanityImageContainer = styled.div`
+  min-width: 300px;
+  min-height: 200px;
+  position: relative;
+
+  & .gatsby-image-wrapper * {
+    transition: transform var(--transition-fast) ease-in-out !important;
+  }
+
+  &:hover .gatsby-image-wrapper * {
+    transform: scale(1.1);
+  }
+`;
+
 export const StyledStaticImageContainer = styled.div`
   min-width: 300px;
   min-height: 200px;

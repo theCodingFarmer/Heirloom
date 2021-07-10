@@ -16,8 +16,10 @@ const Index = ({ data }) => {
   const {
     aboutUs,
     cardGrid,
+    contactUs,
+    featuredProducts,
+    homeHero,
     howItWorks,
-    homeHero
   } = data.sanityData.edges[0].node
 
   return (
@@ -27,7 +29,7 @@ const Index = ({ data }) => {
       <HowMembershipWorks/>
       <About data={aboutUs} />
       <CardGrid data={cardGrid} />
-      <WhatWeGrow featured={data.featuredProjects.nodes} />
+      <WhatWeGrow data={featuredProducts} />
       <RecentPosts data={data.blog.edges} />
       <Contact data={data.contact} />
     </Layout>
@@ -100,16 +102,24 @@ export const query = graphql`
                }
              }
            }
-           whatWeGrow {
-             title
-             description
-             highlights
-             image {
-               asset {
-                 url
-               }
+             featuredProducts {
+                 featuredProductSectionTitle
+                 featuredProductSectionDescription
+                 featuredProductCards {
+                     _id
+                     title
+                     description
+                     highlights
+                     image {
+                         asset {
+                           _id
+                           altText
+                           url
+                         }
+                     }
+                 }
+                 featuredProductLinkText
              }
-           }
            contactUs {
              contactUsSectionTitle
              contactUsSectionDescription

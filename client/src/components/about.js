@@ -33,7 +33,6 @@ const About = ({ data }) => {
     aboutUsSectionTitle
   } = data;
 
-  console.log('aboutUsImage', aboutUsHighlights);
   return (
     <StyledSection id="about">
       <StyledH1>{aboutUsSectionTitle}</StyledH1>
