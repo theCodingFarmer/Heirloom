@@ -23,10 +23,6 @@ const StyledTextSection = styled.section`
 `;
 
 const About = ({ data }) => {
-  // const {
-  //   frontmatter: { title, highlights, about_image },
-  //   html,
-  // } = data;
 
   const {
     aboutUsDescription,
