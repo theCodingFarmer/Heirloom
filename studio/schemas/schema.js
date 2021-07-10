@@ -11,6 +11,7 @@ import aboutUs from './contentSchemas/aboutUs';
 import cardGrid from './contentSchemas/cardGrid';
 import cardGridCard from './contentSchemas/cardGridCard';
 import contactUs from './contentSchemas/contactUs';
+import featuredProducts from './contentSchemas/featuredProducts';
 
 export default createSchema({
   // We name our schema
@@ -28,6 +29,7 @@ export default createSchema({
       aboutUs,
       cardGrid,
       cardGridCard,
+      featuredProducts,
       contactUs
   ]),
 })
