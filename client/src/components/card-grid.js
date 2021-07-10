@@ -67,35 +67,38 @@ const StyledFeatureDescription = styled.p`
     color: var(--card-font-color);
 `;
 
-const CardGrid = ({cards, description, title, id = null}) => {
+const CardGrid = ({ data }) => {
 
-    const featureCards = cards.map(({image, label, description}, index) => {
+    const {
+        cardGridCards,
+        cardGridSectionTitle,
+        cardGridSectionDescription
+    } = data;
 
-        const imageUrl = !image ? '' : `url(${require(`../images/${image}`)})`;
+    const featureCards = cardGridCards.map(({cardGridCardImage, cardGridCardTitle, cardGridCardDescription}, index) => {
+
+        const backgroundImg = `url(${cardGridCardImage.asset.url})`;
 
         return (
-            <StyledFeatureCard key={index} style={{backgroundImage: imageUrl}}>
-                <StyledCardLabel>{label}</StyledCardLabel>
+            <StyledFeatureCard key={index} style={{backgroundImage: backgroundImg}}>
+                <StyledCardLabel>{cardGridCardTitle}</StyledCardLabel>
                 <StyledDivider />
-                <StyledFeatureDescription>{description}</StyledFeatureDescription>
+                <StyledFeatureDescription>{cardGridCardDescription}</StyledFeatureDescription>
             </StyledFeatureCard>
         );
     });
 
     return (
-        <StyledSection id={id}>
-            {title && <StyledH1>{title}</StyledH1>}
-            <StyledTextSection dangerouslySetInnerHTML={{__html: description}} />
+        <StyledSection id={cardGridSectionTitle}>
+            {cardGridSectionTitle && <StyledH1>{cardGridSectionTitle}</StyledH1>}
+            <StyledTextSection dangerouslySetInnerHTML={{__html: cardGridSectionDescription}} />
             <StyledFeatureGridContainer>{featureCards}</StyledFeatureGridContainer>
         </StyledSection>
     );
 };
 
 CardGrid.propTypes = {
-    cards: PropTypes.array.isRequired,
-    description: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    title: PropTypes.string,
+    data: PropTypes.object.isRequired
 };
 
 export default CardGrid;

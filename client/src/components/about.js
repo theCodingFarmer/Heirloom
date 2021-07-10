@@ -6,6 +6,7 @@ import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
 import { StyledStaticImageContainer } from './_shared/styled-image-container';
 import { StyledSection } from './_shared/styled-section';
+import PropTypes from 'prop-types';
 
 const StyledAboutContainer = styled.article`
   display: grid;
@@ -52,6 +53,8 @@ const About = ({ data }) => {
   );
 };
 
-About.propTypes = {};
+About.propTypes = {
+  data: PropTypes.object.isRequired
+};
 
 export default About;

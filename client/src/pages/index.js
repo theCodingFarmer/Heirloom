@@ -15,6 +15,7 @@ import { indexMenuLinks } from '../components/_config/menu-links';
 const Index = ({ data }) => {
   const {
     aboutUs,
+    cardGrid,
     howItWorks,
     homeHero
   } = data.sanityData.edges[0].node
@@ -25,7 +26,7 @@ const Index = ({ data }) => {
       <Hero data={homeHero} />
       <HowMembershipWorks/>
       <About data={aboutUs} />
-      <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Farm is For You" id="features" />
+      <CardGrid data={cardGrid} />
       <WhatWeGrow featured={data.featuredProjects.nodes} />
       <RecentPosts data={data.blog.edges} />
       <Contact data={data.contact} />
