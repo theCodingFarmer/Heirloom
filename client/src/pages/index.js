@@ -22,13 +22,13 @@ const Index = ({ data }) => {
     howItWorks,
   } = data.sanityData.edges[0].node
 
-    console.log('contactUs', contactUs);
+    console.log('howItWorks', howItWorks);
 
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
       <Hero data={homeHero} />
-      <HowMembershipWorks/>
+      <HowMembershipWorks data={howItWorks}/>
       <About data={aboutUs} />
       <CardGrid data={cardGrid} />
       <WhatWeGrow data={featuredProducts} />

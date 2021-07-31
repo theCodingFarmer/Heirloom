@@ -118,33 +118,26 @@ const StyledFactDetails = styled.section`
   }
 `;
 
-const HowMembershipWorks = () => {
+const HowMembershipWorks = ({data}) => {
+  const {
+      howItWorksSectionTitle,
+      howItWorksSteps
+  } = data;
+
   return (
     <StyledSectionContainer>
       <StyledContentWrapper>
-        <StyledH1>How Our CSA Works</StyledH1>
+        <StyledH1>{howItWorksSectionTitle}</StyledH1>
         <StyledBulletPoints>
-          <StyledFactNumber>
-            <StyledBullet>1.</StyledBullet>
-            <StyledFactContentWrapper>
-              <StyledFactHighlight>Decide How Much & When</StyledFactHighlight>
-              <StyledFactDetails>Customize your own share that fits your needs. Choose from 3 basket sizes and 3 weekly pickup days over 3 seasons</StyledFactDetails>
-            </StyledFactContentWrapper>
-          </StyledFactNumber>
-          <StyledFactNumber>
-            <StyledBullet>2.</StyledBullet>
-            <StyledFactContentWrapper>
-              <StyledFactHighlight>Get Information & Recipes</StyledFactHighlight>
-              <StyledFactDetails>Get special access to recipes. Also be a part of our private member community with direct communication with the farmers</StyledFactDetails>
-            </StyledFactContentWrapper>
-          </StyledFactNumber>
-          <StyledFactNumber>
-            <StyledBullet>3.</StyledBullet>
-            <StyledFactContentWrapper>
-              <StyledFactHighlight>Feel Better</StyledFactHighlight>
-              <StyledFactDetails>Take positive steps toward your health and know the source of your food</StyledFactDetails>
-            </StyledFactContentWrapper>
-          </StyledFactNumber>
+          {howItWorksSteps.map((fact, i) =>
+              <StyledFactNumber key={fact._key}>
+                <StyledBullet>{`${i + 1}.`}</StyledBullet>
+                <StyledFactContentWrapper>
+                  <StyledFactHighlight>{fact.stepTitle}</StyledFactHighlight>
+                  <StyledFactDetails>{fact.stepDescription}</StyledFactDetails>
+                </StyledFactContentWrapper>
+              </StyledFactNumber>
+          )}
         </StyledBulletPoints>
       </StyledContentWrapper>
     </StyledSectionContainer>
