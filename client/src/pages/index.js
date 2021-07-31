@@ -22,6 +22,8 @@ const Index = ({ data }) => {
     howItWorks,
   } = data.sanityData.edges[0].node
 
+    console.log('contactUs', contactUs);
+
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
@@ -31,7 +33,7 @@ const Index = ({ data }) => {
       <CardGrid data={cardGrid} />
       <WhatWeGrow data={featuredProducts} />
       <RecentPosts data={data.blog.edges} />
-      <Contact data={data.contact} />
+      <Contact data={contactUs} />
     </Layout>
   );
 };

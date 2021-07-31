@@ -19,14 +19,16 @@ const StyledContainer = styled.section`
   }
 `;
 const StyledFormContainer = styled.section`
-  & > span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & > a {
     font-size: 0.75rem;
     font-weight: 500;
   }
 `;
 const StyledForm = styled.div`
-  color: var(--primary-color);
-
+  color: var(--title-color-dark);
   font-weight: normal;
 `;
 const StyledTextSection = styled.section`
@@ -35,6 +37,7 @@ const StyledTextSection = styled.section`
   width: 100%;
   max-width: 500px;
   margin-left: 3px;
+  margin-bottom: 1rem;
 `;
 const StyledSeparator = styled.div`
   height: 1px;
@@ -63,18 +66,23 @@ const iconStyle = {
 
 const Contact = ({ data }) => {
   const {
-    frontmatter: { phone, email, address },
-    html,
+      contactUsSectionTitle,
+      contactUsSectionDescription,
+      contactUsAddress,
+      contactUsEmail,
+      contactUsPhone
   } = data;
+
+  const googleMapsLink = `https://www.google.com/maps/place/33737+H+Ave,+Earlham,+IA+50072/@41.5498879,-94.1495922,16.64z/data=!4m5!3m4!1s0x87ec4222522b09c9:0xefe621f2a0e73555!8m2!3d41.5498527!4d-94.1468346`;
 
   return (
     <React.Fragment>
       <StyledContactSection id="contact">
-        <StyledH1>Contact Us</StyledH1>
-        <StyledTextSection dangerouslySetInnerHTML={{ __html: html }} />
+        <StyledH1>{contactUsSectionTitle}</StyledH1>
+        <StyledTextSection dangerouslySetInnerHTML={{ __html: contactUsSectionDescription }} />
         <StyledSeparator />
         <StyledContacts>
-          {address && (
+          {contactUsAddress && (
             <StyledContainer>
               <HeirloomIcon
                   color={'var(--paragraph-text-accent)'}
@@ -83,11 +91,11 @@ const Contact = ({ data }) => {
               />
               <StyledFormContainer>
                 <StyledForm>Address</StyledForm>
-                <span>{address}</span>
+                <a href={googleMapsLink}>{contactUsAddress}</a>
               </StyledFormContainer>
             </StyledContainer>
           )}
-          {email && (
+          {contactUsEmail && (
             <StyledContainer>
               <HeirloomIcon
                   color={'var(--paragraph-text-accent)'}
@@ -96,11 +104,11 @@ const Contact = ({ data }) => {
               />
               <StyledFormContainer>
                 <StyledForm>E-Mail</StyledForm>
-                <span>{email}</span>
+                <a href={`mailto:${contactUsEmail}`}>{contactUsEmail}</a>
               </StyledFormContainer>
             </StyledContainer>
           )}
-          {phone && (
+          {contactUsPhone && (
             <StyledContainer>
               <HeirloomIcon
                   color={'var(--paragraph-text-accent)'}
@@ -109,7 +117,7 @@ const Contact = ({ data }) => {
               />
               <StyledFormContainer>
                 <StyledForm>Phone</StyledForm>
-                <span>{phone}</span>
+                <a href={`tel:+1${contactUsPhone}`}>{contactUsPhone}</a>
               </StyledFormContainer>
             </StyledContainer>
           )}
