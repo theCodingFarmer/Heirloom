@@ -12,6 +12,16 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            description: 'Click generate to create a unique slug from title for URL links.',
+            validation: Rule => Rule.required(),
+            options: {
+                source: 'title'
+            }
+        },
+        {
             name: 'summary',
             title: 'Summary',
             description: 'Short summary of blog post. Displays on landing page and blog post tab.',

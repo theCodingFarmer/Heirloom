@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import {graphql, useStaticQuery} from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import About from '../components/about';
@@ -20,7 +20,7 @@ const Index = ({ data }) => {
     featuredProducts,
     homeHero,
     howItWorks,
-  } = data.sanityData.edges[0].node
+  } = data.sanityData.edges[0].node;
 
   return (
     <Layout menuLinks={indexMenuLinks}>
@@ -30,7 +30,7 @@ const Index = ({ data }) => {
       <About data={aboutUs} />
       <CardGrid data={cardGrid} />
       <WhatWeGrow data={featuredProducts} />
-      <RecentPosts data={data.blog.edges} />
+      <RecentPosts data={data.blogData.edges} />
       <Contact data={contactUs} />
     </Layout>
   );
@@ -130,6 +130,26 @@ export const query = graphql`
          }
        }
      }
+     
+     blogData: allSanityFarmersBlogPost(limit: 4) {
+        edges {
+          node {
+            title
+            slug {
+                current
+            }
+            summary
+            _createdAt(formatString: "MMM DD")
+            image {
+              asset {
+                _id
+                altText
+                url
+              }
+            }
+          }
+        }
+      }
 
     header: markdownRemark(fileAbsolutePath: { regex: "/content/sections/header/" }) {
       frontmatter {

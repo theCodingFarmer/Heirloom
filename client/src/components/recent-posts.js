@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import Image from 'gatsby-plugin-sanity-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextLink from './links/text-link';
 import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
-import { StyledImageContainer } from './_shared/styled-image-container';
 import { flexCenter } from './_shared/styled-mixins';
 import { StyledSection } from './_shared/styled-section';
 import { StyledTextSection } from './_shared/styled-text-section';
@@ -69,33 +68,49 @@ const StyledPostText = styled(StyledTextSection)`
     overflow: hidden;
   }
 `;
+const StyledImageContainer = styled.div`
+  min-width: 300px;
+  min-height: 200px;
+  max-height: 300px;
+  position: relative;
+
+  & .gatsby-image-wrapper * {
+    transition: transform var(--transition-fast) ease-in-out !important;
+  }
+
+  &:hover .gatsby-image-wrapper * {
+    transform: scale(1.1);
+  }
+`;
 
 const RecentPosts = ({ data }) => {
   const recentPosts = data.map((post) => {
-    const { title, description, date } = post.node.frontmatter;
-    const coverImage = post.node.frontmatter.cover_image
-      ? post.node.frontmatter.cover_image.childImageSharp.fluid
-      : null;
-
-    const link = `/blog` + post.node.fields.slug;
-
-    const month = new Date(date).toLocaleDateString('en-EN', { month: 'short' });
-    const day = new Date(date).toLocaleDateString('en-EN', { day: '2-digit' });
+      const {title, summary, _createdAt: date} = post.node;
+      const coverImage = post.node.image ? post.node.image : null;
+      const link = `/blog` + post.node.slug.current;
+    // const { title, description, date } = post.node.frontmatter;
+    // const coverImage = post.node.frontmatter.cover_image
+    //   ? post.node.frontmatter.cover_image.childImageSharp.fluid
+    //   : null;
+    //
+    // const link = `/blog` + post.node.fields.slug;
+    //
+    // const month = new Date(date).toLocaleDateString('en-EN', { month: 'short' });
+    // const day = new Date(date).toLocaleDateString('en-EN', { day: '2-digit' });
 
     return (
       <StyledPostContainer key={title}>
         <StyledDateOverlay>
-          <span>{month}</span>
-          <span>{day}</span>
+          <span>{date}</span>
         </StyledDateOverlay>
         <Link to={link} aria-label={`recent post ${title}`}>
-          <StyledImageContainer>{coverImage && <Img fluid={coverImage} />}</StyledImageContainer>
+          <StyledImageContainer>{coverImage && <Image {...coverImage} />}</StyledImageContainer>
         </Link>
         <StyledTitleLink to={link}>
           <StyledH2>{title}</StyledH2>
         </StyledTitleLink>
         <StyledPostText>
-          <p>{description}</p>
+          <p>{summary}</p>
         </StyledPostText>
       </StyledPostContainer>
     );
