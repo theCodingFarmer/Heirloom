@@ -64,8 +64,6 @@ const StyledArchiveContainer = styled.div`
 `;
 
 const WhatWeGrow = ({data}) => {
-    console.log('data', data);
-
     const {
         featuredProductSectionTitle,
         featuredProductSectionDescription,

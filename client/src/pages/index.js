@@ -22,8 +22,6 @@ const Index = ({ data }) => {
     howItWorks,
   } = data.sanityData.edges[0].node
 
-    console.log('howItWorks', howItWorks);
-
   return (
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
