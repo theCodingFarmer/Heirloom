@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Image from 'gatsby-plugin-sanity-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextLink from './links/text-link';
@@ -9,6 +8,10 @@ import { StyledH1, StyledH2 } from './_shared/styled-headings';
 import { flexCenter } from './_shared/styled-mixins';
 import { StyledSection } from './_shared/styled-section';
 import { StyledTextSection } from './_shared/styled-text-section';
+import {
+    StyledSanityBlogImageContainer,
+    StyledSanityBlogImage
+} from './_shared/styled-image-container';
 
 const StyledPostsContainer = styled.article`
   display: grid;
@@ -104,7 +107,9 @@ const RecentPosts = ({ data }) => {
           <span>{date}</span>
         </StyledDateOverlay>
         <Link to={link} aria-label={`recent post ${title}`}>
-          <StyledImageContainer>{coverImage && <Image {...coverImage} />}</StyledImageContainer>
+            <StyledSanityBlogImageContainer>
+                <StyledSanityBlogImage imageUrl={coverImage.asset.url}/>
+            </StyledSanityBlogImageContainer>
         </Link>
         <StyledTitleLink to={link}>
           <StyledH2>{title}</StyledH2>

@@ -8,7 +8,7 @@ import HighlightList from './HighlightList';
 import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
 import {
-    StyledImageContainer,
+    StyledImageContainer, StyledSanityImage,
     StyledSanityImageContainer,
     StyledStaticImageContainer
 } from './_shared/styled-image-container';
@@ -78,8 +78,8 @@ const WhatWeGrow = ({data}) => {
         return (
             <StyledFeaturedProduct key={_id}>
                 {coverImage && (
-                    <StyledSanityImageContainer hasHover>
-                        <Image {...coverImage}/>
+                    <StyledSanityImageContainer>
+                        <StyledSanityImage {...coverImage}/>
                     </StyledSanityImageContainer>
                 )}
                 <StyledProductInfoContainer>

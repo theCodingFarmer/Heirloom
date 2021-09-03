@@ -15,7 +15,7 @@ export default {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
-            description: 'Click generate to create a unique slug from title for URL links.',
+            description: 'Click generate to create a unique slug from title for URL links. Will automatically add today\'s date to end of slug.',
             validation: Rule => Rule.required(),
             options: {
                 isUnique: isUniqueAcrossAllDocuments,
