@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "run-s tab:build-client tab:build-sanity browser",
+    "sanity-start": "cd studio && sanity start",
+    "sanity-build": "cd studio && sanity build",
+    "sanity-graphql": "cd studio && sanity graphql deploy",
+    "gatsby-start": "cd client && gatsby develop",
+    "tab:build-client": "ttab -t 'Gatsby' yarn gatsby-start",
+    "tab:build-sanity": "ttab -t 'Sanity' yarn sanity-start",
+    "browser": "open http://localhost:8000 -a \"Firefox Developer Edition\""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "ttab": "^0.7.1"
+  }
+}

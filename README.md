@@ -5,12 +5,10 @@
 
 
 
-<h1 align="center">
-  Heirloom Farm 👨🏻‍🌾
-</h1>
+# Heirloom Farm 👨🏻‍🌾
 
 
-# Table of Contents
+## Table of Contents
 
 - [Quick Start](#quick-start)
 - [Customize](#customize)
@@ -27,31 +25,10 @@
 
 # Quick start
 
-1.  **Create a Gatsby site.**
+To start the project run `yarn start`. This command open two new tabs and run Sanity and Gatsby as well as start a browser window to start development.
 
-    Use the Gatsby CLI to create a new site, specifying the _level-2_ starter.
-
-    ```shell
-    # create a new Gatsby site using the level-2 starter
-    gatsby new my-portfolio https://github.com/Knochenmark/gatsby-starter-level-2
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-portfolio/
-    gatsby develop
-    ```
-
-1.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-portfolio` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+#### Other commands to note:
+`yarn sanity-graphql` - run this after data structure changes  (run from the root)
 
 # Customize
 
