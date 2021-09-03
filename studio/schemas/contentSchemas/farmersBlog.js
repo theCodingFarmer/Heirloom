@@ -1,4 +1,4 @@
-import iconLib from '../../../client/src/assets/iconLib';
+import {isUniqueAcrossAllDocuments, todayDate} from '../schema-helper-functions/helper-functions';
 
 export default {
     name: 'farmersBlogPost',
@@ -18,8 +18,13 @@ export default {
             description: 'Click generate to create a unique slug from title for URL links.',
             validation: Rule => Rule.required(),
             options: {
-                source: 'title'
+                isUnique: isUniqueAcrossAllDocuments,
+                source: (doc) => {
+                    const date = todayDate();
+                    return `${doc.title}-${date}`
+                }
             }
+
         },
         {
             name: 'summary',
