@@ -90,16 +90,7 @@ const RecentPosts = ({ data }) => {
   const recentPosts = data.map((post) => {
       const {title, summary, _createdAt: date} = post.node;
       const coverImage = post.node.image ? post.node.image : null;
-      const link = `/blog` + post.node.slug.current;
-    // const { title, description, date } = post.node.frontmatter;
-    // const coverImage = post.node.frontmatter.cover_image
-    //   ? post.node.frontmatter.cover_image.childImageSharp.fluid
-    //   : null;
-    //
-    // const link = `/blog` + post.node.fields.slug;
-    //
-    // const month = new Date(date).toLocaleDateString('en-EN', { month: 'short' });
-    // const day = new Date(date).toLocaleDateString('en-EN', { day: '2-digit' });
+      const link = `/blog/` + post.node.slug.current;
 
     return (
       <StyledPostContainer key={title}>

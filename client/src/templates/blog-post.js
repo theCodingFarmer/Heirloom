@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
+import PropTypes, {string} from 'prop-types';
 import React from 'react';
 import Layout from '../components/layout';
 import { blogMenuLinks } from '../components/_config/menu-links';
@@ -35,52 +35,55 @@ const StyledBlogText = styled.div`
 `;
 
 const BlogPost = ({ data }) => {
-  const readingTime = data.markdownRemark.fields.readingTime.text;
-  const post = data.markdownRemark;
-  const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
-  const { title, date } = post.frontmatter;
+  console.log('data', data.sanityFarmersBlogPost);
+  const {title, _createdAt: date, _rawBody: post} = data.sanityFarmersBlogPost;
+  // const readingTime = data.markdownRemark.fields.readingTime.text;
+  // const post = data.markdownRemark;
+  // const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
+  // const { title, date } = post.frontmatter;
 
   return (
     <Layout menuLinks={blogMenuLinks}>
       <StyledBlogSection>
         <StyledBlogTitle>{title}</StyledBlogTitle>
         <StyledDate>
-          Posted {date}. <span>{readingTime}.</span>
+          Posted {date}.
         </StyledDate>
-        {coverImage && <Img fluid={coverImage} />}
-        <StyledBlogText dangerouslySetInnerHTML={{ __html: post.html }} />
+        {/*{coverImage && <Img fluid={coverImage} />}*/}
+        {/*<StyledBlogText dangerouslySetInnerHTML={{ __html: post.html }} />*/}
       </StyledBlogSection>
     </Layout>
   );
 };
 
 BlogPost.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: {
+    sanityFarmersBlogPost: {
+      title: string,
+      _createdAt: string,
+      _rawBody: [],
+      image: {
+        asset: {
+          url: string
+        }
+      }
+    }
+  }
 };
 
 export default BlogPost;
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        tags
-        date(formatString: "D. MMMM YYYY")
-        cover_image {
-          childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+    sanityFarmersBlogPost(slug: {current: {eq: $slug}}) {
+      title
+      _createdAt(formatString: "MMMM, D YYYY")
+      image {
+        asset {
+          url
         }
       }
-      fields {
-        readingTime {
-          text
-        }
-      }
+      _rawBody
     }
   }
 `;

@@ -19,41 +19,29 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { published: { eq: true } } }
-          limit: 2000
-        ) {
+        allSanityFarmersBlogPost {
           edges {
             node {
-              fields {
-                slug
+              slug {
+                current
               }
             }
-          }
-        }
-
-        tagsGroup: allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { published: { eq: true } } }
-          limit: 2000
-        ) {
-          group(field: frontmatter___tags) {
-            fieldValue
           }
         }
       }
     `
   );
 
-  // console.log('NODE', result.data.allMarkdownRemark.edges);
+  console.log('slugData', result.data.allSanityFarmersBlogPost.edges);
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allSanityFarmersBlogPost.edges.forEach(({ node }) => {
     createPage({
-      path: `blog${node.fields.slug}`,
+      path: `blog/${node.slug.current}`,
       component: path.resolve(`./src/templates/blog-post.js`),
       context: {
         // Data passed to context is available in page queries as GraphQL vars.
         // (when we query data it will set $slug var auto)
-        slug: node.fields.slug,
+        slug: node.slug.current,
       },
     });
   });
