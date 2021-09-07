@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
+import BlockContent from '@sanity/block-content-to-react';
 import Img from 'gatsby-image';
 import PropTypes, {string} from 'prop-types';
 import React from 'react';
@@ -7,6 +8,8 @@ import Layout from '../components/layout';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledSection } from '../components/_shared/styled-section';
+
+const {REACT_APP_SANITY_PROJECT_ID} = process.env;
 
 const StyledBlogSection = styled(StyledSection)`
   min-height: calc(100vh - var(--header-height));
@@ -41,6 +44,7 @@ const BlogPost = ({ data }) => {
   // const post = data.markdownRemark;
   // const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
   // const { title, date } = post.frontmatter;
+  console.log('REACT_APP_SANITY_PROJECT_ID', REACT_APP_SANITY_PROJECT_ID);
 
   return (
     <Layout menuLinks={blogMenuLinks}>
@@ -49,6 +53,12 @@ const BlogPost = ({ data }) => {
         <StyledDate>
           Posted {date}.
         </StyledDate>
+        <BlockContent
+            blocks={post}
+            imageOptions={{fit: 'max'}}
+            projectId={'rus7hoo0'}
+            dataset={'production'}
+        />
         {/*{coverImage && <Img fluid={coverImage} />}*/}
         {/*<StyledBlogText dangerouslySetInnerHTML={{ __html: post.html }} />*/}
       </StyledBlogSection>
