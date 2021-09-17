@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import BlockContent from '@sanity/block-content-to-react';
-import Img from 'gatsby-image';
 import PropTypes, {string} from 'prop-types';
 import React from 'react';
 import Layout from '../components/layout';
@@ -9,7 +8,6 @@ import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledSection } from '../components/_shared/styled-section';
 
-const {REACT_APP_SANITY_PROJECT_ID} = process.env;
 
 const StyledBlogSection = styled(StyledSection)`
   min-height: calc(100vh - var(--header-height));
@@ -18,49 +16,100 @@ const StyledBlogSection = styled(StyledSection)`
     width: 100%;
   }
 `;
+
 const StyledBlogTitle = styled(StyledH1)`
   margin-top: 3rem;
 `;
 const StyledDate = styled.div`
   font-size: 0.8rem;
+  margin-bottom: 2rem;
 
   & span {
     font-weight: 500;
   }
 `;
-const StyledBlogText = styled.div`
-  padding: 2rem;
+
+export const StyledCoverImage = styled.div`
+    width: 100%;
+    height: 450px;
+    background-image: url('${props => props.imageUrl}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+`;
+
+const StyledBlockContent = styled(BlockContent)`
+  padding: 1rem;
   width: 100%;
-  background: var(--bg-code);
-  border-radius: var(--radius);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  color: var(--paragraph-text-dark);
+  
+  & p { 
+    color: var(--paragraph-text-dark);
+  }
+  
+  & figure {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    padding: 1rem;
+    margin: 2rem 0;
+  }
+  
+  & img {
+    max-height: 500px;
+  }
+`;
+
+const StyledBlockContentContainer = styled.div`
+  padding: 1rem;
+  width: 100%;
+  
+  & p { 
+    color: var(--paragraph-text-dark);
+  }
+  
+  & h6 {
+     color: var(--paragraph-text-dark);
+     font-weight: bold;
+  }
+  
+  & figure {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    padding: 1rem;
+    margin: 2rem 0;
+  }
+  
+  & img {
+    max-height: 500px;
+  }
 `;
 
 const BlogPost = ({ data }) => {
   console.log('data', data.sanityFarmersBlogPost);
-  const {title, _createdAt: date, _rawBody: post} = data.sanityFarmersBlogPost;
-  // const readingTime = data.markdownRemark.fields.readingTime.text;
-  // const post = data.markdownRemark;
-  // const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
-  // const { title, date } = post.frontmatter;
-  console.log('REACT_APP_SANITY_PROJECT_ID', REACT_APP_SANITY_PROJECT_ID);
-
+  const {title, _createdAt: date, _rawBody, image} = data.sanityFarmersBlogPost;
+  const coverImage = image.asset.url;
+  console.log('coverImage', coverImage);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <StyledBlogSection>
         <StyledBlogTitle>{title}</StyledBlogTitle>
+        <StyledCoverImage imageUrl={coverImage}/>
         <StyledDate>
           Posted {date}.
         </StyledDate>
-        <BlockContent
-            blocks={post}
-            imageOptions={{fit: 'max'}}
-            projectId={'rus7hoo0'}
-            dataset={'production'}
-        />
-        {/*{coverImage && <Img fluid={coverImage} />}*/}
-        {/*<StyledBlogText dangerouslySetInnerHTML={{ __html: post.html }} />*/}
+        <StyledBlockContentContainer>
+          <BlockContent
+              blocks={_rawBody}
+              projectId={'rus7hoo0'}
+              dataset={'production'}
+          />
+        </StyledBlockContentContainer>
       </StyledBlogSection>
     </Layout>
   );

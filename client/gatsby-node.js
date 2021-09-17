@@ -32,8 +32,6 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   );
 
-  console.log('slugData', result.data.allSanityFarmersBlogPost.edges);
-
   result.data.allSanityFarmersBlogPost.edges.forEach(({ node }) => {
     createPage({
       path: `blog/${node.slug.current}`,

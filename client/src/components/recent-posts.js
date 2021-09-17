@@ -50,6 +50,10 @@ const StyledDateOverlay = styled.div`
   border-radius: var(--radius);
   font-weight: 500;
   line-height: 1rem;
+  
+  & span {
+   text-align: center;
+  }
 `;
 const StyledTitleLink = styled(Link)`
   text-decoration: none;

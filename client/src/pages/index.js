@@ -139,7 +139,7 @@ export const query = graphql`
                 current
             }
             summary
-            _createdAt(formatString: "MMM DD")
+            _createdAt(formatString: "MMM D")
             image {
               asset {
                 _id
