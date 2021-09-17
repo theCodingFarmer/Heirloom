@@ -92,7 +92,7 @@ const StyledImageContainer = styled.div`
 
 const RecentPosts = ({ data }) => {
   const recentPosts = data.map((post) => {
-      const {title, summary, _createdAt: date} = post.node;
+      const {title, summary, publishDate: date} = post.node;
       const coverImage = post.node.image ? post.node.image : null;
       const link = `/blog/` + post.node.slug.current;
 

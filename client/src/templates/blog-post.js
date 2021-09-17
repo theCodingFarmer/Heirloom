@@ -7,10 +7,15 @@ import Layout from '../components/layout';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledSection } from '../components/_shared/styled-section';
+import {urlFor} from '../sanity-helpers/url-helpers';
+import client from '../client';
+import {mq} from '../components/_shared/media';
+import ImageWithCaptionRenderer from '../sanity-helpers/serializer-components/ImageWithCaptionRenderer';
 
 
 const StyledBlogSection = styled(StyledSection)`
   min-height: calc(100vh - var(--header-height));
+  margin-top: 2rem;
 
   & > .gatsby-image-wrapper {
     width: 100%;
@@ -20,6 +25,7 @@ const StyledBlogSection = styled(StyledSection)`
 const StyledBlogTitle = styled(StyledH1)`
   margin-top: 3rem;
 `;
+
 const StyledDate = styled.div`
   font-size: 0.8rem;
   margin-bottom: 2rem;
@@ -28,6 +34,7 @@ const StyledDate = styled.div`
     font-weight: 500;
   }
 `;
+
 
 export const StyledCoverImage = styled.div`
     width: 100%;
@@ -91,10 +98,8 @@ const StyledBlockContentContainer = styled.div`
 `;
 
 const BlogPost = ({ data }) => {
-  console.log('data', data.sanityFarmersBlogPost);
-  const {title, _createdAt: date, _rawBody, image} = data.sanityFarmersBlogPost;
+  const {title, publishDate: date, _rawBody, image} = data.sanityFarmersBlogPost;
   const coverImage = image.asset.url;
-  console.log('coverImage', coverImage);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <StyledBlogSection>
@@ -106,8 +111,9 @@ const BlogPost = ({ data }) => {
         <StyledBlockContentContainer>
           <BlockContent
               blocks={_rawBody}
-              projectId={'rus7hoo0'}
-              dataset={'production'}
+              projectId={client}
+              dataset={client}
+              serializers={{types: {image: ImageWithCaptionRenderer}}}
           />
         </StyledBlockContentContainer>
       </StyledBlogSection>
@@ -136,7 +142,7 @@ export const query = graphql`
   query($slug: String!) {
     sanityFarmersBlogPost(slug: {current: {eq: $slug}}) {
       title
-      _createdAt(formatString: "MMMM, D YYYY")
+      publishDate(formatString: "MMMM, D YYYY")
       image {
         asset {
           url

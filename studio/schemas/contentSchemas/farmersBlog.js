@@ -1,4 +1,4 @@
-import {isUniqueAcrossAllDocuments, todayDate} from '../schema-helper-functions/helper-functions';
+import {formatDate, isUniqueAcrossAllDocuments, todayDate} from '../schema-helper-functions/helper-functions';
 
 export default {
     name: 'farmersBlogPost',
@@ -12,19 +12,14 @@ export default {
             validation: Rule => Rule.required()
         },
         {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            description: 'Click generate to create a unique slug from title for URL links. Will automatically add today\'s date to end of slug.',
+            name: 'publishDate',
+            title: 'Publish Date',
+            type: 'date',
+            description: 'Date of post for public display.',
             validation: Rule => Rule.required(),
             options: {
-                isUnique: isUniqueAcrossAllDocuments,
-                source: (doc) => {
-                    const date = todayDate();
-                    return `${doc.title}-${date}`
-                }
+                dateFormat: 'M-D-YYYY'
             }
-
         },
         {
             name: 'summary',
@@ -55,17 +50,34 @@ export default {
                         {
                             name: 'image',
                             type: 'image',
-                            validation: Rule => Rule.required()
                         },
                         {
                             name: 'altText',
                             title: 'Alt Text',
                             type: 'string'
+                        },
+                        {
+                            name: 'imageCaption',
+                            title: 'Image Caption',
+                            type: 'text',
+                            description: 'Optional image caption.'
                         }
                     ]
                 }
             ],
             validation: Rule => Rule.required()
-        }
+        },
+        {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            description: 'Click generate to create a unique slug from title for URL links. Will automatically add the publish date to end of slug.',
+            validation: Rule => Rule.required(),
+            options: {
+                isUnique: isUniqueAcrossAllDocuments,
+                source: (doc) => `${doc.title}-${formatDate(doc.publishDate)}`
+            }
+
+        },
     ]
 }

@@ -37,7 +37,6 @@ const StyledPaginationContainer = styled.div`
   }
 `;
 const Blog = ({ data }) => {
-    console.log('data', data);
   let [currentPage, setCurrentPage] = React.useState(1);
 
   const onPaginationChange = (page) => {
@@ -59,7 +58,7 @@ const Blog = ({ data }) => {
               key={node.slug}
               coverImage={coverImage}
               title={node.title}
-              date={node._createdAt}
+              date={node.publishDate}
               description={node.summary}
               link={`/blog/${node.slug.current}`}
               tags={[]}
@@ -87,7 +86,7 @@ export default Blog;
 
 export const query = graphql`
   query {
-      allSanityFarmersBlogPost(sort: {order: DESC, fields: _createdAt}) {
+      allSanityFarmersBlogPost(sort: {order: DESC, fields: publishDate}) {
         edges {
           node {
             slug {
@@ -100,7 +99,7 @@ export const query = graphql`
                 url
               }
             }
-            _createdAt(formatString: "MMMM D, YYYY")
+            publishDate(formatString: "MMMM D, YYYY")
           }
         }
       }
