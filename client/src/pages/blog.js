@@ -61,7 +61,6 @@ const Blog = ({ data }) => {
               date={node.publishDate}
               description={node.summary}
               link={`/blog/${node.slug.current}`}
-              tags={[]}
             />
           );
         })}
