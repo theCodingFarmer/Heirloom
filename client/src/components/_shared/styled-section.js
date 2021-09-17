@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {mq} from './media';
 
 export const StyledSection = styled.section`
   display: flex;
@@ -22,4 +23,8 @@ export const StyledFullHeightSection = styled(StyledSection)`
   padding-top: calc(var(--header-height) + 5rem);
   min-height: calc(100vh - var(--header-height));
   justify-content: start;
+  
+  ${mq.lt.lg} { 
+      padding-top: calc(var(--header-height) + 6rem);
+  } 
 `;

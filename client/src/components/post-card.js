@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { contentBox } from './_shared/styled-mixins';
@@ -27,9 +26,20 @@ const StyledReadMoreLink = styled(Link)`
     }
   }
 `;
-const StyledCoverImageContainer = styled.div`
-  padding: var(--space) var(--space) 0;
+
+// const StyledCoverImageContainer = styled.div`
+//   padding: var(--space) var(--space) 0;
+// `;
+
+export const StyledCoverImageContainer = styled.div`
+    height: 300px;
+    background-image: url('${props => props.imageUrl}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 1rem;
 `;
+
 const StyledPublishingDate = styled.div`
   margin-bottom: 1rem;
   color: var(--paragraph-text-accent);
@@ -48,6 +58,7 @@ const StyledDescription = styled.p`
 `;
 const StyledPostCard = styled.article`
   ${contentBox}
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -66,7 +77,7 @@ const PostCard = ({ title, date, description, link, coverImage }) => {
   return (
     <StyledPostCard>
       <Link to={link}>
-        <StyledCoverImageContainer>{coverImage && <Img fluid={coverImage} />}</StyledCoverImageContainer>
+          <StyledCoverImageContainer imageUrl={coverImage}/>
       </Link>
       <Link to={link}>
         <StyledContent>

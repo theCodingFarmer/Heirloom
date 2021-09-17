@@ -37,6 +37,7 @@ const StyledPaginationContainer = styled.div`
   }
 `;
 const Blog = ({ data }) => {
+    console.log('data', data);
   let [currentPage, setCurrentPage] = React.useState(1);
 
   const onPaginationChange = (page) => {
@@ -51,17 +52,17 @@ const Blog = ({ data }) => {
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="Blog" />
       <StyledFullHeightSection>
-        {data.allMarkdownRemark.edges.slice(leftCursor, rightCursor).map(({ node }) => {
-          const coverImage = node.frontmatter.cover_image ? node.frontmatter.cover_image.childImageSharp.fluid : null;
+        {data.allSanityFarmersBlogPost.edges.slice(leftCursor, rightCursor).map(({ node }) => {
+          const coverImage = node.image.asset.url ? node.image.asset.url : null;
           return (
             <PostCard
-              key={node.frontmatter.title}
+              key={node.slug}
               coverImage={coverImage}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              description={node.frontmatter.description}
-              link={`/blog${node.fields.slug}`}
-              tags={node.frontmatter.tags}
+              title={node.title}
+              date={node._createdAt}
+              description={node.summary}
+              link={`/blog/${node.slug.current}`}
+              tags={[]}
             />
           );
         })}
@@ -70,7 +71,7 @@ const Blog = ({ data }) => {
             pageSize={paginationSize}
             current={currentPage}
             onChange={onPaginationChange}
-            total={data.allMarkdownRemark.edges.length}
+            total={data.allSanityFarmersBlogPost.edges.length}
           />
         </StyledPaginationContainer>
       </StyledFullHeightSection>
@@ -86,36 +87,27 @@ export default Blog;
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: frontmatter___date }
-      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { published: { ne: false } } }
-    ) {
-      edges {
-        node {
-          frontmatter {
+      allSanityFarmersBlogPost(sort: {order: DESC, fields: _createdAt}) {
+        edges {
+          node {
+            slug {
+              current
+            }
+            summary
             title
-            tags
-            date(formatString: "D MMMM, YYYY")
-            description
-            cover_image {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
+            image {
+              asset {
+                url
               }
             }
-          }
-          excerpt
-          fields {
-            slug
+            _createdAt(formatString: "MMMM D, YYYY")
           }
         }
       }
-    }
-    site {
-      siteMetadata {
-        paginationPageSize
+      site {
+        siteMetadata {
+          paginationPageSize
+        }
       }
-    }
   }
 `;
