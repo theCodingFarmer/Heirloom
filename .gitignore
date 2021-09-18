@@ -63,6 +63,9 @@ typings/
 client/.cache/
 public
 
+# distributable folder
+dist/
+
 # Mac files
 .DS_Store
 
