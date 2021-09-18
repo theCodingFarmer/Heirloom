@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "heirloom-farm-cms"
+    "name": "heirloom-farm-cms",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "rus7hoo0",
