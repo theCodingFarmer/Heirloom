@@ -10,6 +10,7 @@ import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
 import ShopProducts from '../components/ShopProducts';
+import CSABuilder from '../components/CSABuilder';
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
@@ -23,7 +24,7 @@ const Shop = ({data}) => {
       <StyledFullHeightSection>
         <StyledTagsH1>Shop</StyledTagsH1>
         <StyledSeparator />
-        Build Your 2022 CSA!
+          <CSABuilder />
         <StyledSeparator />
         <ShopProducts available={data.products.nodes}/>
         <StyledSeparator />
