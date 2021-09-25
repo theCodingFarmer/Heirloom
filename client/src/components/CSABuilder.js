@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useState} from 'react';
 import TextLink from './links/text-link';
 import HighlightList from './HighlightList';
 import { mq } from './_shared/media';
@@ -17,47 +17,16 @@ const size = {
     large: 70
 };
 
-const StyledAvailableProduct = styled.article`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 2.5rem;
-  padding: 2.5rem 0;
-
-  ${mq.gt.sm} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  &:nth-of-type(even) {
-    direction: rtl;
-  }
-  &:nth-of-type(even) * {
-    direction: ltr;
-  }
-`;
-const StyledProductInfoContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-`;
-const StyledDescription = styled.section`
-  ${contentBox}
-  max-height: 180px;
-  position: relative;
-  padding: 10px;
-
-  > p {
-    height: 100%;
-    margin: 0;
-    font-size: 0.8rem;
-    overflow: hidden;
-  }
-`;
-
 const StyledSeasonContainer = styled.div`
     width: 100%;
     border-top: 1px solid var(--primary-color);
     border-bottom: 1px solid var(--primary-color);
     margin-top: -1px;
     padding: 1em 0;
+`;
+
+const StyledMessage = styled.p`
+    color: var(--title-color-dark);
 `;
 
 const StyledSeasonTextContainer = styled.div`
@@ -94,11 +63,12 @@ const StyledBasketsContainer = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
+    max-width: 500px;
     justify-content: space-between;
-    margin-top: 0.5em;
+    margin-top: 0.5em;        
 `;
 
-const StyledBasketIconAndTextContainer = styled.div`    
+const StyledBasketIconAndTextContainer = styled.div`
     position: relative;
     margin: 0 0.5rem;
     text-decoration: none;
@@ -111,7 +81,7 @@ const StyledBasketIconAndTextContainer = styled.div`
         content: '';
         position: absolute;
         left: 0;
-        right: 100%;
+        right: ${(props) => props.isSelected ? '0' : '100%'};
         bottom: 0;
         background: var(--primary-color);
         height: 4px;
@@ -119,11 +89,11 @@ const StyledBasketIconAndTextContainer = styled.div`
     }
     
     > svg {
-        fill: var(--secondary-color);
+        fill: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
     }
     
     > p {
-        color: var(--secondary-color);
+        color: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
     }
 
     &:hover:before {
@@ -137,11 +107,6 @@ const StyledBasketIconAndTextContainer = styled.div`
     &:hover > svg {
         fill: var(--primary-color);
     }
-`;
-
-const StyledHeirloomIcon = styled(HeirloomIcon)`
-    height: ${(props) => props.size}px;
-    width: ${(props) => props.size}px;
 `;
 
 const StyledSeasonPriceContainer = styled.div`
@@ -168,34 +133,96 @@ const StyledSeasonPricePerWeek = styled.p`
     color: var(--title-color-light);
 `;
 
+const StyledOrderButton = styled.button`
+`;
+
+const changeSelection = (season, size, ) => {}
+
 const CSABuilder = () => {
+
+    const fakeProps = {
+        title: '',
+        message: 'Select your preferred basket size for each season then checkout to order your 2022 share!',
+        year: 2022,
+        pricing: {
+            small: 9,
+            medium: 17,
+            large: 40
+        },
+        seasons: [
+            {
+                season: 'Spring',
+                weeks: 5,
+                dates: 'May 31 - July 3',
+                produce: ['Kale', 'Turnips', 'Lettuce', ' Green Beans']
+            },
+            {
+                season: 'Summer',
+                weeks: 13,
+                dates: 'July 5 - Oct 2',
+                produce: ['Kale', 'Carrots', 'Lettuce', 'Tomatoes', 'Egg Plant', 'Peppers']
+            },
+            {
+                season: 'Fall',
+                weeks: 4,
+                dates: 'Oct 4 - Oct 30',
+                produce: ['Spaghetti Squash', 'Turnips', 'Acorn Squash', 'Tomatoes', 'Garlic']
+            },
+        ]
+    }
+
+    const [csaSelection, setCsaSelection] = useState({
+        spring: {
+            small: false,
+            medium: false,
+            large: false
+        },
+        summer: {
+            small: false,
+            medium: false,
+            large: false
+        },
+        fall: {
+            small: false,
+            medium: false,
+            large: false
+        }
+    });
+    console.log('csaSelection', csaSelection);
 
     return (
         <StyledSection id="projects">
-            <StyledH1>Build Your 2022 CSA Share!</StyledH1>
-            <p>Select your preferred basket size for each season then checkout to order your 2022 share!</p>
+            <StyledH2>{`Build Your ${fakeProps.year} CSA Share`}</StyledH2>
+            <StyledMessage>Select your preferred basket size for each season then checkout to order your 2022 share!</StyledMessage>
             <StyledSeasonContainer>
                 <StyledSeasonTextContainer>
                     <StyledSeasonHeaderText><span>Spring Share</span> - 5 Weeks</StyledSeasonHeaderText>
                     <HighlightList highlights={['Kale', 'Turnips', 'Lettuce', 'Tomatoes', 'Garlic']} />
                 </StyledSeasonTextContainer>
                 <StyledBasketsContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
+                    <StyledBasketIconAndTextContainer
+                        isSelected={csaSelection.spring.large}
+                        onClick={() => {}}
+                    >
+                        <HeirloomIcon
                             icon={'vegBasket'}
                             size={size.large}
                         />
                         <StyledBasketSizeText>Large</StyledBasketSizeText>
                     </StyledBasketIconAndTextContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
+                    <StyledBasketIconAndTextContainer
+                        isSelected={csaSelection.spring.medium}
+                    >
+                        <HeirloomIcon
                             icon={'vegBasket'}
                             size={size.medium}
                         />
                         <StyledBasketSizeText>Medium</StyledBasketSizeText>
                     </StyledBasketIconAndTextContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
+                    <StyledBasketIconAndTextContainer
+                        isSelected={csaSelection.spring.small}
+                    >
+                        <HeirloomIcon
                             icon={'vegBasket'}
                             size={size.small}
                         />
@@ -208,76 +235,25 @@ const CSABuilder = () => {
                     </StyledSeasonPriceContainer>
                 </StyledBasketsContainer>
             </StyledSeasonContainer>
-
-            <StyledSeasonContainer>
-                <StyledSeasonTextContainer>
-                    <StyledSeasonHeaderText><span>Spring Share</span> - 5 Weeks</StyledSeasonHeaderText>
-                    <HighlightList highlights={['Kale', 'Turnips', 'Lettuce', 'Tomatoes', 'Garlic']} />
-                </StyledSeasonTextContainer>
-                <StyledBasketsContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
-                            icon={'vegBasket'}
-                            size={size.large}
-                        />
-                        <StyledBasketSizeText>Large</StyledBasketSizeText>
-                    </StyledBasketIconAndTextContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
-                            icon={'vegBasket'}
-                            size={size.medium}
-                        />
-                        <StyledBasketSizeText>Medium</StyledBasketSizeText>
-                    </StyledBasketIconAndTextContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
-                            icon={'vegBasket'}
-                            size={size.small}
-                        />
-                        <StyledBasketSizeText>Small</StyledBasketSizeText>
-                    </StyledBasketIconAndTextContainer>
-                    <StyledSeasonPriceContainer>
-                        <StyledSeasonPricePerWeek>Price:</StyledSeasonPricePerWeek>
-                        <StyledSeasonTotalPrice>$200.00</StyledSeasonTotalPrice>
-                        <StyledSeasonPricePerWeek>$40/wk</StyledSeasonPricePerWeek>
-                    </StyledSeasonPriceContainer>
-                </StyledBasketsContainer>
-            </StyledSeasonContainer>
-
-            <StyledSeasonContainer>
-                <StyledSeasonTextContainer>
-                    <StyledSeasonHeaderText><span>Spring Share</span> - 5 Weeks</StyledSeasonHeaderText>
-                    <HighlightList highlights={['Kale', 'Turnips', 'Lettuce', 'Tomatoes', 'Garlic']} />
-                </StyledSeasonTextContainer>
-                <StyledBasketsContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
-                            icon={'vegBasket'}
-                            size={size.large}
-                        />
-                        <StyledBasketSizeText>Large</StyledBasketSizeText>
-                    </StyledBasketIconAndTextContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
-                            icon={'vegBasket'}
-                            size={size.medium}
-                        />
-                        <StyledBasketSizeText>Medium</StyledBasketSizeText>
-                    </StyledBasketIconAndTextContainer>
-                    <StyledBasketIconAndTextContainer>
-                        <StyledHeirloomIcon
-                            icon={'vegBasket'}
-                            size={size.small}
-                        />
-                        <StyledBasketSizeText>Small</StyledBasketSizeText>
-                    </StyledBasketIconAndTextContainer>
-                    <StyledSeasonPriceContainer>
-                        <StyledSeasonPricePerWeek>Price:</StyledSeasonPricePerWeek>
-                        <StyledSeasonTotalPrice>$200.00</StyledSeasonTotalPrice>
-                        <StyledSeasonPricePerWeek>$40/wk</StyledSeasonPricePerWeek>
-                    </StyledSeasonPriceContainer>
-                </StyledBasketsContainer>
-            </StyledSeasonContainer>
+            <StyledOrderButton
+                className="snipcart-add-item"
+                data-item-id="CSA-Share"
+                data-item-price="199.99"
+                data-item-url="/shop"
+                data-item-stackable={false}
+                data-item-name={'2022 CSA Share'}
+                data-item-custom1-name="Spring Share"
+                data-item-custom1-type="readonly"
+                data-item-custom1-value="None"
+                data-item-custom2-name="Summer Share"
+                data-item-custom2-type="readonly"
+                data-item-custom2-value="Large"
+                data-item-custom3-name="Fall Share"
+                data-item-custom3-type="readonly"
+                data-item-custom3-value="Medium"
+            >
+                Order Your CSA
+            </StyledOrderButton>
         </StyledSection>
     );
 };
