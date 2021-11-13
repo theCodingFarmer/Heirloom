@@ -14,7 +14,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-stylus`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`,
     {
       resolve: 'gatsby-source-sanity',
       options: {

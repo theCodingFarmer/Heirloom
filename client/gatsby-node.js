@@ -15,7 +15,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions;
+  const { createPage } = actions;
   const result = await graphql(
     `
       {
@@ -43,9 +43,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-
-  createRedirect({
-    fromPath: `/farmer-login`,
-    toPath: `https://heirloomfarm.sanity.studio`
-  })
 };
