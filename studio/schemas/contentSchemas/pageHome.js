@@ -2,13 +2,14 @@ export default {
     name: 'pageHome',
     title: "Home Page",
     type: 'document',
+    preview: {
+        prepare() {
+            return {
+                title: 'Home Landing Page'
+            }
+        }
+    },
     fields: [
-        {
-            name: 'homePage',
-            title: 'Save As...',
-            type: 'string',
-            description: 'Build out your home landing page.'
-        },
         {
             name: 'homeHero',
             title: 'Hero Section',

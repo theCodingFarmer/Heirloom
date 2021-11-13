@@ -10,7 +10,10 @@
 
 # Quick start
 
-To start the project locally run `yarn start`. This command open two new tabs and run Sanity and Gatsby as well as start a browser window to start development.
+To start the project locally run `yarn start`. This command open two new tabs and run Sanity and Gatsby as well as start a browser window to start development. Go to the following: 
+- Sanity Studio runs at [http://localhost:3333](http://localhost:3333)
+- Gatsby runs at [http://localhost:8000/](http://localhost:8000/)
+- GraphQL Playground for Gatsby [http://localhost:8000/___graphql](http://localhost:8000/___graphql)
 
 ## Root Level Commands:
 - `yarn sanity-graphql` - run this after data structure changes  (run from the root)
