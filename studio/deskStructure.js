@@ -6,14 +6,13 @@ export default () =>
         .items(
             [
                 S.listItem()
-                    .title('Home Landing Page')
+                    .title('Home Page')
                     .child(
                         S.document()
                             .schemaType('pageHome')
                             .documentId('pageHome')
                     ),
-                ...S.documentTypeListItems().filter((item) => ![
-                    'pageHome'
-                ].includes(item.getId()))
+                ...S.documentTypeListItems().filter((item) =>
+                    !['pageHome'].includes(item.getId()))
             ]
-        )
+        );

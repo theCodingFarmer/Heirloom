@@ -5,7 +5,7 @@ export default {
     preview: {
         prepare() {
             return {
-                title: 'Home Landing Page'
+                title: 'Home Page'
             }
         }
     },

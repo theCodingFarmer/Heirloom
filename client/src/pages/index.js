@@ -50,7 +50,7 @@ export const query = graphql`
       }
     }
     
-     sanityData: allSanityPageHome {
+     sanityData: allSanityPageHome(filter: {_id: {eq: "pageHome"}}) {
        edges {
          node {
            id
