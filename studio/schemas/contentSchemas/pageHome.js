@@ -2,13 +2,19 @@ export default {
     name: 'pageHome',
     title: "Home Page",
     type: 'document',
-    fields: [
-        {
-            name: 'homePage',
-            title: 'Save As...',
-            type: 'string',
-            description: 'Build out your home landing page.'
+    preview: {
+        select: {
+            title: 'title',
+            hero: 'hero.title'
         },
+        prepare(selection) {
+            const {title} = selection
+            return {
+                title: title
+            }
+        }
+    },
+    fields: [
         {
             name: 'homeHero',
             title: 'Hero Section',

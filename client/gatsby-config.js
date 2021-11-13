@@ -25,10 +25,11 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-snipcart',
+      resolve: 'gatsby-source-stripe',
       options: {
-        apiKey: process.env.GATSBY_SNIPCART_APIKEY,
-        autopop: true
+        objects: ["Price"],
+        secretKey: process.env.STRIPE_SECRET_KEY,
+        downloadFiles: false
       }
     },
     {

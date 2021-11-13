@@ -11,11 +11,25 @@ import { contentBox, flexCenter, flexEnd } from './_shared/styled-mixins';
 import { StyledSection } from './_shared/styled-section';
 import {HeirloomIcon} from './icon';
 
-const size = {
+const iconSize = {
     small: 46,
     medium: 60,
     large: 70
 };
+
+const CSA = {
+    SIZE: {
+        NONE: 'None',
+        LARGE: 'Large',
+        MEDIUM: 'Medium',
+        SMALL: 'Small'
+    },
+    SEASON : {
+        SPRING: 'Spring',
+        SUMMER: 'Summer',
+        FALL: 'Fall'
+    }
+}
 
 const StyledSeasonContainer = styled.div`
     width: 100%;
@@ -136,7 +150,21 @@ const StyledSeasonPricePerWeek = styled.p`
 const StyledOrderButton = styled.button`
 `;
 
-const changeSelection = (season, size, ) => {}
+const changeSelection = (basketSizeSelection, currentBasketSize, setIsSelected) => {
+    const button = document.querySelector('#order-button')
+    const select = document.querySelector('#frame_color')
+
+
+    if (basketSizeSelection === currentBasketSize) {
+        setIsSelected('none');
+    }
+
+    if (basketSizeSelection !== currentBasketSize) {
+        setIsSelected(basketSizeSelection);
+
+        button.setAttribute("data-item-custom1-value", basketSizeSelection)
+    }
+}
 
 const CSABuilder = () => {
 
@@ -152,9 +180,16 @@ const CSABuilder = () => {
         seasons: [
             {
                 season: 'Spring',
+                active: true,
                 weeks: 5,
                 dates: 'May 31 - July 3',
-                produce: ['Kale', 'Turnips', 'Lettuce', ' Green Beans']
+                produce: ['Kale', 'Turnips', 'Lettuce', ' Green Beans'],
+                basketSize: {
+                    small: {
+                        price: 45,
+                        active: true,
+                    }
+                }
             },
             {
                 season: 'Summer',
@@ -171,24 +206,8 @@ const CSABuilder = () => {
         ]
     }
 
-    const [csaSelection, setCsaSelection] = useState({
-        spring: {
-            small: false,
-            medium: false,
-            large: false
-        },
-        summer: {
-            small: false,
-            medium: false,
-            large: false
-        },
-        fall: {
-            small: false,
-            medium: false,
-            large: false
-        }
-    });
-    console.log('csaSelection', csaSelection);
+    const [isSelected, setIsSelected] = useState('none');
+    console.log('isSelected', isSelected);
 
     return (
         <StyledSection id="projects">
@@ -201,30 +220,33 @@ const CSABuilder = () => {
                 </StyledSeasonTextContainer>
                 <StyledBasketsContainer>
                     <StyledBasketIconAndTextContainer
-                        isSelected={csaSelection.spring.large}
-                        onClick={() => {}}
+                        isSelected={isSelected === CSA.SIZE.LARGE}
+                        onClick={() => changeSelection(CSA.SIZE.LARGE, isSelected, setIsSelected)}
                     >
                         <HeirloomIcon
                             icon={'vegBasket'}
-                            size={size.large}
+                            size={iconSize.large}
                         />
                         <StyledBasketSizeText>Large</StyledBasketSizeText>
                     </StyledBasketIconAndTextContainer>
                     <StyledBasketIconAndTextContainer
-                        isSelected={csaSelection.spring.medium}
+                        isSelected={isSelected === CSA.SIZE.MEDIUM}
+                        onClick={() => changeSelection(CSA.SIZE.MEDIUM, isSelected, setIsSelected)}
+
                     >
                         <HeirloomIcon
                             icon={'vegBasket'}
-                            size={size.medium}
+                            size={iconSize.medium}
                         />
                         <StyledBasketSizeText>Medium</StyledBasketSizeText>
                     </StyledBasketIconAndTextContainer>
                     <StyledBasketIconAndTextContainer
-                        isSelected={csaSelection.spring.small}
+                        isSelected={isSelected === CSA.SIZE.SMALL}
+                        onClick={() => changeSelection(CSA.SIZE.SMALL, isSelected, setIsSelected)}
                     >
                         <HeirloomIcon
                             icon={'vegBasket'}
-                            size={size.small}
+                            size={iconSize.small}
                         />
                         <StyledBasketSizeText>Small</StyledBasketSizeText>
                     </StyledBasketIconAndTextContainer>
@@ -236,21 +258,7 @@ const CSABuilder = () => {
                 </StyledBasketsContainer>
             </StyledSeasonContainer>
             <StyledOrderButton
-                className="snipcart-add-item"
-                data-item-id="CSA-Share"
-                data-item-price="199.99"
-                data-item-url="/shop"
-                data-item-stackable={false}
-                data-item-name={'2022 CSA Share'}
-                data-item-custom1-name="Spring Share"
-                data-item-custom1-type="readonly"
-                data-item-custom1-value="None"
-                data-item-custom2-name="Summer Share"
-                data-item-custom2-type="readonly"
-                data-item-custom2-value="Large"
-                data-item-custom3-name="Fall Share"
-                data-item-custom3-type="readonly"
-                data-item-custom3-value="Medium"
+                id={'order-button'}
             >
                 Order Your CSA
             </StyledOrderButton>

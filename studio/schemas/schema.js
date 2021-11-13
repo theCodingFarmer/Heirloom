@@ -12,17 +12,18 @@ import cardGrid from './contentSchemas/cardGrid';
 import cardGridCard from './contentSchemas/cardGridCard';
 import contactUs from './contentSchemas/contactUs';
 import featuredProducts from './contentSchemas/featuredProducts';
+import Shop from './shopSchemas/Shop';
 
 export default createSchema({
   // We name our schema
-  name: 'default',
+  name: 'heirloomFarm',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
       pageHome,
       farmersBlog,
       whatWeGrow,
-      //hidden schemas
+      //hidden content schemas
       hero,
       howItWorks,
       howItWorksSteps,
