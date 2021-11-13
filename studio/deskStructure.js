@@ -3,7 +3,7 @@ import S from '@sanity/desk-tool/structure-builder';
 
 export default () =>
     S.list()
-        .title('Site Content')
+        .title('Heirloom Farm Content')
         .items(
             [
                 S.listItem()
