@@ -20,6 +20,13 @@ To start the project locally run `yarn start`. This command open two new tabs an
 - `yarn sanity-deploy` - Running this command builds and deploys the studio, making it available on [heirloom.sanity.studio](https://heirloomfarm.sanity.studio). 
 - `yarn sanity-undeploy` - run to change the hostname or remove the Studio from the web
 
+# Deploying Sanity Studio Changes
+
+Navigate to `/studio` folder and run `sanity deploy`. If this errors, you may need to log in by running `sanity login`. 
+For more details on deployment see this [Sanity](https://www.sanity.io/docs/deployment) article.   
+
+To log-in navigate to `/farmer-login`. 
+
 # Customize
 
 ## Icons

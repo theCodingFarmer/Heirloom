@@ -7,6 +7,7 @@ import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
 import ProductList from '../components/product-list';
+import {graphql} from 'gatsby';
 
 const StyledProjectsH1 = styled(StyledH1)`
   margin-top: 3rem;
