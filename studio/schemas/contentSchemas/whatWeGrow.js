@@ -1,7 +1,10 @@
+import {GiPlantRoots} from 'react-icons/gi';
+
 export default {
     name: 'whatWeGrow',
     title: "What We Grow",
     type: 'document',
+    icon: GiPlantRoots,
     fields: [
         {
             name: 'title',
