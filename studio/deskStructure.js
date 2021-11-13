@@ -1,3 +1,4 @@
+import {GiBarn} from 'react-icons/gi';
 import S from '@sanity/desk-tool/structure-builder';
 
 export default () =>
@@ -7,6 +8,7 @@ export default () =>
             [
                 S.listItem()
                     .title('Home Page')
+                    .icon(GiBarn)
                     .child(
                         S.document()
                             .schemaType('pageHome')

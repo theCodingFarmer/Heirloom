@@ -1,6 +1,6 @@
 export default {
     name: 'pageHome',
-    title: "Home Page",
+    title: 'Home Page',
     type: 'document',
     preview: {
         prepare() {

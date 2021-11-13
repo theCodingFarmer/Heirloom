@@ -1,9 +1,11 @@
 import {formatDate, isUniqueAcrossAllDocuments, todayDate} from '../schema-helper-functions/helper-functions';
+import {GiFarmer} from 'react-icons/gi';
 
 export default {
     name: 'farmersBlogPost',
     title: "Farmer's Blog",
     type: 'document',
+    icon: GiFarmer,
     fields: [
         {
             name: 'title',
