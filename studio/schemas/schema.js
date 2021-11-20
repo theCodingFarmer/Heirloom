@@ -22,7 +22,7 @@ export default createSchema({
       pageHome,
       farmersBlog,
       whatWeGrow,
-      //hidden schemas
+      //hidden schemas below
       hero,
       howItWorks,
       howItWorksSteps,
