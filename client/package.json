@@ -1,10 +1,10 @@
 {
-  "homepage": "https://knochenmark.github.io/gatsby-starter-level-2/",
-  "name": "gatsby-starter-level-2",
+  "homepage": "https://hlfarm.com/",
+  "name": "Heirloom Farm Gatsby Client",
   "private": true,
-  "description": "A minimalistic starter to quickly set up and configure your portfolio with Gatsby",
+  "description": "A Gatsby powered CSA farm website to showcase products, buy memberships and read blogs.",
   "version": "0.1.0",
-  "author": "Knochenmark",
+  "author": "Tye Campbell",
   "scripts": {
     "deploy": "gatsby build --prefix-paths",
     "build": "gatsby build",
@@ -63,9 +63,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/knochenmark/gatsby-starter-level-2"
+    "url": "https://github.com/TyeCampbell/heirloom"
   },
   "bugs": {
-    "url": "https://github.com/knochenmark/gatsby-starter-level-2/issues"
+    "url": "https://github.com/TyeCampbell/heirloom/issues"
   }
 }
