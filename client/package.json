@@ -1,6 +1,6 @@
 {
   "homepage": "https://hlfarm.com/",
-  "name": "Heirloom-Farm-Gatsby-Client",
+  "name": "heirloom-farm-gatsby-client",
   "private": true,
   "description": "A Gatsby powered CSA farm website to showcase products, buy memberships and read blogs.",
   "version": "0.1.0",
