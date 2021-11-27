@@ -13,6 +13,8 @@ import cardGridCard from './contentSchemas/cardGridCard';
 import contactUs from './contentSchemas/contactUs';
 import featuredProducts from './contentSchemas/featuredProducts';
 import shopCsaMembership from './shopSchemas/shopCsaMembership';
+import csaShareSeason from './shopSchemas/csaShareSeason';
+import csaPricing from './shopSchemas/csaPricing';
 
 export default createSchema({
   // We name our schema
@@ -32,6 +34,8 @@ export default createSchema({
       hero,
       howItWorks,
       howItWorksSteps,
+      csaPricing,
+      csaShareSeason,
       shopCsaMembership
   ]),
 })
