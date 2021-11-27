@@ -12,6 +12,7 @@ import cardGrid from './contentSchemas/cardGrid';
 import cardGridCard from './contentSchemas/cardGridCard';
 import contactUs from './contentSchemas/contactUs';
 import featuredProducts from './contentSchemas/featuredProducts';
+import shopCsaMembership from './shopSchemas/shopCsaMembership';
 
 export default createSchema({
   // We name our schema
@@ -22,14 +23,15 @@ export default createSchema({
       pageHome,
       farmersBlog,
       whatWeGrow,
-      //hidden schemas below
-      hero,
-      howItWorks,
-      howItWorksSteps,
+      //hidden schemas below (for shop, add to deskStructure.js as well)
       aboutUs,
       cardGrid,
       cardGridCard,
+      contactUs,
       featuredProducts,
-      contactUs
+      hero,
+      howItWorks,
+      howItWorksSteps,
+      shopCsaMembership
   ]),
 })

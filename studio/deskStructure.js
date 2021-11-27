@@ -16,7 +16,10 @@ export default () =>
                             .documentId('pageHome')
                     ),
                 ...S.documentTypeListItems().filter((item) =>
-                    !['pageHome'].includes(item.getId())),
+                    ![
+                        'pageHome',
+                        'shopCsaMembership'
+                    ].includes(item.getId())),
                 S.listItem()
                     .title('Shop')
                     .icon(GiBasket)
@@ -24,12 +27,15 @@ export default () =>
                         S.list()
                             .title('Shop Items')
                             .showIcons(false)
-                            .items(
-                                S.documentTypeListItems().filter((item) =>
-                                    [
-                                        'shopCsaMembership'
-                                    ].includes(item.getId())),
-                            )
+                            .items([
+                                S.listItem()
+                                    .title('Memberships')
+                                    .child(
+                                        S.document()
+                                            .schemaType('shopCsaMembership')
+                                            .documentId('shopCsaMembership')
+                                    )
+                            ])
                     )
             ]
         );
