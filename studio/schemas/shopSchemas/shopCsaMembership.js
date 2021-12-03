@@ -9,6 +9,13 @@ export default {
         },
         prepare(selection) {
             const {title, status} = selection;
+
+            if (!title || !status) {
+                return {
+                    title: ''
+                }
+            }
+
             return {
                 title: `Season Year: ${title} (${status.toUpperCase()})`,
             }
@@ -32,6 +39,7 @@ export default {
             options: {
                 list: [
                     {title: 'Open', value: 'open'},
+                    {title: 'Closed', value: 'closed'},
                     {title: 'Preorder', value: 'preorder'},
                     {title: 'Sold Out', value: 'sold-out'}
                 ],
