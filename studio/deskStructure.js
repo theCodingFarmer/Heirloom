@@ -18,7 +18,8 @@ export default () =>
                 ...S.documentTypeListItems().filter((item) =>
                     ![
                         'pageHome',
-                        'shopCsaMembership'
+                        'shopCsaMembership',
+                        'shopProducts'
                     ].includes(item.getId())),
                 S.listItem()
                     .title('Shop')
@@ -36,6 +37,15 @@ export default () =>
                                             .id('shopCsaMembership')
                                             .filter('_type == "shopCsaMembership"')
                                             .defaultOrdering([{field: '_updatedAt', direction: 'desc'}])
+                                    ),
+                                S.listItem()
+                                    .title('Products')
+                                    .child(
+                                        S.documentList()
+                                            .schemaType('shopProducts')
+                                            .id('shopProducts')
+                                            .filter('_type == "shopProducts"')
+                                            .defaultOrdering([{field: 'shopProductsTitle', direction: 'desc'}])
                                     )
                             ])
                     )

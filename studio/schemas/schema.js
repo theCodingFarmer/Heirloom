@@ -15,6 +15,9 @@ import featuredProducts from './contentSchemas/featuredProducts';
 import shopCsaMembership from './shopSchemas/shopCsaMembership';
 import csaShareSeason from './shopSchemas/csaShareSeason';
 import csaPricing from './shopSchemas/csaPricing';
+import shopProducts from './shopSchemas/shopProducts';
+import shopProductOptions from './shopSchemas/shopProductOptions';
+import shopProductSelectableOption from './shopSchemas/shopProductSelectableOption';
 
 export default createSchema({
   // We name our schema
@@ -36,6 +39,9 @@ export default createSchema({
       howItWorksSteps,
       csaPricing,
       csaShareSeason,
-      shopCsaMembership
+      shopCsaMembership,
+      shopProducts,
+      shopProductOptions,
+      shopProductSelectableOption
   ]),
 })
