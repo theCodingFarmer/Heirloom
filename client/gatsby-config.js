@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
   pathPrefix: '/gatsby-starter-level-2',
@@ -29,8 +31,21 @@ module.exports = {
       resolve: 'gatsby-source-stripe',
       options: {
         objects: ["Price"],
-        secretKey: process.env.STRIPE_SECRET_KEY,
+        secretKey: process.env.GATSBY_STRIPE_SECRET_KEY,
         downloadFiles: false
+      }
+    },
+    {
+      resolve: `use-shopping-cart`,
+      options: {
+        mode: "payment",
+        cartMode: "client-only",
+        stripePublicKey: process.env.GATSBY_STRIPE_PUBLIC_KEY,
+        successUrl: "https://www.google.com", // url must start with http or https
+        cancelUrl: "https://www.stripe.com", // url must start with http or https
+        currency: "USD",
+        allowedCountries: ["US"],
+        billingAddressCollection: true
       }
     },
     {

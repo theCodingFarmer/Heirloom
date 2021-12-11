@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
+import PropTypes, {number, string} from 'prop-types';
 import React from 'react';
 import TextLink from './links/text-link';
 import HighlightList from './HighlightList';
 import { mq } from './_shared/media';
 import { StyledH1, StyledH2 } from './_shared/styled-headings';
-import { StyledImageContainer } from './_shared/styled-image-container';
+import {StyledImageContainer, StyledSanityImage, StyledSanityImageContainer} from './_shared/styled-image-container';
 import { contentBox, flexCenter, flexEnd } from './_shared/styled-mixins';
 import { StyledSection } from './_shared/styled-section';
+import {formatCurrencyString, useShoppingCart} from 'use-shopping-cart';
 
 const StyledAvailableProduct = styled.article`
   display: grid;
@@ -51,22 +52,41 @@ const StyledArchiveContainer = styled.div`
   margin-top: 2.5rem;
 `;
 
-const ShopProducts = ({available}) => {
-    const availableProducts = available.map((project, index) => {
-        const coverImage = project.frontmatter.cover_image ? project.frontmatter.cover_image.childImageSharp.fluid : null;
-        const title = project.frontmatter.title;
+const ShopProducts = (props) => {
+
+    if (!props.products.length) {
+        return null;
+    }
+
+    const {addItem, removeItem} = useShoppingCart();
+    console.log('props', props);
+    const products = props.products;
+
+    const availableProducts = products.map((product, index) => {
+        const id = product.node.id;
+        const coverImage = product.node.shopProductsImage ? product.node.shopProductsImage : null;
+        const title = product.node.shopProductsTitle;
+        const description = product.node.shopProductsDescription;
+        const price = product.node.pricingShopProducts;
 
         return (
-            <StyledAvailableProduct key={title + index}>
+            <StyledAvailableProduct key={id}>
                 {coverImage && (
-                    <StyledImageContainer hasHover>
-                        <Img fluid={coverImage} />
-                    </StyledImageContainer>
+                    <StyledSanityImageContainer>
+                        <StyledSanityImage {...coverImage}/>
+                    </StyledSanityImageContainer>
                 )}
                 <StyledProductInfoContainer>
                     <StyledH2>{title}</StyledH2>
-                    <StyledDescription dangerouslySetInnerHTML={{__html: project.html}} />
-                    <HighlightList highlights={project.frontmatter.options} />
+                    <StyledDescription dangerouslySetInnerHTML={{__html: description}} />
+                    <h3>
+                        {formatCurrencyString({
+                            value: price,
+                            currency: 'usd',
+                        })}
+                    </h3>
+                    <button onClick={() => addItem(id)}>Add to cart</button>
+                    <button onClick={() => removeItem(id)}>Remove</button>
                 </StyledProductInfoContainer>
             </StyledAvailableProduct>
         );
@@ -81,7 +101,21 @@ const ShopProducts = ({available}) => {
 };
 
 ShopProducts.propTypes = {
-  available: PropTypes.array.isRequired,
+  products: PropTypes.arrayOf(
+      PropTypes.shape({
+          node: {
+              id: string,
+              pricingShopProducts: number,
+              shopProductAdditionalOptions: [],
+              shopProductsDescription: string,
+              shopProductsImage: {
+                  asset: {
+                      url: string
+                  }
+              },
+              shopProductsTitle: string
+          }
+      })),
 };
 
 export default ShopProducts;

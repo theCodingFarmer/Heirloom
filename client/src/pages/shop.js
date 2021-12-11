@@ -10,13 +10,15 @@ import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
 import ShopProducts from '../components/ShopProducts';
+import Cart from '../components/stripe/Cart';
+import CartSummary from '../components/stripe/CartSummary';
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
 `;
 
 const Shop = ({data}) => {
-
+console.log('data', data.allSanityShopProducts.edges);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
@@ -25,7 +27,10 @@ const Shop = ({data}) => {
         <StyledSeparator />
         Build Your 2022 CSA!
         <StyledSeparator />
-        <ShopProducts available={data.products.nodes}/>
+        <Cart>
+          <ShopProducts products={data.allSanityShopProducts.edges}/>
+          <CartSummary/>
+        </Cart>
         <StyledSeparator />
         <TextLink label="Take me home" link="/" />
       </StyledFullHeightSection>
@@ -76,5 +81,30 @@ export const shopQuery = graphql`
         html
       }
     }
+    allSanityShopProducts(filter: {shopProductsStatus: {eq: true}}) {
+    edges {
+      node {
+        id
+        shopProductsImage {
+          asset {
+            _id
+            altText
+            url
+          }
+        }
+        shopProductsStatus
+        shopProductsTitle
+        shopProductsDescription
+        pricingShopProducts
+        shopProductsAdditionalOptions {
+          shopProductsOptionTitle
+          shopProductsSelectableOptions {
+            pricingShopProductSelectableOption
+            shopProductSelectableOptionChoice
+          }
+        }
+      }
+    }
+  }
   }
 `;
