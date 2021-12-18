@@ -14,6 +14,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-stylus`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     {
       resolve: 'gatsby-source-sanity',
       options: {
@@ -24,6 +25,13 @@ module.exports = {
         graphqlTag: 'default',
         watchMode: true
       }
+    },
+    {
+      resolve: 'gatsby-source-shopify',
+      options: {
+        password: process.env.GATSBY_SHOPIFY_PASSWORD,
+        storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
