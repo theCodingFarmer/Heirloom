@@ -3,9 +3,20 @@ import getStripe from '../../../stripe/getStripe';
 
 const priceFormatter = (unformattedPrice) =>  Math.round(unformattedPrice / 100).toFixed(2).toString();
 
+const formatSeasonOrder = (rawSeasonData) => {
+    const seasonOrder = ['Spring', 'Summer', 'Fall'];
+
+    return seasonOrder.map((season) => ({
+        shareSeasonTitle: `${season} CSA Share`,
+        ...rawSeasonData.filter((filteredSeason) => filteredSeason.product.metadata.season === (season).toLowerCase())
+    }))
+}
+
 const CsaMembershipSelection = ({seasonSizeSelections}) => {
     console.log('seasonSizeSelections', seasonSizeSelections);
     const [loading, setLoading] = useState(false)
+
+    console.log('shapedData', formatSeasonOrder(seasonSizeSelections));
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -71,6 +82,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                             name={'spring'}
                             type="radio"
                             value={null}
+                            defaultChecked={true}
                         />
                     </label>
 
@@ -109,6 +121,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                             name={'summer'}
                             type="radio"
                             value={null}
+                            defaultChecked={true}
                         />
                     </label>
                 </fieldset>
