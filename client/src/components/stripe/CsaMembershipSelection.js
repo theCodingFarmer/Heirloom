@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styled from '@emotion/styled';
 import getStripe from '../../../stripe/getStripe';
 import {HeirloomIcon} from '../icon';
 
@@ -27,6 +28,47 @@ const formatSeasonSizeToObject = (allSeasonData) => {
     return newStateObject;
 };
 
+const StyledBasketIconAndTextContainer = styled.div`
+    position: relative;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: ${(props) => props.isSelected ? '0' : '100%'};
+        bottom: 0;
+        background: var(--primary-color);
+        height: 4px;
+        transition: right var(--transition-fast) ease-out;
+    }
+    
+    > svg {
+        fill: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
+    }
+    
+    > p {
+        color: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
+    }
+
+    &:hover:before {
+        right: 0;
+    }
+    
+    &:hover > p {
+        color: var(--primary-color);
+    }
+    
+    &:hover > svg {
+        fill: var(--primary-color);
+    }
+`;
+
 
 const CsaMembershipSelection = ({seasonSizeSelections}) => {
     console.log('seasonSizeSelections', seasonSizeSelections);
@@ -38,7 +80,21 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
 
     };
 
-    console.log('selectedCsaOptions state: ', selectedCsaOptions);
+    const setCsaSelection = (seasonSize) => {
+        const stringArray = seasonSize.split("-");
+        const season = stringArray[0];
+
+        const currentBoolean = selectedCsaOptions[seasonSize];
+
+        setSelectedCsaOptions({
+            ...selectedCsaOptions,
+            [`${season}-small`]: false,
+            [`${season}-medium`]: false,
+            [`${season}-large`]: false,
+            [seasonSize]: !currentBoolean
+        })
+    };
+
     const handleSubmit = async event => {
         event.preventDefault();
         setLoading(true);
@@ -78,17 +134,24 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                         <p>Produce in Season: </p>
                     </div>
                     <div>
-                        {seasonProducts.shareSeasonSizes.map((shareSize) =>
-                            shareSize.active &&
-                            <div>
-                                <HeirloomIcon
-                                    icon={'vegBasket'}
-                                    size={iconSize[shareSize.product.metadata.size]}
-                                />
-                                <p>{shareSize.product.name}</p>
-                                <p>{`$${priceFormatter(shareSize.unit_amount)}`}</p>
-                            </div>
-                        )}
+                        {seasonProducts.shareSeasonSizes.map((shareSize) => {
+                            const seasonSize = `${shareSize.product.metadata.season}-${shareSize.product.metadata.size}`
+
+                            return (
+                                shareSize.active &&
+                                <StyledBasketIconAndTextContainer
+                                    isSelected={selectedCsaOptions[seasonSize]}
+                                    onClick={() => setCsaSelection(seasonSize)}
+                                >
+                                    <HeirloomIcon
+                                        icon={'vegBasket'}
+                                        size={iconSize[shareSize.product.metadata.size]}
+                                    />
+                                    <p>{shareSize.product.name}</p>
+                                    <p>{`$${priceFormatter(shareSize.unit_amount)}`}</p>
+                                </StyledBasketIconAndTextContainer>
+                            )
+                        })}
                     </div>
                 </div>
             )}
