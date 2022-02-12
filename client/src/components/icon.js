@@ -38,7 +38,7 @@ HeirloomIcon.propTypes = {
     color: PropTypes.string,
     icon: PropTypes.string.isRequired,
     viewBox: PropTypes.string,
-    style: PropTypes.shape(PropTypes.object),
+    style: PropTypes.object,
     className: PropTypes.string,
 };
 
