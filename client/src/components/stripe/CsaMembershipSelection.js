@@ -23,7 +23,14 @@ const formatSeasonOrder = (rawSeasonData) => {
 const formatSeasonSizeToObject = (allSeasonData) => {
     let newStateObject = {};
 
-    allSeasonData.forEach((season) => newStateObject[`${season.product.metadata.season}-${season.product.metadata.size}`] = false)
+    allSeasonData.forEach((season) =>
+        newStateObject[`${season.product.metadata.season}-${season.product.metadata.size}`] = {
+            isSelected: false,
+            stripeLineItems: {
+                quantity: 1,
+                price: season.id
+            }
+        })
 
     return newStateObject;
 };
@@ -75,24 +82,37 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
     const [loading, setLoading] = useState(false)
     const [selectedCsaOptions, setSelectedCsaOptions] = useState(formatSeasonSizeToObject(seasonSizeSelections))
     const [stripeLineItems, setStripeLineItems] = useState([]);
+    const seasonsProducts = formatSeasonOrder(seasonSizeSelections);
 
     const completeMembershipToStripeCheckout = () => {
 
     };
 
-    const setCsaSelection = (seasonSize) => {
-        const stringArray = seasonSize.split("-");
-        const season = stringArray[0];
-
-        const currentBoolean = selectedCsaOptions[seasonSize];
+    const setCsaSizeSelection = (seasonSize) => {
+        const selectedSeason = seasonSize.split("-")[0];
+        const modifiedSeasonSize = {
+            [`${selectedSeason}-small`]: {
+                ...selectedCsaOptions[`${selectedSeason}-small`],
+                isSelected: false
+            },
+            [`${selectedSeason}-medium`]: {
+                ...selectedCsaOptions[`${selectedSeason}-medium`],
+                isSelected: false
+            },
+            [`${selectedSeason}-large`]: {
+                ...selectedCsaOptions[`${selectedSeason}-large`],
+                isSelected: false
+            },
+            [seasonSize]: {
+                ...selectedCsaOptions[seasonSize],
+                isSelected: !selectedCsaOptions[seasonSize].isSelected
+            }
+        }
 
         setSelectedCsaOptions({
             ...selectedCsaOptions,
-            [`${season}-small`]: false,
-            [`${season}-medium`]: false,
-            [`${season}-large`]: false,
-            [seasonSize]: !currentBoolean
-        })
+            ...modifiedSeasonSize
+        });
     };
 
     const handleSubmit = async event => {
@@ -121,9 +141,6 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
         }
     }
 
-    const seasonsProducts = formatSeasonOrder(seasonSizeSelections);
-    console.log('seasonsProducts', seasonsProducts);
-
     return (
         <div>
             {seasonsProducts.map((seasonProducts) =>
@@ -140,8 +157,8 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                             return (
                                 shareSize.active &&
                                 <StyledBasketIconAndTextContainer
-                                    isSelected={selectedCsaOptions[seasonSize]}
-                                    onClick={() => setCsaSelection(seasonSize)}
+                                    isSelected={selectedCsaOptions[seasonSize].isSelected}
+                                    onClick={() => setCsaSizeSelection(seasonSize)}
                                 >
                                     <HeirloomIcon
                                         icon={'vegBasket'}
