@@ -19,6 +19,7 @@ const StyledSeasonHeaderContainer = styled.div`
 
     > h3 {
         margin-bottom: 4px;
+        border-bottom: 2px solid var(--primary-color);
     }
     
     > p {
@@ -41,6 +42,10 @@ const StyledBasketIconAndTextContainer = styled.div`
     outline: ${(props) => props.isSelected ? '4px solid var(--primary-color)' : '1px solid var(--secondary-color)'};
     border-radius: var(--radius);
     
+    &:hover {
+        cursor: pointer;
+    }
+    
     > svg {
         fill: var(--secondary-color);
     }
@@ -57,6 +62,28 @@ const StyledBasketIconAndTextContainer = styled.div`
     &:hover > svg {
         fill: var(--primary-color);
     }
+`;
+
+const StyledOrderButton = styled.button`
+    background-color: ${(props) => props.disabled ? 'var(--disabled-color)' : 'var(--primary-color)'};
+    padding: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--title-color-light);
+    border: none;
+    outline: ${(props) => props.disabled ? 'none' : '4px solid var(--primary-color)'};
+    
+    &:hover {
+        color: var(--title-color-light);
+        background-color: ${(props) => props.disabled ? 'var(--disabled-color)' : 'var(--secondary-color)'} ;
+        cursor: ${(props) => props.disabled ? 'not-allowed' : 'pointer'};
+    }
+`;
+
+const StyledButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 26px 0;
 `;
 
 const priceFormatter = (unformattedPrice) =>  Math.round(unformattedPrice / 100).toFixed(2).toString();
@@ -108,6 +135,10 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
             }
         ]);
     };
+
+    const disableCheckoutButton = !selectedCsaOptions.some((selection) => selection.isSelected);
+
+    console.log('disableCheckoutButton', disableCheckoutButton);
 
     const createStripeLineItems = () => selectedCsaOptions.filter((selection) => selection.isSelected).map((seasonSize) => ({
             price: seasonSize.id,
@@ -162,11 +193,14 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                     </div>
                 )}
             </div>
-            <div>
-                <button onClick={() => handleSubmit()}>
+            <StyledButtonContainer>
+                <StyledOrderButton
+                    disabled={disableCheckoutButton}
+                    onClick={() => handleSubmit()}
+                >
                     Complete CSA Membership & Checkout
-                </button>
-            </div>
+                </StyledOrderButton>
+            </StyledButtonContainer>
         </div>
     );
 };
