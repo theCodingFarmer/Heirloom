@@ -51,15 +51,6 @@ const StyledBasketIconAndTextContainer = styled.div`
 `;
 
 const priceFormatter = (unformattedPrice) =>  Math.round(unformattedPrice / 100).toFixed(2).toString();
-//
-// const formatSeasonOrder = (rawSeasonData) => {
-//     const seasonOrder = ['Spring', 'Summer', 'Fall'];
-//
-//     return seasonOrder.map((season) => ({
-//         shareSeasonTitle: `${season} CSA Share`,
-//         shareSeasonSizes: [...rawSeasonData.filter((filteredSeason) => filteredSeason.product.metadata.season === (season).toLowerCase())]
-//     }))
-// }
 
 const formatSeasonOrder = (rawSeasonData) => {
     const seasonOrder = ['Spring', 'Summer', 'Fall'];
@@ -68,24 +59,9 @@ const formatSeasonOrder = (rawSeasonData) => {
         shareSeasonTitle: `${season} CSA Share`,
         shareSeasonSizes: [...rawSeasonData.filter((filteredSeason) => filteredSeason.product.metadata.season === (season).toLowerCase())]
     }))
-}
-
-const formatSeasonSizeToObject = (allSeasonData) => {
-    let newStateObject = {};
-
-    allSeasonData.forEach((season) =>
-        newStateObject[`${season.product.metadata.season}-${season.product.metadata.size}`] = {
-            isSelected: false,
-            stripeLineItems: {
-                quantity: 1,
-                price: season.id
-            }
-        })
-
-    return newStateObject;
 };
 
-const addSelectorToData = (allSeasonData) => allSeasonData.map((season) => ({
+const addIsSelectedToData = (allSeasonData) => allSeasonData.map((season) => ({
     ...season,
     isSelected: false
 }));
@@ -93,34 +69,28 @@ const addSelectorToData = (allSeasonData) => allSeasonData.map((season) => ({
 const CsaMembershipSelection = ({seasonSizeSelections}) => {
     console.log('data into component (seasonSizeSelections)', seasonSizeSelections);
     const [loading, setLoading] = useState(false)
-    const [selectedCsaOptions, setSelectedCsaOptions] = useState(formatSeasonSizeToObject(seasonSizeSelections));
-    const [customerCsaSelection, setCustomerCsaSelection] = useState(addSelectorToData(seasonSizeSelections));
-    const [stripeLineItems, setStripeLineItems] = useState([]);
+    const [selectedCsaOptions, setSelectedCsaOptions] = useState(addIsSelectedToData(seasonSizeSelections));
     const seasonsProducts = formatSeasonOrder(seasonSizeSelections);
 
-    const completeMembershipToStripeCheckout = () => {
 
-    };
-
-    console.log('customerCsaSelection', customerCsaSelection);
+    console.log('selectedCsaOptions', selectedCsaOptions);
 
     const isSelected = (id) => {
-        const selection = customerCsaSelection.find((selection) => selection.id === id);
+        const selection = selectedCsaOptions.find((selection) => selection.id === id);
         return selection.isSelected;
     };
 
-    const updateCustomerCsaSelection = (seasonSizeId) => {
-        const selectedCsaSeasonAndSize = customerCsaSelection.find((selection) => selection.id === seasonSizeId);
-        const remainingUnselectedSeasonSizes = customerCsaSelection.filter((selection) => selection.product.metadata.season === selectedCsaSeasonAndSize.product.metadata.season && selection.id !== seasonSizeId);
-        const remainingCsaSeasonsAndSizes = customerCsaSelection.filter((selection) => selection.product.metadata.season !== selectedCsaSeasonAndSize.product.metadata.season && selection.id !== seasonSizeId);
-        // const remainingCsaSeasonsAndSizes = customerCsaSelection.filter((selection) => selection.id !== seasonSizeId);
+    const updateCsaSelection = (seasonSizeId) => {
+        const selectedCsaSeasonAndSize = selectedCsaOptions.find((selection) => selection.id === seasonSizeId);
+        const remainingUnselectedSeasonSizes = selectedCsaOptions.filter((selection) => selection.product.metadata.season === selectedCsaSeasonAndSize.product.metadata.season && selection.id !== seasonSizeId);
+        const remainingCsaSeasonsAndSizes = selectedCsaOptions.filter((selection) => selection.product.metadata.season !== selectedCsaSeasonAndSize.product.metadata.season && selection.id !== seasonSizeId);
 
         const unselectedOtherSizes = remainingUnselectedSeasonSizes.map((seasonSize) => ({
             ...seasonSize,
             isSelected: false
         }));
 
-        setCustomerCsaSelection([
+        setSelectedCsaOptions([
             ...remainingCsaSeasonsAndSizes,
             ...unselectedOtherSizes,
             {
@@ -130,33 +100,10 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
         ]);
     };
 
-
-    const setCsaSizeSelection = (seasonSize) => {
-        const selectedSeason = seasonSize.split("-")[0];
-        const modifiedSeasonSize = {
-            [`${selectedSeason}-small`]: {
-                ...selectedCsaOptions[`${selectedSeason}-small`],
-                isSelected: false
-            },
-            [`${selectedSeason}-medium`]: {
-                ...selectedCsaOptions[`${selectedSeason}-medium`],
-                isSelected: false
-            },
-            [`${selectedSeason}-large`]: {
-                ...selectedCsaOptions[`${selectedSeason}-large`],
-                isSelected: false
-            },
-            [seasonSize]: {
-                ...selectedCsaOptions[seasonSize],
-                isSelected: !selectedCsaOptions[seasonSize].isSelected
-            }
-        }
-
-        setSelectedCsaOptions({
-            ...selectedCsaOptions,
-            ...modifiedSeasonSize
-        });
-    };
+    const stripeLineItems = () => {
+        const selectedCsaSeasonsAndSizes = selectedCsaOptions.find((selection) => selection.isSelected);
+        console.log('selectedCsaSeasonsAndSizes', selectedCsaSeasonsAndSizes);
+    }
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -200,14 +147,12 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                     </div>
                     <div>
                         {seasonProducts.shareSeasonSizes.map((shareSize) => {
-                            const seasonSize = `${shareSize.product.metadata.season}-${shareSize.product.metadata.size}`
-
                             return (
                                 shareSize.active &&
                                 <StyledBasketIconAndTextContainer
                                     key={shareSize.product.name}
                                     isSelected={isSelected(shareSize.id)}
-                                    onClick={() => updateCustomerCsaSelection(shareSize.id)}
+                                    onClick={() => updateCsaSelection(shareSize.id)}
                                 >
                                     <HeirloomIcon
                                         icon={'vegBasket'}
