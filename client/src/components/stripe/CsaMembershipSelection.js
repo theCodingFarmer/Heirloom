@@ -14,39 +14,40 @@ const StyledSeasonSizeRow = styled.div`
     flex-direction: row;
 `;
 
+const StyledSeasonHeaderContainer = styled.div`
+    margin-bottom: 12px;
+
+    > h3 {
+        margin-bottom: 4px;
+    }
+    
+    > p {
+        color: var(--paragraph-text-dark);
+        margin-bottom: 2px;
+    }
+`;
+
 const StyledBasketIconAndTextContainer = styled.div`
     position: relative;
     text-decoration: none;
     display: flex;
+    margin: 6px;
+    padding: 10px 0;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    width: 12rem;
-    
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: ${(props) => props.isSelected ? '0' : '100%'};
-        bottom: 0;
-        background: var(--primary-color);
-        height: 4px;
-        transition: right var(--transition-fast) ease-out;
-    }
+    width: 11rem;
+    box-sizing: content-box;
+    outline: ${(props) => props.isSelected ? '4px solid var(--primary-color)' : '1px solid var(--secondary-color)'};
+    border-radius: var(--radius);
     
     > svg {
-        // fill: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
         fill: var(--secondary-color);
     }
     
     > p {
-        // color: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
         color: var(--secondary-color);
-        font-weight: ${(props) => props.isSelected ? 'bold' : 'normal'};
-    }
-
-    &:hover:before {
-        right: 0;
+        margin-bottom: 0;
     }
     
     &:hover > p {
@@ -132,38 +133,40 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
     return (
         <div>
             <div>
+                {seasonsProducts.map((seasonProducts) =>
+                    <div key={seasonProducts.shareSeasonTitle}>
+                        <StyledSeasonHeaderContainer>
+                            <h3>{seasonProducts.shareSeasonTitle}</h3>
+                            <p>5 Weeks Long from May 10th to July 24th</p>
+                            <p>Produce in Season: </p>
+                        </StyledSeasonHeaderContainer>
+                        <StyledSeasonSizeRow>
+                            {seasonProducts.shareSeasonSizes.map((shareSize) => {
+                                return (
+                                    shareSize.active &&
+                                    <StyledBasketIconAndTextContainer
+                                        key={shareSize.product.name}
+                                        isSelected={isSelected(shareSize.id)}
+                                        onClick={() => updateCsaSelection(shareSize.id)}
+                                    >
+                                        <HeirloomIcon
+                                            icon={'vegBasket'}
+                                            size={iconSize[shareSize.product.metadata.size]}
+                                        />
+                                        <p>{shareSize.product.name}</p>
+                                        <p>{`$${priceFormatter(shareSize.unit_amount)}`}</p>
+                                    </StyledBasketIconAndTextContainer>
+                                )
+                            })}
+                        </StyledSeasonSizeRow>
+                    </div>
+                )}
+            </div>
+            <div>
                 <button onClick={() => handleSubmit()}>
-                    Add to Cart
+                    Complete CSA Membership & Checkout
                 </button>
             </div>
-            {seasonsProducts.map((seasonProducts) =>
-                <div key={seasonProducts.shareSeasonTitle}>
-                    <div>
-                        <h3>{seasonProducts.shareSeasonTitle}</h3>
-                        <p>5 Weeks Long from May 10th to July 24th</p>
-                        <p>Produce in Season: </p>
-                    </div>
-                    <StyledSeasonSizeRow>
-                        {seasonProducts.shareSeasonSizes.map((shareSize) => {
-                            return (
-                                shareSize.active &&
-                                <StyledBasketIconAndTextContainer
-                                    key={shareSize.product.name}
-                                    isSelected={isSelected(shareSize.id)}
-                                    onClick={() => updateCsaSelection(shareSize.id)}
-                                >
-                                    <HeirloomIcon
-                                        icon={'vegBasket'}
-                                        size={iconSize[shareSize.product.metadata.size]}
-                                    />
-                                    <p>{shareSize.product.name}</p>
-                                    <p>{`$${priceFormatter(shareSize.unit_amount)}`}</p>
-                                </StyledBasketIconAndTextContainer>
-                            )
-                        })}
-                    </StyledSeasonSizeRow>
-                </div>
-            )}
         </div>
     );
 };
