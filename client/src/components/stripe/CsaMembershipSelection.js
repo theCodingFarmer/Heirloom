@@ -9,32 +9,6 @@ const iconSize = {
     large: 70
 };
 
-const priceFormatter = (unformattedPrice) =>  Math.round(unformattedPrice / 100).toFixed(2).toString();
-
-const formatSeasonOrder = (rawSeasonData) => {
-    const seasonOrder = ['Spring', 'Summer', 'Fall'];
-
-    return seasonOrder.map((season) => ({
-        shareSeasonTitle: `${season} CSA Share`,
-        shareSeasonSizes: [...rawSeasonData.filter((filteredSeason) => filteredSeason.product.metadata.season === (season).toLowerCase())]
-    }))
-}
-
-const formatSeasonSizeToObject = (allSeasonData) => {
-    let newStateObject = {};
-
-    allSeasonData.forEach((season) =>
-        newStateObject[`${season.product.metadata.season}-${season.product.metadata.size}`] = {
-            isSelected: false,
-            stripeLineItems: {
-                quantity: 1,
-                price: season.id
-            }
-        })
-
-    return newStateObject;
-};
-
 const StyledBasketIconAndTextContainer = styled.div`
     position: relative;
     margin: 0 0.5rem;
@@ -76,17 +50,86 @@ const StyledBasketIconAndTextContainer = styled.div`
     }
 `;
 
+const priceFormatter = (unformattedPrice) =>  Math.round(unformattedPrice / 100).toFixed(2).toString();
+//
+// const formatSeasonOrder = (rawSeasonData) => {
+//     const seasonOrder = ['Spring', 'Summer', 'Fall'];
+//
+//     return seasonOrder.map((season) => ({
+//         shareSeasonTitle: `${season} CSA Share`,
+//         shareSeasonSizes: [...rawSeasonData.filter((filteredSeason) => filteredSeason.product.metadata.season === (season).toLowerCase())]
+//     }))
+// }
+
+const formatSeasonOrder = (rawSeasonData) => {
+    const seasonOrder = ['Spring', 'Summer', 'Fall'];
+
+    return seasonOrder.map((season) => ({
+        shareSeasonTitle: `${season} CSA Share`,
+        shareSeasonSizes: [...rawSeasonData.filter((filteredSeason) => filteredSeason.product.metadata.season === (season).toLowerCase())]
+    }))
+}
+
+const formatSeasonSizeToObject = (allSeasonData) => {
+    let newStateObject = {};
+
+    allSeasonData.forEach((season) =>
+        newStateObject[`${season.product.metadata.season}-${season.product.metadata.size}`] = {
+            isSelected: false,
+            stripeLineItems: {
+                quantity: 1,
+                price: season.id
+            }
+        })
+
+    return newStateObject;
+};
+
+const addSelectorToData = (allSeasonData) => allSeasonData.map((season) => ({
+    ...season,
+    isSelected: false
+}));
 
 const CsaMembershipSelection = ({seasonSizeSelections}) => {
-    console.log('seasonSizeSelections', seasonSizeSelections);
+    console.log('data into component (seasonSizeSelections)', seasonSizeSelections);
     const [loading, setLoading] = useState(false)
-    const [selectedCsaOptions, setSelectedCsaOptions] = useState(formatSeasonSizeToObject(seasonSizeSelections))
+    const [selectedCsaOptions, setSelectedCsaOptions] = useState(formatSeasonSizeToObject(seasonSizeSelections));
+    const [customerCsaSelection, setCustomerCsaSelection] = useState(addSelectorToData(seasonSizeSelections));
     const [stripeLineItems, setStripeLineItems] = useState([]);
     const seasonsProducts = formatSeasonOrder(seasonSizeSelections);
 
     const completeMembershipToStripeCheckout = () => {
 
     };
+
+    console.log('customerCsaSelection', customerCsaSelection);
+
+    const isSelected = (id) => {
+        const selection = customerCsaSelection.find((selection) => selection.id === id);
+        return selection.isSelected;
+    };
+
+    const updateCustomerCsaSelection = (seasonSizeId) => {
+        const selectedCsaSeasonAndSize = customerCsaSelection.find((selection) => selection.id === seasonSizeId);
+        const remainingUnselectedSeasonSizes = customerCsaSelection.filter((selection) => selection.product.metadata.season === selectedCsaSeasonAndSize.product.metadata.season && selection.id !== seasonSizeId);
+        const remainingCsaSeasonsAndSizes = customerCsaSelection.filter((selection) => selection.product.metadata.season !== selectedCsaSeasonAndSize.product.metadata.season && selection.id !== seasonSizeId);
+        // const remainingCsaSeasonsAndSizes = customerCsaSelection.filter((selection) => selection.id !== seasonSizeId);
+
+        const unselectedOtherSizes = remainingUnselectedSeasonSizes.map((seasonSize) => ({
+            ...seasonSize,
+            isSelected: false
+        }));
+
+        setCustomerCsaSelection([
+            ...remainingCsaSeasonsAndSizes,
+            ...unselectedOtherSizes,
+            {
+                ...selectedCsaSeasonAndSize,
+                isSelected: !selectedCsaSeasonAndSize.isSelected
+            }
+        ]);
+    };
+
 
     const setCsaSizeSelection = (seasonSize) => {
         const selectedSeason = seasonSize.split("-")[0];
@@ -143,8 +186,13 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
 
     return (
         <div>
+            <div>
+                <button onClick={() => handleSubmit()}>
+                    Add to Cart
+                </button>
+            </div>
             {seasonsProducts.map((seasonProducts) =>
-                <div>
+                <div key={seasonProducts.shareSeasonTitle}>
                     <div>
                         <h3>{seasonProducts.shareSeasonTitle}</h3>
                         <p>5 Weeks Long from May 10th to July 24th</p>
@@ -157,8 +205,9 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                             return (
                                 shareSize.active &&
                                 <StyledBasketIconAndTextContainer
-                                    isSelected={selectedCsaOptions[seasonSize].isSelected}
-                                    onClick={() => setCsaSizeSelection(seasonSize)}
+                                    key={shareSize.product.name}
+                                    isSelected={isSelected(shareSize.id)}
+                                    onClick={() => updateCustomerCsaSelection(shareSize.id)}
                                 >
                                     <HeirloomIcon
                                         icon={'vegBasket'}

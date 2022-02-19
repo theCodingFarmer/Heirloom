@@ -22,7 +22,6 @@ const Shop = ({data}) => {
 console.log('stripeData', data.stripeCsaMembership.nodes);
 
 const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
-console.log('stripeCsaMembershipSelections', stripeCsaMembershipSelections);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
