@@ -9,14 +9,19 @@ const iconSize = {
     large: 70
 };
 
+const StyledSeasonSizeRow = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
 const StyledBasketIconAndTextContainer = styled.div`
     position: relative;
-    margin: 0 0.5rem;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    width: 12rem;
     
     &:before {
         content: '';
@@ -30,11 +35,14 @@ const StyledBasketIconAndTextContainer = styled.div`
     }
     
     > svg {
-        fill: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
+        // fill: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
+        fill: var(--secondary-color);
     }
     
     > p {
-        color: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
+        // color: var(${(props) => props.isSelected ? '--primary-color' : '--secondary-color'});
+        color: var(--secondary-color);
+        font-weight: ${(props) => props.isSelected ? 'bold' : 'normal'};
     }
 
     &:hover:before {
@@ -135,7 +143,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                         <p>5 Weeks Long from May 10th to July 24th</p>
                         <p>Produce in Season: </p>
                     </div>
-                    <div>
+                    <StyledSeasonSizeRow>
                         {seasonProducts.shareSeasonSizes.map((shareSize) => {
                             return (
                                 shareSize.active &&
@@ -153,7 +161,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                                 </StyledBasketIconAndTextContainer>
                             )
                         })}
-                    </div>
+                    </StyledSeasonSizeRow>
                 </div>
             )}
         </div>
