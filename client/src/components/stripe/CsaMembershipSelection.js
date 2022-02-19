@@ -100,28 +100,18 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
         ]);
     };
 
-    const stripeLineItems = () => {
-        const selectedCsaSeasonsAndSizes = selectedCsaOptions.find((selection) => selection.isSelected);
-        console.log('selectedCsaSeasonsAndSizes', selectedCsaSeasonsAndSizes);
-    }
+    const createStripeLineItems = () => selectedCsaOptions.filter((selection) => selection.isSelected).map((seasonSize) => ({
+            price: seasonSize.id,
+            quantity: 1
+        }));
 
     const handleSubmit = async event => {
-        event.preventDefault();
         setLoading(true);
-
-        const springSelection = new FormData(event.target).get('spring');
-        const summerSelection = new FormData(event.target).get('summer');
-
-        console.log('springSelection', springSelection);
-        console.log('summerSelection', summerSelection);
-
+        const lineItems = createStripeLineItems();
         const stripe = await getStripe();
         const { error } = await stripe.redirectToCheckout({
             mode: 'payment',
-            lineItems: [
-                { price: springSelection, quantity: 1 },
-                { price: summerSelection, quantity: 1 }
-            ],
+            lineItems,
             successUrl: `${window.location.origin}/shop/thankyou`,
             cancelUrl: `${window.location.origin}/shop`,
         })
@@ -129,7 +119,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
         if (error) {
             setLoading(false);
         }
-    }
+    };
 
     return (
         <div>
@@ -167,96 +157,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
                 </div>
             )}
         </div>
-
     );
-
-    // return (
-    //     <div>
-    //         <form onSubmit={handleSubmit}>
-    //             <fieldset>
-    //                 <legend>
-    //                     <p>{'Spring CSA Share'}</p>
-    //                 </legend>
-    //
-    //                 <label>
-    //                     {'small'}
-    //                     <input
-    //                         name={'spring'}
-    //                         type="radio"
-    //                         value={'price_1JxwBHIyY3l4fjpK0HTkoepf'}
-    //                     />
-    //                 </label>
-    //                 <label>
-    //                     {'medium'}
-    //                     <input
-    //                         name={'spring'}
-    //                         type="radio"
-    //                         value={'price_1JxwBrIyY3l4fjpKmLNhawri'}
-    //
-    //                     />
-    //                 </label>
-    //                 <label>
-    //                     {'large'}
-    //                     <input
-    //                         name={'spring'}
-    //                         type="radio"
-    //                         value={'large price.id'}
-    //                     />
-    //                 </label>
-    //                 <label>
-    //                     {'none'}
-    //                     <input
-    //                         name={'spring'}
-    //                         type="radio"
-    //                         value={null}
-    //                         defaultChecked={true}
-    //                     />
-    //                 </label>
-    //
-    //                 <legend>
-    //                     <p>{'Summer CSA Share'}</p>
-    //                 </legend>
-    //
-    //                 <label>
-    //                     {'small'}
-    //                     <input
-    //                         name={'summer'}
-    //                         type="radio"
-    //                         value={'price_1JxwDoIyY3l4fjpK5BkFh1cS'}
-    //                     />
-    //                 </label>
-    //                 <label>
-    //                     {'medium'}
-    //                     <input
-    //                         name={'summer'}
-    //                         type="radio"
-    //                         value={'price_1JxwENIyY3l4fjpK6VlTlawc'}
-    //
-    //                     />
-    //                 </label>
-    //                 <label>
-    //                     {'large'}
-    //                     <input
-    //                         name={'summer'}
-    //                         type="radio"
-    //                         value={'large price.id'}
-    //                     />
-    //                 </label>
-    //                 <label>
-    //                     {'none'}
-    //                     <input
-    //                         name={'summer'}
-    //                         type="radio"
-    //                         value={null}
-    //                         defaultChecked={true}
-    //                     />
-    //                 </label>
-    //             </fieldset>
-    //             <button> Order CSA Selection </button>
-    //         </form>
-    //     </div>
-    // )
-
 };
 
 export default CsaMembershipSelection;
