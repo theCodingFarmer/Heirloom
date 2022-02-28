@@ -4,6 +4,22 @@ export default {
     type: 'object',
     fields: [
         {
+            name: 'shareSeasonStatus',
+            title: 'Status',
+            type: 'string',
+            description: 'A way to control specific seasons ordering. If "Sold Out" is selected, this specific season shows sold out, preventing additional orders.',
+            options: {
+                list: [
+                    {title: 'Open', value: 'open'},
+                    {title: 'Sold Out', value: 'sold-out'}
+                ],
+                layout: 'radio'
+            },
+            validation: Rule => [
+                Rule.required().error('Must select the current status for this season.')
+            ]
+        },
+        {
             name: 'totalWeeks',
             title: 'Total Weeks of Season',
             type: 'number',
@@ -34,12 +50,6 @@ export default {
                     }
                 ]
             }]
-        },
-        {
-            name: 'sharePricing',
-            title: 'Share Pricing',
-            type: 'csaPricing',
-            description: 'Set the pricing for small, medium, and large shares.'
         }
     ]
 }

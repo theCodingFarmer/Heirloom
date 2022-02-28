@@ -33,9 +33,16 @@ export default {
             ]
         },
         {
+            name: 'csaSummary',
+            title: 'CSA Membership Summary',
+            description: 'Short summary about CSA memberships.',
+            type: 'text'
+        },
+        {
             name: 'seasonStatus',
             title: 'Season Status',
             type: 'string',
+            description: 'If "Open" is selected, /shop is open for orders. If "Preorder" is selected, /preorder is open for orders. If "Closed" is selected, order process is removed with no message. If "Sold Out" is selected, order is removed and replaced with a sold out message.',
             options: {
                 list: [
                     {title: 'Open', value: 'open'},
@@ -48,6 +55,12 @@ export default {
             validation: Rule => [
                 Rule.required().error('Must select the current season status.')
             ]
+        },
+        {
+            name: 'seasonStatusSummary',
+            title: 'Season Status Summary',
+            description: 'Short summary for messaging around current season status.',
+            type: 'text'
         },
         {
             name: 'seasonDetailsSpring',

@@ -14,7 +14,6 @@ import contactUs from './contentSchemas/contactUs';
 import featuredProducts from './contentSchemas/featuredProducts';
 import shopCsaMembership from './shopSchemas/shopCsaMembership';
 import csaShareSeason from './shopSchemas/csaShareSeason';
-import csaPricing from './shopSchemas/csaPricing';
 import shopProducts from './shopSchemas/shopProducts';
 import shopProductOptions from './shopSchemas/shopProductOptions';
 import shopProductSelectableOption from './shopSchemas/shopProductSelectableOption';
@@ -37,7 +36,6 @@ export default createSchema({
       hero,
       howItWorks,
       howItWorksSteps,
-      csaPricing,
       csaShareSeason,
       shopCsaMembership,
       shopProducts,
