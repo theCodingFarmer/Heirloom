@@ -32,11 +32,9 @@ export default () =>
                                 S.listItem()
                                     .title('Memberships')
                                     .child(
-                                        S.documentList()
+                                        S.document()
                                             .schemaType('shopCsaMembership')
-                                            .id('shopCsaMembership')
-                                            .filter('_type == "shopCsaMembership"')
-                                            .defaultOrdering([{field: '_updatedAt', direction: 'desc'}])
+                                            .documentId('shopCsaMembership')
                                     ),
                                 S.listItem()
                                     .title('Products')
