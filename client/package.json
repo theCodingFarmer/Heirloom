@@ -37,6 +37,7 @@
     "gatsby-plugin-sanity-image": "^0.6.0",
     "gatsby-plugin-sharp": "^2.6.38",
     "gatsby-plugin-stylus": "^2.3.12",
+    "gatsby-plugin-use-shopping-cart": "^0.0.1",
     "gatsby-remark-images": "^3.3.32",
     "gatsby-remark-reading-time": "^1.1.0",
     "gatsby-source-filesystem": "^2.3.32",

@@ -13,6 +13,11 @@ import ShopProducts from '../components/ShopProducts';
 import Cart from '../components/stripe/Cart';
 import CartSummary from '../components/stripe/CartSummary';
 import CsaMembershipSelection from '../components/stripe/CsaMembershipSelection';
+import {CartProvider, useShoppingCart} from 'use-shopping-cart';
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY);
+
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
@@ -20,21 +25,46 @@ const StyledTagsH1 = styled(StyledH1)`
 
 const Shop = ({data}) => {
 console.log('stripeData', data.stripeCsaMembership.nodes);
+console.log('stripeAdditionalProducts', data.stripeAdditionalProducts.nodes);
 
 const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
+const stripeAdditionalProducts = data.stripeAdditionalProducts.nodes;
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
       <StyledFullHeightSection>
         <StyledTagsH1>Shop</StyledTagsH1>
         <StyledSeparator />
-        Build Your 2022 CSA!
         <CsaMembershipSelection seasonSizeSelections={stripeCsaMembershipSelections} />
         <StyledSeparator />
         {/*<Cart>*/}
         {/*  <ShopProducts products={data.allSanityShopProducts.edges}/>*/}
         {/*  <CartSummary/>*/}
         {/*</Cart>*/}
+        <Cart/>
+        <div>
+          {
+            stripeAdditionalProducts.map((stripeProduct) => {
+              const {addItem} = useShoppingCart();
+                  return (
+                      <div>
+                        <p>{stripeProduct.product.name}</p>
+                        <button
+                            onClick={() => addItem({
+                              sku: stripeProduct.product.id,
+                              name: stripeProduct.product.name,
+                              price: stripeProduct.product.unit_amount,
+                              currency: stripeProduct.product.currency,
+                              image: stripeProduct.product.images
+                            })}
+                        >
+                          Buy Me
+                        </button>
+                      </div>
+                  );
+            })
+          }
+        </div>
         <StyledSeparator />
         <TextLink label="Take me home" link="/" />
       </StyledFullHeightSection>
@@ -128,5 +158,20 @@ export const shopQuery = graphql`
           id
         }
       }
+      stripeAdditionalProducts: allStripePrice(filter: {active: {}, product: {metadata: {category: {eq: "products"}}, active: {eq: true}}}) {
+        nodes {
+          unit_amount
+          product {
+            name
+            id
+            metadata {
+              category
+            }
+            active
+            images
+          }
+          currency
+        }
+    }
   }
 `;
