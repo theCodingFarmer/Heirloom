@@ -14,8 +14,8 @@ import contactUs from './contentSchemas/contactUs';
 import featuredProducts from './contentSchemas/featuredProducts';
 import shopCsaMembership from './shopSchemas/shopCsaMembership';
 import csaShareSeason from './shopSchemas/csaShareSeason';
+import csaBasketSizePricing from './shopSchemas/csaBasketSizePricing';
 import shopProducts from './shopSchemas/shopProducts';
-import shopProductOptions from './shopSchemas/shopProductOptions';
 import shopProductSelectableOption from './shopSchemas/shopProductSelectableOption';
 
 export default createSchema({
@@ -38,8 +38,8 @@ export default createSchema({
       howItWorksSteps,
       csaShareSeason,
       shopCsaMembership,
+      csaBasketSizePricing,
       shopProducts,
-      shopProductOptions,
       shopProductSelectableOption
   ]),
 })

@@ -44,23 +44,17 @@ export default {
             type: 'image'
         },
         {
-            name: 'pricingShopProducts',
-            title: 'Product Price',
-            type: 'number',
-            validation: Rule => [
-                Rule.precision(2).error('Only 2 decimal places allowed.'),
-                Rule.positive()
-            ]
-        },
-        {
-            name: 'shopProductsAdditionalOptions',
-            title: 'Additional Options',
+            name: 'shopProductsOptions',
+            title: 'Product Options',
             type: 'array',
-            description: 'Add as many options and optional price per option.',
+            description: 'One option required but may include as many options needed for this product.',
+            validation: Rule => [
+                Rule.min(1).error('Must have at least one product option.')
+            ],
             of: [
                 {
-                    name: 'shopProductOptions',
-                    type: 'shopProductOptions'
+                    name: 'shopProductSelectableOption',
+                    type: 'shopProductSelectableOption'
                 }
             ]
         }

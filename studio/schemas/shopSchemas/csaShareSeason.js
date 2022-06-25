@@ -38,6 +38,21 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            name: 'csaBasketSizePricingSmall',
+            title: 'Small Basket Share Pricing',
+            type: 'csaBasketSizePricing'
+        },
+        {
+            name: 'csaBasketSizePricingMedium',
+            title: 'Medium Basket Share Pricing',
+            type: 'csaBasketSizePricing'
+        },
+        {
+            name: 'csaBasketSizePricingLarge',
+            title: 'Large Basket Share Pricing',
+            type: 'csaBasketSizePricing'
+        },
+        {
             name: 'availableProduce',
             title: 'Available Produce',
             description: 'Select available produce during this season.',

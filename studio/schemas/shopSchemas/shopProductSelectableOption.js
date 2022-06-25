@@ -4,18 +4,17 @@ export default {
     type: 'object',
     fields: [
         {
-            name: 'shopProductSelectableOptionChoice',
-            title: 'Selectable Option Choice',
-            type: 'string'
+            name: 'shopProductSelectableOptionTitle',
+            title: 'Selectable Option Title',
+            type: 'string',
+            validation: Rule => Rule.required()
         },
         {
-            name: 'pricingShopProductSelectableOption',
-            title: 'Selectable Option Price',
-            type: 'number',
-            validation: Rule => [
-                Rule.precision(2).error('Only 2 decimal places allowed.'),
-                Rule.positive()
-            ]
-        }
+            name: 'shopProductSelectableOptionStripeId',
+            title: 'Stripe API Id',
+            description: 'The associated Stripe API ID for this specific product.',
+            type: 'string',
+            validation: Rule => Rule.required()
+        },
     ]
 }
