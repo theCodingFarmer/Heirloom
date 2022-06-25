@@ -19,7 +19,6 @@ const StyledTagsH1 = styled(StyledH1)`
 `;
 
 const Shop = ({data}) => {
-console.log('stripeData', data.stripeCsaMembership.nodes);
 
 const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
   return (

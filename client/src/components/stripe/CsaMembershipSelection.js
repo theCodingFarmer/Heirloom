@@ -103,13 +103,9 @@ const addIsSelectedToData = (allSeasonData) => allSeasonData.map((season) => ({
 }));
 
 const CsaMembershipSelection = ({seasonSizeSelections}) => {
-    console.log('data into component (seasonSizeSelections)', seasonSizeSelections);
     const [loading, setLoading] = useState(false)
     const [selectedCsaOptions, setSelectedCsaOptions] = useState(addIsSelectedToData(seasonSizeSelections));
     const seasonsProducts = formatSeasonOrder(seasonSizeSelections);
-
-
-    console.log('selectedCsaOptions', selectedCsaOptions);
 
     const isSelected = (id) => {
         const selection = selectedCsaOptions.find((selection) => selection.id === id);
@@ -138,14 +134,12 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
 
     const disableCheckoutButton = !selectedCsaOptions.some((selection) => selection.isSelected);
 
-    console.log('disableCheckoutButton', disableCheckoutButton);
-
     const createStripeLineItems = () => selectedCsaOptions.filter((selection) => selection.isSelected).map((seasonSize) => ({
             price: seasonSize.id,
             quantity: 1
         }));
 
-    const handleSubmit = async event => {
+    const handleSubmit = async () => {
         setLoading(true);
         const lineItems = createStripeLineItems();
         const stripe = await getStripe();
@@ -195,7 +189,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
             </div>
             <StyledButtonContainer>
                 <StyledOrderButton
-                    disabled={disableCheckoutButton}
+                    disabled={disableCheckoutButton || loading}
                     onClick={() => handleSubmit()}
                 >
                     Complete CSA Membership & Checkout
