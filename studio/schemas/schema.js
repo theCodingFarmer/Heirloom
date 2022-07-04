@@ -17,6 +17,7 @@ import csaShareSeason from './shopSchemas/csaShareSeason';
 import csaBasketSizePricing from './shopSchemas/csaBasketSizePricing';
 import shopProducts from './shopSchemas/shopProducts';
 import shopProductSelectableOption from './shopSchemas/shopProductSelectableOption';
+import shopPickUpLocations from './shopSchemas/shopPickUpLocations';
 
 export default createSchema({
   // We name our schema
@@ -38,6 +39,7 @@ export default createSchema({
       howItWorksSteps,
       csaShareSeason,
       shopCsaMembership,
+      shopPickUpLocations,
       csaBasketSizePricing,
       shopProducts,
       shopProductSelectableOption

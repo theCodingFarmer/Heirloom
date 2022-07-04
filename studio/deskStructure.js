@@ -19,7 +19,8 @@ export default () =>
                     ![
                         'pageHome',
                         'shopCsaMembership',
-                        'shopProducts'
+                        'shopProducts',
+                        'shopPickupLocations'
                     ].includes(item.getId())),
                 S.listItem()
                     .title('Shop')
@@ -44,6 +45,14 @@ export default () =>
                                             .id('shopProducts')
                                             .filter('_type == "shopProducts"')
                                             .defaultOrdering([{field: 'shopProductsTitle', direction: 'desc'}])
+                                    ),
+                                S.listItem()
+                                    .title('Pickup Time & Locations')
+                                    .child(
+                                        S.documentList()
+                                            .schemaType('shopPickupLocations')
+                                            .id('shopPickupLocations')
+                                            .filter('_type == "shopPickupLocations"')
                                     )
                             ])
                     )

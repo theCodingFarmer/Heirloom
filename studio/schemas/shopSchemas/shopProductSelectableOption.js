@@ -15,6 +15,6 @@ export default {
             description: 'The associated Stripe API ID for this specific product.',
             type: 'string',
             validation: Rule => Rule.required()
-        },
+        }
     ]
 }
