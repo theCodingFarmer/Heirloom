@@ -21,6 +21,8 @@ const StyledTagsH1 = styled(StyledH1)`
 const Shop = ({data}) => {
 
 const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
+
+console.log('data', data);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
@@ -84,28 +86,72 @@ export const shopQuery = graphql`
           html
         }
       }
-      allSanityShopProducts(filter: {shopProductsStatus: {eq: true}}) {
-        edges {
-          node {
-            id
-            shopProductsImage {
-              asset {
-                _id
-                altText
-                url
-              }
-            }
-            shopProductsStatus
-            shopProductsTitle
-            shopProductsDescription
-            pricingShopProducts
-            shopProductsAdditionalOptions {
-              shopProductsOptionTitle
-              shopProductsSelectableOptions {
-                pricingShopProductSelectableOption
-                shopProductSelectableOptionChoice
-              }
-            }
+      csaMembership: sanityShopCsaMembership(_id: {eq: "shopCsaMembership"}) {
+        season
+        seasonStatus
+        seasonStatusSummary
+        csaSummary
+        seasonDetailsSpring {
+          shareSeasonStatus
+          totalWeeks
+          seasonStart
+          seasonEnd
+          availableProduce {
+            title
+          }
+          csaBasketSizePricingSmall {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+          csaBasketSizePricingMedium {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+          csaBasketSizePricingLarge {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+        }
+        seasonDetailsSummer {
+          shareSeasonStatus
+          totalWeeks
+          seasonStart
+          seasonEnd
+          availableProduce {
+            title
+          }
+          csaBasketSizePricingSmall {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+          csaBasketSizePricingMedium {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+          csaBasketSizePricingLarge {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+        }
+        seasonDetailsFall {
+          shareSeasonStatus
+          totalWeeks
+          seasonStart
+          seasonEnd
+          availableProduce {
+            title
+          }
+          csaBasketSizePricingSmall {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+          csaBasketSizePricingMedium {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
+          }
+          csaBasketSizePricingLarge {
+            csaBasketSizePricingStatus
+            csaBasketSizePricingStripeId
           }
         }
       }
