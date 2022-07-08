@@ -9,9 +9,6 @@ import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
-import ShopProducts from '../components/ShopProducts';
-import Cart from '../components/stripe/Cart';
-import CartSummary from '../components/stripe/CartSummary';
 import CsaMembershipSelection from '../components/stripe/CsaMembershipSelection';
 
 const StyledTagsH1 = styled(StyledH1)`
@@ -32,10 +29,7 @@ console.log('data', data);
         Build Your 2022 CSA!
         <CsaMembershipSelection seasonSizeSelections={stripeCsaMembershipSelections} />
         <StyledSeparator />
-        {/*<Cart>*/}
-        {/*  <ShopProducts products={data.allSanityShopProducts.edges}/>*/}
-        {/*  <CartSummary/>*/}
-        {/*</Cart>*/}
+// products here
         <StyledSeparator />
         <TextLink label="Take me home" link="/" />
       </StyledFullHeightSection>

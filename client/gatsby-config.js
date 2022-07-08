@@ -34,19 +34,6 @@ module.exports = {
       }
     },
     {
-      resolve: `use-shopping-cart`,
-      options: {
-        mode: "payment",
-        cartMode: "client-only",
-        stripePublicKey: process.env.GATSBY_STRIPE_PUBLIC_KEY,
-        successUrl: "https://www.google.com", // url must start with http or https
-        cancelUrl: "https://www.stripe.com", // url must start with http or https
-        currency: "USD",
-        allowedCountries: ["US"],
-        billingAddressCollection: true
-      }
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
