@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useContext} from 'react';
 import Layout from '../components/layout';
 import TextLink from '../components/links/text-link';
 import SEO from '../components/seo';
@@ -10,6 +10,7 @@ import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
 import CsaMembershipSelection from '../components/stripe/CsaMembershipSelection';
+import {CartDispatchContext, CartStateContext} from '../contexts/CartContextProvider';
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
@@ -19,14 +20,19 @@ const Shop = ({data}) => {
 
 const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
 
-console.log('data', data);
+  const shoppingCart = useContext(CartStateContext);
+  const setShoppingCart = useContext(CartDispatchContext)
+console.log('shoppingCart', shoppingCart);
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
       <StyledFullHeightSection>
         <StyledTagsH1>Shop</StyledTagsH1>
         <StyledSeparator />
-        Build Your 2022 CSA!
+          <button onClick={() => setShoppingCart({
+              membershipCart: [...shoppingCart.membershipCart],
+              productCart: [...shoppingCart.productCart, {id: Math.random(), qty: 1}]
+          })}>Testing Order</button>
         <CsaMembershipSelection seasonSizeSelections={stripeCsaMembershipSelections} />
         <StyledSeparator />
 // products here
