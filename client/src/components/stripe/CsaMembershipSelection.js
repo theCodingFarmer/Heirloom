@@ -146,7 +146,7 @@ const CsaMembershipSelection = ({seasonSizeSelections}) => {
         const { error } = await stripe.redirectToCheckout({
             mode: 'payment',
             lineItems,
-            successUrl: `${window.location.origin}/shop/thankyou`,
+            successUrl: `${window.location.origin}/shop/thank-you`,
             cancelUrl: `${window.location.origin}/shop`,
         })
 

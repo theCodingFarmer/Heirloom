@@ -2,15 +2,15 @@ import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, {useContext} from 'react';
-import Layout from '../components/layout';
-import TextLink from '../components/links/text-link';
-import SEO from '../components/seo';
-import { blogMenuLinks } from '../components/_config/menu-links';
-import { StyledH1 } from '../components/_shared/styled-headings';
-import { StyledFullHeightSection } from '../components/_shared/styled-section';
-import { StyledSeparator } from '../components/_shared/styled-separator';
-import CsaMembershipSelection from '../components/stripe/CsaMembershipSelection';
-import {CartDispatchContext, CartStateContext} from '../contexts/CartContextProvider';
+import Layout from '../../components/layout';
+import TextLink from '../../components/links/text-link';
+import SEO from '../../components/seo';
+import { blogMenuLinks } from '../../components/_config/menu-links';
+import { StyledH1 } from '../../components/_shared/styled-headings';
+import { StyledFullHeightSection } from '../../components/_shared/styled-section';
+import { StyledSeparator } from '../../components/_shared/styled-separator';
+import CsaMembershipSelection from '../../components/stripe/CsaMembershipSelection';
+import {CartDispatchContext, CartStateContext} from '../../contexts/CartContextProvider';
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
