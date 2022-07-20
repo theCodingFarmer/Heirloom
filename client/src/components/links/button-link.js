@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, {useContext} from 'react';
 import { Link } from 'gatsby';
-import {Icon} from '../icon';
+import {HeirloomIcon, Icon} from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
 import {GlobalDispatchContext, GlobalStateContext} from '../../contexts/GlobalContextProvider';
@@ -134,4 +134,26 @@ export const ButtonHamburgerMenu = () => {
       </React.Fragment>
   );
 };
+
+export const HeaderShoppingCartButton = () => {
+
+    const dispatch = useContext(GlobalDispatchContext);
+    const state = useContext(GlobalStateContext);
+
+    return (
+        <React.Fragment>
+            <StyledMenuButton type='button' onClick={() => {dispatch({type: 'toggle_menu'})}}>
+                <HeirloomIcon
+                    icon={'vegBox'}
+                    size={42}
+                    style={{fill: 'var(--title-color-light)'}}
+                />
+            </StyledMenuButton>
+        </React.Fragment>
+    );
+};
+
+export const HamburgerMenuAndCartButtons = () => {
+
+}
 

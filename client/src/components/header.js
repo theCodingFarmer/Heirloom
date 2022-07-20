@@ -5,7 +5,7 @@ import React, {useContext} from 'react';
 import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
-import {ButtonHamburgerMenu, HeaderButtonLink} from './links/button-link';
+import {ButtonHamburgerMenu, HeaderButtonLink, HeaderShoppingCartButton} from './links/button-link';
 import {GlobalDispatchContext} from '../contexts/GlobalContextProvider';
 
 const StyledHeader = styled.header`
@@ -81,7 +81,7 @@ const StyledNavLink = styled(Link)`
 `;
 
 const Header = ({ menuLinks, headerData }) => {
-
+console.log('menuLinks', menuLinks);
     const dispatch = useContext(GlobalDispatchContext);
 
     return (
