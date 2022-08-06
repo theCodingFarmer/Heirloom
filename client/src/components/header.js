@@ -6,13 +6,11 @@ import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
 import {
-    ButtonHamburgerMenu,
     HamburgerMenuAndCartButtons,
     HeaderButtonLink,
-    HeaderShoppingCartButton
 } from './links/button-link';
 import {GlobalDispatchContext} from '../contexts/GlobalContextProvider';
-import {locationObjectShape, menuLinksShape} from '../prop-shapes/prop-type-shapes';
+import {headerDataShape, locationObjectShape, menuLinksShape} from '../prop-shapes/prop-type-shapes';
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -86,7 +84,7 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
-const Header = ({ location, menuLinks, headerData }) => {
+const Header = ({ location, menuLinks, headerData, shoppingCartTotalItems }) => {
     const isNotShopRoute = location.href ? !location.href.match(/\/shop/i) : null;
     const dispatch = useContext(GlobalDispatchContext);
 
@@ -109,8 +107,7 @@ const Header = ({ location, menuLinks, headerData }) => {
                     isNotShopRoute &&
                     <HeaderButtonLink label={headerData.label} link={headerData.link} />
                 }
-                <HamburgerMenuAndCartButtons/>
-                {/*<ButtonHamburgerMenu />*/}
+                <HamburgerMenuAndCartButtons shoppingCartTotalItems={shoppingCartTotalItems}/>
             </StyledContainer>
         </StyledHeader>
     )
@@ -119,6 +116,7 @@ const Header = ({ location, menuLinks, headerData }) => {
 export default Header;
 
 Header.propTypes = {
+    headerData: PropTypes.objectOf(headerDataShape),
     location: PropTypes.objectOf(locationObjectShape).isRequired,
     menuLinks: PropTypes.arrayOf(menuLinksShape).isRequired
 };

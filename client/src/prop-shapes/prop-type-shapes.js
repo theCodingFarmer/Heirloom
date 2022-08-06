@@ -15,3 +15,8 @@ export const menuLinkObjectShape = PropTypes.shape(    {
     link: PropTypes.string,
     icon: PropTypes.string
 });
+
+export const headerDataShape = PropTypes.shape({
+    label: PropTypes.string,
+    link: PropTypes.string,
+})

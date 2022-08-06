@@ -5,7 +5,6 @@ import {HeirloomIcon, Icon} from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
 import {GlobalDispatchContext, GlobalStateContext} from '../../contexts/GlobalContextProvider';
-import PropTypes from 'prop-types';
 
 export const StyledAnchorLink = styled(Link)`
   ${flexCenter};
@@ -58,6 +57,7 @@ export const StyledMenuButton = styled.button`
   position: relative;
   border: none;
   padding: 0.4rem 0.8rem;
+  padding-left: ${props => props.isMenuShown ? '1rem' : '1.2rem'};
   font-size: 1.2rem;
   background-color: transparent;
 
@@ -72,6 +72,22 @@ export const StyledMenuButton = styled.button`
   ${mq.gt.sm} {
     display: none;
   }
+`;
+
+const StyledCartCounter = styled.span`
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -24px;
+    left: 10px;
+    background-color: red;
+    border-radius: 50%;
+    color: var(--title-color-light);
+    font-size: 0.70rem;
+    font-weight: 600;
+    height: 1.2rem;
+    width: 1.2rem;
 `;
 
 const StyledMobileButtonContainer = styled.div`
@@ -130,41 +146,41 @@ export const HeaderButtonLink = ({ label, link }) => {
   );
 };
 
-export const ButtonHamburgerMenu = () => {
+const ButtonHamburgerMenu = () => {
 
     const dispatch = useContext(GlobalDispatchContext);
     const state = useContext(GlobalStateContext);
 
     return (
       <React.Fragment>
-            <StyledMenuButton type='button' onClick={() => {dispatch({type: 'toggle_menu'})}}>
+            <StyledMenuButton isMenuShown={state.isMenuShown} type='button' onClick={() => {dispatch({type: 'toggle_menu'})}}>
               <Icon icon={state.isMenuShown ? 'window-close' : 'bars'} />
             </StyledMenuButton>
       </React.Fragment>
   );
 };
 
-export const HeaderShoppingCartButton = () => {
+export const HeaderShoppingCartButton = ({iconSize, shoppingCartTotalItems}) => {
     return (
         <div>
+            {
+                shoppingCartTotalItems && <StyledCartCounter>{shoppingCartTotalItems}</StyledCartCounter>
+            }
             <Link to={'/shop/cart'}>
                 <HeirloomIcon
                     icon={'vegBox'}
-                    size={36}
+                    size={iconSize}
                     style={{fill: 'var(--title-color-light)'}}
                 />
             </Link>
-            <div>
-                <span>0</span>
-            </div>
         </div>
     );
 };
 
-export const HamburgerMenuAndCartButtons = () =>
+export const HamburgerMenuAndCartButtons = ({shoppingCartTotalItems}) =>
     <React.Fragment>
         <StyledMobileButtonContainer>
-            <HeaderShoppingCartButton/>
+            <HeaderShoppingCartButton iconSize={36} shoppingCartTotalItems={shoppingCartTotalItems}/>
             <ButtonHamburgerMenu />
         </StyledMobileButtonContainer>
     </React.Fragment>;
