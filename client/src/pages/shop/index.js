@@ -24,6 +24,8 @@ const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
   const shoppingCart = useContext(CartStateContext);
   const setShoppingCart = useContext(CartDispatchContext)
 
+  console.log('stripeCsaMembershipSelections', stripeCsaMembershipSelections);
+console.log('data', data);
   return (
       <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
@@ -70,26 +72,21 @@ Shop.propTypes = {
 
 export const shopQuery = graphql`
   {
-      products: allMarkdownRemark(
-        limit: 3
-        sort: { order: DESC, fields: frontmatter___date }
-        filter: { fileAbsolutePath: { regex: "/content/shop/" }, frontmatter: { available: { eq: true } } }
-      ) {
+      products: allSanityShopProducts {
         nodes {
-          frontmatter {
-            date(formatString: "D MMMM, YYYY")
-            title
-            price
-            options
-            cover_image {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+          shopProductsImage {
+            asset {
+              url
             }
           }
-          html
+          shopProductsDescription
+          shopProductsStatus
+          shopProductsTitle
+          shopProductsOptions {
+            shopProductSelectableOptionTitle
+            shopProductSelectableOptionStripeId
+            _key
+          }
         }
       }
       csaMembership: sanityShopCsaMembership(_id: {eq: "shopCsaMembership"}) {
@@ -158,6 +155,17 @@ export const shopQuery = graphql`
           csaBasketSizePricingLarge {
             csaBasketSizePricingStatus
             csaBasketSizePricingStripeId
+          }
+        }
+      }
+      allStripeProductIds: allStripePrice(filter: {product: {active: {eq: true}}}) {
+        nodes {
+          unit_amount
+          unit_amount_decimal
+          product {
+            active
+            name
+            id
           }
         }
       }

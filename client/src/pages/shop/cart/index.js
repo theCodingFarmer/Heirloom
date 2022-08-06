@@ -44,7 +44,6 @@ const StyledDescription = styled.p`
 const Cart = ({location}) => {
   const shoppingCart = useContext(CartStateContext);
   const setShoppingCart = useContext(CartDispatchContext)
-console.log('shoppingCart', shoppingCart);
 
   const isBasketEmpty = shoppingCart?.membershipCart.length === 0 && shoppingCart?.productCart.length === 0;
 
@@ -67,11 +66,10 @@ console.log('shoppingCart', shoppingCart);
                       <TextLink label={shoppingLinkText} link="/shop" />
                   </StyledEmptyBasketContainer>
               }
-
               {
                   shoppingCart?.membershipCart.length > 0 &&
                     <div>
-                      <h1>Membership</h1>
+                      <h4>Membership</h4>
                       {shoppingCart.membershipCart.map((item) =>
                           <div>
                             <p>{`${item.qty}x -- Item: ${item.id}`}</p>
@@ -82,7 +80,7 @@ console.log('shoppingCart', shoppingCart);
               {
                     shoppingCart?.productCart.length > 0 &&
                     <div>
-                      <h1>Products</h1>
+                      <h4>Products</h4>
                       {shoppingCart.productCart.map((item) =>
                           <div>
                             <p>{`${item.qty}x -- Item: ${item.id}`}</p>
