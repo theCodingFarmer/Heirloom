@@ -11,6 +11,7 @@ import {CartDispatchContext, CartStateContext} from '../../../contexts/CartConte
 import PropTypes from 'prop-types';
 import {locationObjectShape} from '../../../prop-shapes/prop-type-shapes';
 import {HeirloomIcon} from '../../../components/icon';
+import {StyledH1} from '../../../components/_shared/styled-headings';
 
 const StyledCartSection = styled(StyledSection)`
   margin-top: var(--header-height);
@@ -53,7 +54,7 @@ const Cart = ({location}) => {
       <Layout location={location} menuLinks={blogMenuLinks}>
         <StyledCartSection>
           <SEO title="Shopping Cart" />
-            <h1>My Shopping Basket</h1>
+            <StyledH1>My Shopping Basket</StyledH1>
               {
                   isBasketEmpty &&
                   <StyledEmptyBasketContainer>

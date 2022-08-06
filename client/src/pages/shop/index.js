@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, {useContext} from 'react';
@@ -6,40 +5,48 @@ import Layout from '../../components/layout';
 import TextLink from '../../components/links/text-link';
 import SEO from '../../components/seo';
 import { blogMenuLinks } from '../../components/_config/menu-links';
-import { StyledH1 } from '../../components/_shared/styled-headings';
+import {StyledH1, StyledH2} from '../../components/_shared/styled-headings';
 import { StyledFullHeightSection } from '../../components/_shared/styled-section';
-import { StyledSeparator } from '../../components/_shared/styled-separator';
 import CsaMembershipSelection from '../../components/stripe/CsaMembershipSelection';
 import {CartDispatchContext, CartStateContext} from '../../contexts/CartContextProvider';
 import {locationObjectShape} from '../../prop-shapes/prop-type-shapes';
 
-const StyledTagsH1 = styled(StyledH1)`
-  margin-top: 3rem;
-`;
-
 const Shop = ({data, location}) => {
 
-const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
+
+  const addPricesToProduct = (productsArray, stripePricesData) => {
+    console.log('productsArray', productsArray);
+    console.log('stripePricesData', stripePricesData);
+
+    const array = productsArray.nodes.map((product) => {
+
+    })
+  }
+
+  addPricesToProduct(data.shopProducts, data.allStripeProductIds);
+
+  const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
+  const pageDetails = data.pageDetails.nodes[0]
 
   const shoppingCart = useContext(CartStateContext);
   const setShoppingCart = useContext(CartDispatchContext)
 
-  console.log('stripeCsaMembershipSelections', stripeCsaMembershipSelections);
 console.log('data', data);
   return (
       <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
       <StyledFullHeightSection>
-        <StyledTagsH1>Shop</StyledTagsH1>
-        <StyledSeparator />
-          <button onClick={() => setShoppingCart({
-              membershipCart: [...shoppingCart.membershipCart],
-              productCart: [...shoppingCart.productCart, {id: Math.random(), qty: 1}]
-          })}>Testing Order</button>
+        <button onClick={() => setShoppingCart({
+          membershipCart: [...shoppingCart.membershipCart],
+          productCart: [...shoppingCart.productCart, {id: Math.random(), qty: 1}]
+        })}>Testing Order</button>
+        <StyledH1>Shop</StyledH1>
+        {<p>{pageDetails.csaSummary}</p>}
+        <StyledH2>{`${pageDetails.season} Season -- ${pageDetails.seasonStatus}`}</StyledH2>
+        <p>{pageDetails.seasonStatusSummary}</p>
         <CsaMembershipSelection seasonSizeSelections={stripeCsaMembershipSelections} />
-        <StyledSeparator />
+        <StyledH2>Additional Products</StyledH2>
 // products here
-        <StyledSeparator />
         <TextLink label="Take me home" link="/" />
       </StyledFullHeightSection>
     </Layout>
@@ -72,7 +79,7 @@ Shop.propTypes = {
 
 export const shopQuery = graphql`
   {
-      products: allSanityShopProducts {
+      shopProducts: allSanityShopProducts {
         nodes {
           shopProductsImage {
             asset {
@@ -89,11 +96,7 @@ export const shopQuery = graphql`
           }
         }
       }
-      csaMembership: sanityShopCsaMembership(_id: {eq: "shopCsaMembership"}) {
-        season
-        seasonStatus
-        seasonStatusSummary
-        csaSummary
+      shopMembership: sanityShopCsaMembership(_id: {eq: "shopCsaMembership"}) {
         seasonDetailsSpring {
           shareSeasonStatus
           totalWeeks
@@ -156,6 +159,14 @@ export const shopQuery = graphql`
             csaBasketSizePricingStatus
             csaBasketSizePricingStripeId
           }
+        }
+      }
+      pageDetails: allSanityShopCsaMembership {
+        nodes {
+          seasonStatus
+          seasonStatusSummary
+          season
+          csaSummary
         }
       }
       allStripeProductIds: allStripePrice(filter: {product: {active: {eq: true}}}) {
