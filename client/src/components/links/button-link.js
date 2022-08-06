@@ -5,6 +5,7 @@ import {HeirloomIcon, Icon} from '../icon';
 import { flexCenter } from './../_shared/styled-mixins';
 import {mq} from '../_shared/media';
 import {GlobalDispatchContext, GlobalStateContext} from '../../contexts/GlobalContextProvider';
+import PropTypes from 'prop-types';
 
 export const StyledAnchorLink = styled(Link)`
   ${flexCenter};
@@ -73,6 +74,14 @@ export const StyledMenuButton = styled.button`
   }
 `;
 
+const StyledMobileButtonContainer = styled.div`
+  ${flexCenter};
+
+  ${mq.gt.sm} {
+    display: none;
+  }
+`;
+
 export const StyledHeaderButtonLink = styled(Link)`
   ${flexCenter};
   display: none;
@@ -136,24 +145,26 @@ export const ButtonHamburgerMenu = () => {
 };
 
 export const HeaderShoppingCartButton = () => {
-
-    const dispatch = useContext(GlobalDispatchContext);
-    const state = useContext(GlobalStateContext);
-
     return (
-        <React.Fragment>
-            <StyledMenuButton type='button' onClick={() => {dispatch({type: 'toggle_menu'})}}>
+        <div>
+            <Link to={'/shop/cart'}>
                 <HeirloomIcon
                     icon={'vegBox'}
-                    size={42}
+                    size={36}
                     style={{fill: 'var(--title-color-light)'}}
                 />
-            </StyledMenuButton>
-        </React.Fragment>
+            </Link>
+            <div>
+                <span>0</span>
+            </div>
+        </div>
     );
 };
 
-export const HamburgerMenuAndCartButtons = () => {
-
-}
-
+export const HamburgerMenuAndCartButtons = () =>
+    <React.Fragment>
+        <StyledMobileButtonContainer>
+            <HeaderShoppingCartButton/>
+            <ButtonHamburgerMenu />
+        </StyledMobileButtonContainer>
+    </React.Fragment>;

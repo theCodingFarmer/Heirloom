@@ -5,8 +5,14 @@ import React, {useContext} from 'react';
 import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
-import {ButtonHamburgerMenu, HeaderButtonLink, HeaderShoppingCartButton} from './links/button-link';
+import {
+    ButtonHamburgerMenu,
+    HamburgerMenuAndCartButtons,
+    HeaderButtonLink,
+    HeaderShoppingCartButton
+} from './links/button-link';
 import {GlobalDispatchContext} from '../contexts/GlobalContextProvider';
+import {locationObjectShape, menuLinksShape} from '../prop-shapes/prop-type-shapes';
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -80,8 +86,8 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
-const Header = ({ menuLinks, headerData }) => {
-console.log('menuLinks', menuLinks);
+const Header = ({ location, menuLinks, headerData }) => {
+    const isNotShopRoute = location.href ? !location.href.match(/\/shop/i) : null;
     const dispatch = useContext(GlobalDispatchContext);
 
     return (
@@ -99,8 +105,12 @@ console.log('menuLinks', menuLinks);
                         </StyledNavLink>
                     ))}
                 </StyledNav>
-                <HeaderButtonLink label={headerData.label} link={headerData.link} />
-                <ButtonHamburgerMenu />
+                {
+                    isNotShopRoute &&
+                    <HeaderButtonLink label={headerData.label} link={headerData.link} />
+                }
+                <HamburgerMenuAndCartButtons/>
+                {/*<ButtonHamburgerMenu />*/}
             </StyledContainer>
         </StyledHeader>
     )
@@ -108,11 +118,7 @@ console.log('menuLinks', menuLinks);
 
 export default Header;
 
-const menuLinksPropTypeShape = PropTypes.shape({
-    name: PropTypes.string,
-    link: PropTypes.string,
-});
-
 Header.propTypes = {
-    menuLinks: PropTypes.arrayOf(menuLinksPropTypeShape).isRequired,
+    location: PropTypes.objectOf(locationObjectShape).isRequired,
+    menuLinks: PropTypes.arrayOf(menuLinksShape).isRequired
 };
