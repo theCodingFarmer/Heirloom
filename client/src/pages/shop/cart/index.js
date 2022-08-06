@@ -62,7 +62,7 @@ console.log('shoppingCart', shoppingCart);
                     </div>
               }
           </StyledCartSection>
-          <TextLink label="Take me home" link="/" />
+          <TextLink label="Continue shopping" link="/shop" />
         </StyledCartSection>
       </Layout>
   )

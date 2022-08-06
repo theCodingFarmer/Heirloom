@@ -6,8 +6,8 @@ import logo from '../images/heirloom.png';
 import { mq } from './_shared/media';
 import {StyledSpan} from './_shared/styled-headings';
 import {
-    HamburgerMenuAndCartButtons,
-    HeaderButtonLink,
+    DesktopLinkAndCartButton,
+    HamburgerMenuAndCartButtons
 } from './links/button-link';
 import {GlobalDispatchContext} from '../contexts/GlobalContextProvider';
 import {headerDataShape, locationObjectShape, menuLinksShape} from '../prop-shapes/prop-type-shapes';
@@ -103,10 +103,12 @@ const Header = ({ location, menuLinks, headerData, shoppingCartTotalItems }) => 
                         </StyledNavLink>
                     ))}
                 </StyledNav>
-                {
-                    isNotShopRoute &&
-                    <HeaderButtonLink label={headerData.label} link={headerData.link} />
-                }
+                <DesktopLinkAndCartButton
+                    label={headerData.label}
+                    link={headerData.link}
+                    showLink={isNotShopRoute}
+                    shoppingCartTotalItems={shoppingCartTotalItems}
+                />
                 <HamburgerMenuAndCartButtons shoppingCartTotalItems={shoppingCartTotalItems}/>
             </StyledContainer>
         </StyledHeader>

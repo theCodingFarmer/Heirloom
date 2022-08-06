@@ -20,6 +20,7 @@ if (typeof window !== 'undefined') {
 
 const Layout = ({ children, location, menuLinks }) => {
     const shoppingCart = useContext(CartStateContext);
+    const shoppingCartTotalItems = shoppingCart ? shoppingCart.productCart.length : null;
 
 
     const data = useStaticQuery(graphql`
@@ -46,7 +47,7 @@ const Layout = ({ children, location, menuLinks }) => {
 
   return (
     <React.Fragment>
-      <Header location={location} menuLinks={menuLinks} headerData={headerData} shoppingCartTotalItems={shoppingCart.productCart.length}/>
+      <Header location={location} menuLinks={menuLinks} headerData={headerData} shoppingCartTotalItems={shoppingCartTotalItems}/>
       <main style={{marginTop: 'calc(var(--header-height) - 2 * var(--header-height))'}}>{children}</main>
       <Footer author={author} />
       <NavigationBar menuLinks={menuLinks} />
