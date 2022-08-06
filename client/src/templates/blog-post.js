@@ -11,6 +11,7 @@ import {urlFor} from '../sanity-helpers/url-helpers';
 import client from '../client';
 import {mq} from '../components/_shared/media';
 import ImageWithCaptionRenderer from '../sanity-helpers/serializer-components/ImageWithCaptionRenderer';
+import {locationObjectShape} from '../prop-shapes/prop-type-shapes';
 
 
 const StyledBlogSection = styled(StyledSection)`
@@ -97,11 +98,11 @@ const StyledBlockContentContainer = styled.div`
   }
 `;
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, location }) => {
   const {title, publishDate: date, _rawBody, image} = data.sanityFarmersBlogPost;
   const coverImage = image.asset.url;
   return (
-    <Layout menuLinks={blogMenuLinks}>
+      <Layout location={location} menuLinks={blogMenuLinks}>
       <StyledBlogSection>
         <StyledBlogTitle>{title}</StyledBlogTitle>
         <StyledCoverImage imageUrl={coverImage}/>
@@ -137,6 +138,11 @@ BlogPost.propTypes = {
 };
 
 export default BlogPost;
+
+BlogPost.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.objectOf(locationObjectShape).isRequired
+};
 
 export const query = graphql`
   query($slug: String!) {

@@ -11,12 +11,13 @@ import { StyledFullHeightSection } from '../../components/_shared/styled-section
 import { StyledSeparator } from '../../components/_shared/styled-separator';
 import CsaMembershipSelection from '../../components/stripe/CsaMembershipSelection';
 import {CartDispatchContext, CartStateContext} from '../../contexts/CartContextProvider';
+import {locationObjectShape} from '../../prop-shapes/prop-type-shapes';
 
 const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
 `;
 
-const Shop = ({data}) => {
+const Shop = ({data, location}) => {
 
 const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
 
@@ -24,7 +25,7 @@ const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
   const setShoppingCart = useContext(CartDispatchContext)
 console.log('shoppingCart', shoppingCart);
   return (
-    <Layout menuLinks={blogMenuLinks}>
+      <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="Shop" />
       <StyledFullHeightSection>
         <StyledTagsH1>Shop</StyledTagsH1>
@@ -61,6 +62,11 @@ Shop.propTypes = {
   }),
 };
 export default Shop;
+
+Shop.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.objectOf(locationObjectShape).isRequired
+};
 
 export const shopQuery = graphql`
   {

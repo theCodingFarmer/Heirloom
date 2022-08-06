@@ -9,6 +9,8 @@ import SEO from '../components/seo';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { flexCenter } from '../components/_shared/styled-mixins';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
+import {locationObjectShape} from '../prop-shapes/prop-type-shapes';
+import NotFoundPage from './404';
 
 const StyledPaginationContainer = styled.div`
   ${flexCenter};
@@ -36,7 +38,7 @@ const StyledPaginationContainer = styled.div`
     }
   }
 `;
-const Blog = ({ data }) => {
+const Blog = ({ data, location }) => {
   let [currentPage, setCurrentPage] = React.useState(1);
 
   const onPaginationChange = (page) => {
@@ -48,7 +50,7 @@ const Blog = ({ data }) => {
   let rightCursor = leftCursor + paginationSize;
 
   return (
-    <Layout menuLinks={blogMenuLinks}>
+      <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="Blog" />
       <StyledFullHeightSection>
         {data.allSanityFarmersBlogPost.edges.slice(leftCursor, rightCursor).map(({ node }) => {
@@ -77,11 +79,13 @@ const Blog = ({ data }) => {
   );
 };
 
-Blog.propTypes = {
-  data: PropTypes.object.isRequired,
-};
 
 export default Blog;
+
+Blog.propTypes = {
+    data: PropTypes.object.isRequired,
+    location: PropTypes.objectOf(locationObjectShape).isRequired
+};
 
 export const query = graphql`
   query {

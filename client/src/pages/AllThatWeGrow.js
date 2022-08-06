@@ -8,6 +8,8 @@ import { StyledFullHeightSection } from '../components/_shared/styled-section';
 import { StyledSeparator } from '../components/_shared/styled-separator';
 import ProductList from '../components/product-list';
 import {graphql} from 'gatsby';
+import PropTypes from 'prop-types';
+import {locationObjectShape} from '../prop-shapes/prop-type-shapes';
 
 const StyledProjectsH1 = styled(StyledH1)`
   margin-top: 3rem;
@@ -16,9 +18,10 @@ const AllThatWeGrow = ({
   data: {
     allMarkdownRemark: { nodes },
   },
+    location
 }) => {
   return (
-    <Layout menuLinks={blogMenuLinks}>
+    <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="All That We Grow" />
       <StyledFullHeightSection>
         <StyledProjectsH1>All That We Grow</StyledProjectsH1>
@@ -30,6 +33,11 @@ const AllThatWeGrow = ({
 };
 
 export default AllThatWeGrow;
+
+AllThatWeGrow.propTypes = {
+    data: PropTypes.object.isRequired,
+    location: PropTypes.objectOf(locationObjectShape).isRequired
+};
 
 export const pageQuery = graphql`
   query {

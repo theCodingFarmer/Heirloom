@@ -7,6 +7,8 @@ import SEO from '../components/seo';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { flexCenter } from '../components/_shared/styled-mixins';
 import { StyledSection } from '../components/_shared/styled-section';
+import PropTypes from 'prop-types';
+import {locationObjectShape} from '../prop-shapes/prop-type-shapes';
 
 const Styled404Section = styled(StyledSection)`
   min-height: 100vh;
@@ -33,8 +35,8 @@ const StyledDescription = styled.p`
   margin: 0;
 `;
 
-const NotFoundPage = () => (
-  <Layout menuLinks={blogMenuLinks}>
+const NotFoundPage = ({location}) => (
+  <Layout location={location} menuLinks={blogMenuLinks}>
     <Styled404Section>
       <SEO title="404: Not found" />
       <StyledIntroduction>Oops!...It happened again</StyledIntroduction>
@@ -48,3 +50,7 @@ const NotFoundPage = () => (
 );
 
 export default NotFoundPage;
+
+NotFoundPage.propTypes = {
+  location: PropTypes.objectOf(locationObjectShape).isRequired
+};

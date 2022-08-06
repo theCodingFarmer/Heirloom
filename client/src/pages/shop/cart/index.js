@@ -8,6 +8,8 @@ import { blogMenuLinks } from '../../../components/_config/menu-links';
 import { flexCenter } from '../../../components/_shared/styled-mixins';
 import { StyledSection } from '../../../components/_shared/styled-section';
 import {CartDispatchContext, CartStateContext} from '../../../contexts/CartContextProvider';
+import PropTypes from 'prop-types';
+import {locationObjectShape} from '../../../prop-shapes/prop-type-shapes';
 
 const StyledCartSection = styled(StyledSection)`
   min-height: 100vh;
@@ -23,12 +25,12 @@ const StyledDescription = styled.p`
   margin: 0;
 `;
 
-const Cart = () => {
+const Cart = ({location}) => {
   const shoppingCart = useContext(CartStateContext);
   const setShoppingCart = useContext(CartDispatchContext)
 console.log('shoppingCart', shoppingCart);
   return (
-      <Layout menuLinks={blogMenuLinks}>
+      <Layout location={location} menuLinks={blogMenuLinks}>
         <StyledCartSection>
           <SEO title="Shopping Cart" />
           <StyledCartSection>
@@ -67,3 +69,7 @@ console.log('shoppingCart', shoppingCart);
 };
 
 export default Cart;
+
+Cart.propTypes = {
+    location: PropTypes.objectOf(locationObjectShape).isRequired
+};

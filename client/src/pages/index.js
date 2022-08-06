@@ -10,9 +10,10 @@ import HowMembershipWorks from '../components/HowMembershipWorks';
 import Layout from '../components/layout';
 import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
-import { indexMenuLinks } from '../components/_config/menu-links';
+import {blogMenuLinks, indexMenuLinks} from '../components/_config/menu-links';
+import {locationObjectShape} from '../prop-shapes/prop-type-shapes';
 
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
   const {
     aboutUs,
     cardGrid,
@@ -23,7 +24,7 @@ const Index = ({ data }) => {
   } = data.sanityData.edges[0].node;
 
   return (
-    <Layout menuLinks={indexMenuLinks}>
+      <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="Home" />
       <Hero data={homeHero} />
       <HowMembershipWorks data={howItWorks}/>
@@ -37,7 +38,8 @@ const Index = ({ data }) => {
 };
 
 Index.propTypes = {
-  data: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    location: PropTypes.objectOf(locationObjectShape).isRequired
 };
 
 export default Index;

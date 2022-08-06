@@ -18,13 +18,13 @@ const StyledTagsH1 = styled(StyledH1)`
   margin-top: 3rem;
 `;
 
-const Tags = ({ pageContext, data }) => {
+const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const tagHeader = `A collection of ${totalCount} post${totalCount === 1 ? '' : 's'}`;
 
   return (
-    <Layout menuLinks={blogMenuLinks}>
+      <Layout location={location} menuLinks={blogMenuLinks}>
       <StyledFullHeightSection>
         <StyledTagsH1>{tag}</StyledTagsH1>
         <StyledTagsLinkContainer>
