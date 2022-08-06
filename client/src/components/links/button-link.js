@@ -163,9 +163,7 @@ const ButtonHamburgerMenu = () => {
 export const HeaderShoppingCartButton = ({iconSize, shoppingCartTotalItems}) => {
     return (
         <div>
-            {
-                shoppingCartTotalItems && <StyledCartCounter>{shoppingCartTotalItems}</StyledCartCounter>
-            }
+            {Boolean(shoppingCartTotalItems) && <StyledCartCounter>{shoppingCartTotalItems}</StyledCartCounter>}
             <Link to={'/shop/cart'}>
                 <HeirloomIcon
                     icon={'vegBox'}
