@@ -19,6 +19,7 @@ const StyledFooter = styled.footer`
   padding: calc((var(--space) / 2));
   text-align: center;
   font-size: 0.8rem;
+  height: var(--footer-height);
 
   ${mq.gt.xs} {
     flex-direction: row-reverse;

@@ -23,7 +23,7 @@ const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
 
   const shoppingCart = useContext(CartStateContext);
   const setShoppingCart = useContext(CartDispatchContext)
-console.log('shoppingCart', shoppingCart);
+
   return (
       <Layout location={location} menuLinks={blogMenuLinks}>
       <SEO title="Shop" />

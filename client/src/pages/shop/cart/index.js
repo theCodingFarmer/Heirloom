@@ -10,10 +10,26 @@ import { StyledSection } from '../../../components/_shared/styled-section';
 import {CartDispatchContext, CartStateContext} from '../../../contexts/CartContextProvider';
 import PropTypes from 'prop-types';
 import {locationObjectShape} from '../../../prop-shapes/prop-type-shapes';
+import {HeirloomIcon} from '../../../components/icon';
 
 const StyledCartSection = styled(StyledSection)`
-  min-height: 100vh;
+  margin-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height) - 60px);
+  justify-content: space-between;
 `;
+
+const StyledEmptyBasketContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+
+  & > h4 {
+    margin-top: 0.5rem;
+  }
+`;
+
 const StyledIntroduction = styled.div`
   color: var(--primary-color);
   margin-left: 3px;
@@ -29,14 +45,27 @@ const Cart = ({location}) => {
   const shoppingCart = useContext(CartStateContext);
   const setShoppingCart = useContext(CartDispatchContext)
 console.log('shoppingCart', shoppingCart);
+
+  const isBasketEmpty = shoppingCart?.membershipCart.length === 0 && shoppingCart?.productCart.length === 0;
+
+  const shoppingLinkText = isBasketEmpty ? 'Start shopping' : 'Continue shopping';
+
   return (
       <Layout location={location} menuLinks={blogMenuLinks}>
         <StyledCartSection>
           <SEO title="Shopping Cart" />
-          <StyledCartSection>
+            <h1>My Shopping Basket</h1>
               {
-                  shoppingCart?.membershipCart.length === 0 && shoppingCart?.productCart.length === 0 &&
-                  <h1>Your cart is empty.</h1>
+                  isBasketEmpty &&
+                  <StyledEmptyBasketContainer>
+                      <HeirloomIcon
+                          icon={'vegBox'}
+                          size={148}
+                          style={{fill: 'var(--paragraph-text-accent)'}}
+                      />
+                      <h4>Your shopping basket is empty.</h4>
+                      <TextLink label={shoppingLinkText} link="/shop" />
+                  </StyledEmptyBasketContainer>
               }
 
               {
@@ -61,8 +90,6 @@ console.log('shoppingCart', shoppingCart);
                       )}
                     </div>
               }
-          </StyledCartSection>
-          <TextLink label="Continue shopping" link="/shop" />
         </StyledCartSection>
       </Layout>
   )
