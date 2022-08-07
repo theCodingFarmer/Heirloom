@@ -10,7 +10,7 @@ import HowMembershipWorks from '../components/HowMembershipWorks';
 import Layout from '../components/layout';
 import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
-import {blogMenuLinks, indexMenuLinks} from '../components/_config/menu-links';
+import {blogMenuLinks} from '../components/_config/menu-links';
 import {locationObjectShape} from '../prop-shapes/prop-type-shapes';
 
 const Index = ({ data, location }) => {
@@ -235,7 +235,6 @@ export const query = graphql`
         }
       }
     }
-
     contact: markdownRemark(fileAbsolutePath: { regex: "/content/sections/contact/" }) {
       frontmatter {
         phone
