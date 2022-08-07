@@ -14,16 +14,39 @@ import {locationObjectShape} from '../../prop-shapes/prop-type-shapes';
 const Shop = ({data, location}) => {
 
 
-  const addPricesToProduct = (productsArray, stripePricesData) => {
+  const shopPricedMembershipAndProductsData = (productsArray, membershipArray, stripePricesData) => {
     console.log('productsArray', productsArray);
+    console.log('membershipArray', membershipArray);
     console.log('stripePricesData', stripePricesData);
 
-    const array = productsArray.nodes.map((product) => {
+    const formattedStripePriceData = stripePricesData.nodes.map((price) => ({
+      isActive: price.active,
+      name: price.product.name,
+      stripe_id: price.id,
+      unit_amount: price.unit_amount,
+      unit_amount_decimal: price.unit_amount_decimal
+    }));
 
-    })
-  }
+    console.log('formattedStripePriceData', formattedStripePriceData);
 
-  addPricesToProduct(data.shopProducts, data.allStripeProductIds);
+    const shopPricedProducts = productsArray.nodes.map((product) => ({
+      ...product,
+      shopProductsOptions: product.shopProductsOptions.map((productOption) => {
+        const stripeDataForProduct = formattedStripePriceData.find((stripePriceItem) => stripePriceItem.stripe_id === productOption.shopProductSelectableOptionStripeId);
+        console.log('stripeDataForProduct', stripeDataForProduct);
+        return ({
+          ...productOption,
+          unit_amount: stripeDataForProduct ? stripeDataForProduct.unit_amount : undefined,
+          isActiveWithStripe: stripeDataForProduct? stripeDataForProduct.isActive : undefined
+        })
+      })
+    }))
+
+    console.log('shopPricedProducts', shopPricedProducts);
+
+  };
+
+  shopPricedMembershipAndProductsData(data.shopProducts, data.shopMembership, data.allStripeProductIds);
 
   const stripeCsaMembershipSelections = data.stripeCsaMembership.nodes;
   const pageDetails = data.pageDetails.nodes[0]
@@ -171,12 +194,12 @@ export const shopQuery = graphql`
       }
       allStripeProductIds: allStripePrice(filter: {product: {active: {eq: true}}}) {
         nodes {
+          id
+          active
           unit_amount
           unit_amount_decimal
           product {
-            active
             name
-            id
           }
         }
       }
