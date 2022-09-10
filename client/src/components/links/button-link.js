@@ -52,6 +52,16 @@ export const StyledAnchorLink = styled(Link)`
   }
 `;
 
+export const StyledCartButtonLink = styled(Link)`
+  & > svg {
+    fill: var(--title-color-light);
+  }
+
+  &:hover > svg {
+    fill: var(--primary-color);
+  }
+`
+
 export const StyledMenuButton = styled.button`
   ${flexCenter};
   position: relative;
@@ -168,13 +178,12 @@ const ButtonHamburgerMenu = () => {
 const HeaderShoppingCartButton = ({iconSize, shoppingCartTotalItems}) =>
     <div>
         {Boolean(shoppingCartTotalItems) && <StyledCartCounter>{shoppingCartTotalItems}</StyledCartCounter>}
-        <Link to={'/shop/cart'}>
+        <StyledCartButtonLink to={'/shop/cart'}>
             <HeirloomIcon
                 icon={'vegBox'}
                 size={iconSize}
-                style={{fill: 'var(--title-color-light)'}}
             />
-        </Link>
+        </StyledCartButtonLink>
     </div>;
 
 export const DesktopLinkAndCartButton = ({label, link, showLink, shoppingCartTotalItems}) =>
