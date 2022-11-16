@@ -37,6 +37,8 @@ build/Release
 
 # Dependency directories
 node_modules/
+client/node_modules/
+studio/node_modules/
 jspm_packages/
 
 # Typescript v1 declaration files
@@ -58,8 +60,11 @@ typings/
 .env
 
 # gatsby files
-.cache/
+client/.cache/
 public
+
+# distributable folder
+dist/
 
 # Mac files
 .DS_Store
